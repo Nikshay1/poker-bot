@@ -44,10 +44,10 @@ def main():
     done = {(r["bot_a"], r["bot_b"]) for r in results}
 
     def git(*command: str) -> str:
-        done = subprocess.run(
+        result = subprocess.run(
             ["git", *command], capture_output=True, text=True, cwd=ROOT, check=True
         )
-        return done.stdout.strip()
+        return result.stdout.strip()
 
     commit = git("rev-parse", "--short", "HEAD")
     dirty = bool(git("status", "--porcelain", "src"))
