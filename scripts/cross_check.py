@@ -108,7 +108,12 @@ def main():
     hole = [int(c) for c in COMBO_CARDS[live[0]]]
     spot = spot_from_partial(hole, board, pot=POT, position="bb", stack=STACK)
     sizing = BetSizing(
-        bet_fracs=SIZES, raise_fracs=SIZES, all_in=True, max_raises=MAX_RAISES, commit_frac=10.0
+        bet_fracs=SIZES,
+        raise_fracs=SIZES,
+        all_in=True,
+        max_raises=MAX_RAISES,
+        commit_frac=10.0,  # never round a size up to all-in; the reference does not
+        all_in_max_pot=None,  # the reference always offers all-in
     )
     river = RiverBoard(board)
     reach = [r / r.sum() for r in ranges]

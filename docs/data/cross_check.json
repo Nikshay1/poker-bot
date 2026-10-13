@@ -11,7 +11,7 @@
  "decisions": 20,
  "terminals": 37,
  "iterations": 2000,
- "seconds": 29.03,
+ "seconds": 2.56,
  "exploitability_own_measure": 0.03930593925206338,
  "exploitability_reference_measure": 0.03930593925173298,
  "best_response_values_own_plus_half_pot": [
@@ -27,7 +27,7 @@
   455.5012487048691
  ],
  "reference_iterations": 300,
- "reference_seconds": 30.54,
+ "reference_seconds": 3.66,
  "reference_exploitability": 1.177157437856863,
  "reference_first_player_value_bracket": [
   454.1602957989794,
