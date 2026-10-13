@@ -41,7 +41,7 @@ def main():
         tracker.catch_up(spot)
         board = RiverBoard(spot.board)
         reach = []
-        for r in tracker.ranges:
+        for r in tracker.beliefs():
             r = np.where(board.live, r, 0.0)
             reach.append(r / r.sum())
         norm = float(reach[0] @ board.compatible(reach[1]))

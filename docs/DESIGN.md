@@ -58,6 +58,7 @@ These were fixed before any solver code. Every module follows them.
 
 - **Complete state.** A full valid state gives an executable action that is guaranteed legal.
 - **Partial input.** For example hole cards, board and pot only. The advisor fills the gaps with the simplest betting line that produces the stated pot (the button raised, the big blind called, earlier streets were checked) and lists every assumption it made.
+- **Filled-in actions are not evidence.** The preflop line sets the starting ranges, because the pot size supports it. Checks invented for earlier streets are marked unobserved and never narrow a range. An early version did use them, and the model-error experiment in [RESULTS.md](RESULTS.md) is what exposed it.
 - Invalid or contradictory input (a duplicated card, a pot that cannot be reached) returns a structured error with a stable code. It is never silently repaired.
 
 ### Payoffs

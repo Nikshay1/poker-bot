@@ -6,7 +6,7 @@ Everything here was measured on one laptop (16 threads, 15 GB RAM). Each number 
 
 1. **The solver is correct.** It reproduces the known solutions of Kuhn and Leduc poker, matches the published push-or-fold chart, and an independent solver's best-response code reports the same exploitability for its river solutions to nine decimal places.
 2. **The river solver earns chips.** Adding it to the heuristic bot wins **+39.1 bb/100** (95% interval +26.4 to +51.9) over 20,000 hands in a head-to-head duplicate match.
-3. **Solver precision is not the limit; the range estimate is.** A river solve reaches about 0.1% of the pot in exploitability. But changing the assumed opponent range changes the recommended action in 20% to 30% of test situations, while a richer bet tree changes it in 3%.
+3. **Solver precision is not the limit; the assumptions are.** A river solve reaches about 0.1% of the pot in exploitability. But changing the assumed opponent range changes the recommended action in 5% to 16% of test situations, and a richer bet tree in 6%. The first run of this experiment showed 20% to 30%, which exposed a design mistake that was then fixed.
 4. **Both bots beat all three baselines** by wide margins, with no illegal action in 50,000 evaluation hands.
 5. **Against Slumbot** the sample is too small to say anything about strength. See the section below for what it does and does not show.
 
@@ -18,7 +18,7 @@ Terms used below:
 
 ## 1. Correctness
 
-`uv run pytest` runs 118 checks in about 15 seconds; `uv run pytest -m slow` adds the exhaustive one.
+`uv run pytest` runs 121 checks in about 15 seconds; `uv run pytest -m slow` adds the exhaustive one.
 
 | What | Check | Result |
 |---|---|---|
@@ -58,17 +58,17 @@ Exploitability as a percentage of the pot, on four river situations with tracked
 
 | Iterations | Plain CFR | CFR+ | Discounted CFR | DCFR time, seconds |
 |---|---|---|---|---|
-| 50 | 15.8 / 1.34 / 2.07 / 4.20 | 6.40 / 0.88 / 1.21 / 2.95 | 3.33 / 2.41 / 0.71 / 1.58 | 0.10 / 0.03 / 0.04 / 0.10 |
-| 100 | 8.26 / 0.65 / 1.19 / 2.22 | 2.75 / 0.53 / 0.56 / 1.00 | 1.21 / 0.53 / 0.34 / 0.39 | 0.21 / 0.05 / 0.08 / 0.19 |
-| 200 | 4.05 / 0.32 / 0.70 / 1.12 | 1.01 / 0.17 / 0.26 / 0.29 | 0.53 / 0.13 / 0.11 / 0.10 | 0.41 / 0.10 / 0.17 / 0.37 |
-| 400 | 2.03 / 0.21 / 0.37 / 0.55 | 0.44 / 0.06 / 0.09 / 0.08 | 0.19 / 0.03 / 0.03 / 0.03 | 0.83 / 0.21 / 0.34 / 0.73 |
-| 800 | 1.06 / 0.11 / 0.19 / 0.30 | 0.19 / 0.02 / 0.03 / 0.02 | 0.06 / 0.01 / 0.01 / 0.01 | 1.65 / 0.41 / 0.67 / 1.45 |
+| 50 | 11.4 / 1.63 / 2.67 / 6.41 | 4.85 / 0.82 / 1.18 / 2.73 | 1.97 / 0.85 / 0.71 / 1.29 | 0.10 / 0.03 / 0.04 / 0.09 |
+| 100 | 5.84 / 0.84 / 1.42 / 3.35 | 1.61 / 0.52 / 0.41 / 0.90 | 1.14 / 0.50 / 0.24 / 0.35 | 0.20 / 0.05 / 0.08 / 0.18 |
+| 200 | 2.87 / 0.44 / 0.73 / 1.69 | 0.62 / 0.17 / 0.17 / 0.35 | 0.32 / 0.09 / 0.08 / 0.14 | 0.40 / 0.10 / 0.17 / 0.36 |
+| 400 | 1.47 / 0.21 / 0.38 / 0.89 | 0.28 / 0.06 / 0.06 / 0.16 | 0.11 / 0.03 / 0.02 / 0.05 | 0.81 / 0.20 / 0.33 / 0.74 |
+| 800 | 0.75 / 0.10 / 0.20 / 0.46 | 0.13 / 0.02 / 0.02 / 0.06 | 0.04 / 0.01 / 0.01 / 0.01 | 1.63 / 0.40 / 0.66 / 1.48 |
 
 What this shows:
 
-- Discounted CFR is the fastest from 100 iterations on, in all four situations. At 800 iterations it is 9 to 50 times more accurate than plain CFR. In the first 50 iterations it is not always ahead.
-- A solve of about half a second reaches 0.1% to 0.5% of the pot. The match bot stops at 0.25% of the pot or 300 iterations.
-- Bigger trees converge more slowly per iteration and cost more per iteration.
+- Discounted CFR is the most accurate from 100 iterations on, in all four situations. At 800 iterations it is roughly 10 to 50 times more accurate than plain CFR.
+- A solve of 200 iterations takes 0.1 to 0.4 seconds and reaches 0.1% to 0.3% of the pot. The match bot stops at 0.25% of the pot or 300 iterations.
+- Bigger trees converge more slowly and cost more per iteration.
 
 On the small games the same pattern holds. After 1,000 iterations on Leduc poker, exploitability is 0.0118 for plain CFR, 0.00026 for CFR+ and 0.00017 for Discounted CFR, in units of the ante.
 
@@ -80,25 +80,39 @@ A solve can be exact and still answer the wrong question, because the opponent's
 
 | Assumption changed | Top action changes | Distance, hero's hand | Distance, hero's whole range |
 |---|---|---|---|
-| Range inferred less sharply (uniform component 0.3 instead of 0.1) | 13 of 64 (20%) | 0.16 | 0.16 |
-| Opponent may hold any hand | 19 of 64 (30%) | 0.30 | 0.38 |
-| Richer bet tree (3 bet sizes, 2 raise sizes) | 2 of 64 (3%) | 0.03 | 0.05 |
+| Range inferred less sharply (uniform component 0.3 instead of 0.1) | 3 of 64 (5%) | 0.05 | 0.07 |
+| Opponent may hold any hand | 10 of 64 (16%) | 0.17 | 0.20 |
+| Richer bet tree (3 bet sizes, 2 raise sizes) | 4 of 64 (6%) | 0.04 | 0.03 |
 
 Distance is total-variation distance between strategies, grouped into fold, check or call, and bet or raise: 0 means identical, 1 means completely different.
 
-One example makes the point. With pocket aces on a board of 9s 8s 7d 6c 2h, facing a bet of two thirds of the pot:
+An example. With King-Queen on a board of 7h 8h 2c Kd 3s, facing a bet of two thirds of the pot:
 
-| Opponent range | Solver's answer for the aces |
+| Opponent range | Solver's answer for King-Queen |
 |---|---|
-| The model's estimate | Raise, 100% |
-| Any hand | Call, 100% |
+| The model's estimate, which accounts for the bet | Call, 100% |
+| Any hand | Raise, 100% |
 
-Both answers are numerically exact for their own inputs. They differ because the model reasons that a hand strong enough to beat aces would have bet an earlier street, so it gives such hands little weight. The uniform range does not. A human player would call here, because any ten or five makes a straight.
+Both answers are numerically exact for their own inputs. Ignoring what the bet says about the opponent's hand turns a call into a raise.
 
-What follows from this:
+### This experiment found a design mistake
 
-- The next improvement should go into estimating ranges, not into more solver iterations or more bet sizes.
-- The river solver's 0.1% figure must not be read as the accuracy of the bot's decisions.
+The first run of this experiment gave much larger numbers:
+
+| Assumption changed | Top action changes, first run | After the fix |
+|---|---|---|
+| Range inferred less sharply | 13 of 64 (20%) | 3 of 64 (5%) |
+| Opponent may hold any hand | 19 of 64 (30%) | 10 of 64 (16%) |
+| Richer bet tree | 2 of 64 (3%) | 4 of 64 (6%) |
+
+The cause: these situations are built from partial input (cards and pot), and the advisor fills in the missing history as "earlier streets were checked through". The range tracker then used those made-up checks as evidence that the opponent was weak. The clearest symptom was pocket aces on 9s 8s 7d 6c 2h facing a bet, where the solver raised 100% of the time, and recommended an all-in with one pair in a similar spot.
+
+The fix: filled-in actions are marked as unobserved and no longer narrow any range. The aces now call. Match play was never affected, because a match has a complete, real history; a re-run evaluation match gave a bit-identical result. The first-run data is kept in `docs/data/model_error_before_fix.json`.
+
+What follows from all this:
+
+- The solver's 0.1% figure must not be read as the accuracy of the bot's decisions. Even after the fix, the range assumption moves the answer far more often than numerical error could.
+- Where the history is real, sharp inference is only as good as the model of the opponent. Improving that model is worth more than more iterations.
 
 ## 4. Match results
 

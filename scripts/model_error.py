@@ -86,12 +86,12 @@ def main():
                 }
                 for tracker in trackers.values():
                     tracker.catch_up(spot)
-                base_ranges = tuple(trackers["base"].ranges)
+                base_ranges = trackers["base"].beliefs()
                 uniform = list(base_ranges)
                 uniform[1 - spot.seat] = live.astype(np.float64)
                 cases = {
                     "base": (base_ranges, None),
-                    "soft": (tuple(trackers["soft"].ranges), None),
+                    "soft": (trackers["soft"].beliefs(), None),
                     "uniform": (tuple(uniform), None),
                     "sizes": (base_ranges, RICH),
                 }

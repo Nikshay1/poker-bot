@@ -5,8 +5,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 10,
-  "seconds": 0.0344,
-  "exploitability_pct_pot": 58.90506877319708
+  "seconds": 0.0301,
+  "exploitability_pct_pot": 48.117196756984384
  },
  {
   "spot": "first to act, pot 600",
@@ -14,8 +14,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 25,
-  "seconds": 0.0711,
-  "exploitability_pct_pot": 28.621079111749545
+  "seconds": 0.0622,
+  "exploitability_pct_pot": 21.309635837201263
  },
  {
   "spot": "first to act, pot 600",
@@ -23,8 +23,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 50,
-  "seconds": 0.1294,
-  "exploitability_pct_pot": 15.824305497165948
+  "seconds": 0.114,
+  "exploitability_pct_pot": 11.384609032629232
  },
  {
   "spot": "first to act, pot 600",
@@ -32,8 +32,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 100,
-  "seconds": 0.2369,
-  "exploitability_pct_pot": 8.259126525601374
+  "seconds": 0.2146,
+  "exploitability_pct_pot": 5.837145089344248
  },
  {
   "spot": "first to act, pot 600",
@@ -41,8 +41,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 200,
-  "seconds": 0.4372,
-  "exploitability_pct_pot": 4.049354422948564
+  "seconds": 0.4083,
+  "exploitability_pct_pot": 2.874081835635695
  },
  {
   "spot": "first to act, pot 600",
@@ -50,8 +50,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 400,
-  "seconds": 0.8376,
-  "exploitability_pct_pot": 2.0245306094442634
+  "seconds": 0.7923,
+  "exploitability_pct_pot": 1.4728449682309739
  },
  {
   "spot": "first to act, pot 600",
@@ -59,8 +59,8 @@
   "terminals": 45,
   "variant": "cfr",
   "iterations": 800,
-  "seconds": 1.5906,
-  "exploitability_pct_pot": 1.0547040394576062
+  "seconds": 1.5306,
+  "exploitability_pct_pot": 0.7522160449569751
  },
  {
   "spot": "first to act, pot 600",
@@ -68,8 +68,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 10,
-  "seconds": 0.0198,
-  "exploitability_pct_pot": 28.86323436912331
+  "seconds": 0.0205,
+  "exploitability_pct_pot": 29.04894112068013
  },
  {
   "spot": "first to act, pot 600",
@@ -77,8 +77,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 25,
-  "seconds": 0.0497,
-  "exploitability_pct_pot": 13.10292767669038
+  "seconds": 0.0504,
+  "exploitability_pct_pot": 11.06691248365568
  },
  {
   "spot": "first to act, pot 600",
@@ -86,8 +86,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 50,
-  "seconds": 0.0997,
-  "exploitability_pct_pot": 6.404213674746652
+  "seconds": 0.1004,
+  "exploitability_pct_pot": 4.850438840241737
  },
  {
   "spot": "first to act, pot 600",
@@ -95,8 +95,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 100,
-  "seconds": 0.2005,
-  "exploitability_pct_pot": 2.749322338838818
+  "seconds": 0.1998,
+  "exploitability_pct_pot": 1.6088640408242059
  },
  {
   "spot": "first to act, pot 600",
@@ -104,8 +104,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 200,
-  "seconds": 0.4038,
-  "exploitability_pct_pot": 1.0129438416295884
+  "seconds": 0.4082,
+  "exploitability_pct_pot": 0.6184638785664884
  },
  {
   "spot": "first to act, pot 600",
@@ -113,8 +113,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 400,
-  "seconds": 0.8148,
-  "exploitability_pct_pot": 0.4384724910635643
+  "seconds": 0.8051,
+  "exploitability_pct_pot": 0.2794458549270935
  },
  {
   "spot": "first to act, pot 600",
@@ -122,8 +122,8 @@
   "terminals": 45,
   "variant": "cfr+",
   "iterations": 800,
-  "seconds": 1.6316,
-  "exploitability_pct_pot": 0.18767690253679556
+  "seconds": 1.6115,
+  "exploitability_pct_pot": 0.12806199827105344
  },
  {
   "spot": "first to act, pot 600",
@@ -131,8 +131,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 10,
-  "seconds": 0.0197,
-  "exploitability_pct_pot": 24.90810286715985
+  "seconds": 0.0204,
+  "exploitability_pct_pot": 18.975183398799953
  },
  {
   "spot": "first to act, pot 600",
@@ -140,8 +140,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 25,
-  "seconds": 0.0514,
-  "exploitability_pct_pot": 7.906343274310928
+  "seconds": 0.0504,
+  "exploitability_pct_pot": 6.759839524068357
  },
  {
   "spot": "first to act, pot 600",
@@ -149,8 +149,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 50,
-  "seconds": 0.1033,
-  "exploitability_pct_pot": 3.3261341898683616
+  "seconds": 0.1006,
+  "exploitability_pct_pot": 1.9704393283586508
  },
  {
   "spot": "first to act, pot 600",
@@ -158,8 +158,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 100,
-  "seconds": 0.2052,
-  "exploitability_pct_pot": 1.210228853871597
+  "seconds": 0.2006,
+  "exploitability_pct_pot": 1.1380362514462643
  },
  {
   "spot": "first to act, pot 600",
@@ -167,8 +167,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 200,
-  "seconds": 0.4124,
-  "exploitability_pct_pot": 0.5300424812977861
+  "seconds": 0.4012,
+  "exploitability_pct_pot": 0.32487113739815143
  },
  {
   "spot": "first to act, pot 600",
@@ -176,8 +176,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 400,
-  "seconds": 0.8317,
-  "exploitability_pct_pot": 0.19393144097126522
+  "seconds": 0.8077,
+  "exploitability_pct_pot": 0.10897458668749493
  },
  {
   "spot": "first to act, pot 600",
@@ -185,8 +185,8 @@
   "terminals": 45,
   "variant": "dcfr",
   "iterations": 800,
-  "seconds": 1.6533,
-  "exploitability_pct_pot": 0.06046803671799257
+  "seconds": 1.6262,
+  "exploitability_pct_pot": 0.03787741395798605
  },
  {
   "spot": "facing a 40% pot bet",
@@ -194,8 +194,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 10,
-  "seconds": 0.0055,
-  "exploitability_pct_pot": 10.59717558777604
+  "seconds": 0.005,
+  "exploitability_pct_pot": 9.8058224475243
  },
  {
   "spot": "facing a 40% pot bet",
@@ -203,8 +203,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 25,
-  "seconds": 0.0133,
-  "exploitability_pct_pot": 2.923816492135491
+  "seconds": 0.0123,
+  "exploitability_pct_pot": 2.9157748568735364
  },
  {
   "spot": "facing a 40% pot bet",
@@ -212,8 +212,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 50,
-  "seconds": 0.0263,
-  "exploitability_pct_pot": 1.3444363342395447
+  "seconds": 0.0244,
+  "exploitability_pct_pot": 1.631466168361539
  },
  {
   "spot": "facing a 40% pot bet",
@@ -221,8 +221,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 100,
-  "seconds": 0.0515,
-  "exploitability_pct_pot": 0.6532132324439978
+  "seconds": 0.0484,
+  "exploitability_pct_pot": 0.8449223413556936
  },
  {
   "spot": "facing a 40% pot bet",
@@ -230,8 +230,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 200,
-  "seconds": 0.1013,
-  "exploitability_pct_pot": 0.32004048647004096
+  "seconds": 0.0964,
+  "exploitability_pct_pot": 0.43861256420532013
  },
  {
   "spot": "facing a 40% pot bet",
@@ -239,8 +239,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 400,
-  "seconds": 0.2018,
-  "exploitability_pct_pot": 0.2099749342268737
+  "seconds": 0.1925,
+  "exploitability_pct_pot": 0.21271251186542556
  },
  {
   "spot": "facing a 40% pot bet",
@@ -248,8 +248,8 @@
   "terminals": 12,
   "variant": "cfr",
   "iterations": 800,
-  "seconds": 0.4,
-  "exploitability_pct_pot": 0.10452185433494705
+  "seconds": 0.3887,
+  "exploitability_pct_pot": 0.09885528252343505
  },
  {
   "spot": "facing a 40% pot bet",
@@ -258,7 +258,7 @@
   "variant": "cfr+",
   "iterations": 10,
   "seconds": 0.0053,
-  "exploitability_pct_pot": 4.05725561603141
+  "exploitability_pct_pot": 3.648927320273767
  },
  {
   "spot": "facing a 40% pot bet",
@@ -266,8 +266,8 @@
   "terminals": 12,
   "variant": "cfr+",
   "iterations": 25,
-  "seconds": 0.0134,
-  "exploitability_pct_pot": 0.9197272791602792
+  "seconds": 0.0133,
+  "exploitability_pct_pot": 1.1721549806517373
  },
  {
   "spot": "facing a 40% pot bet",
@@ -275,8 +275,8 @@
   "terminals": 12,
   "variant": "cfr+",
   "iterations": 50,
-  "seconds": 0.0267,
-  "exploitability_pct_pot": 0.8798636143369619
+  "seconds": 0.0264,
+  "exploitability_pct_pot": 0.8162200136080792
  },
  {
   "spot": "facing a 40% pot bet",
@@ -284,8 +284,8 @@
   "terminals": 12,
   "variant": "cfr+",
   "iterations": 100,
-  "seconds": 0.053,
-  "exploitability_pct_pot": 0.529965339968831
+  "seconds": 0.0526,
+  "exploitability_pct_pot": 0.5172536814680931
  },
  {
   "spot": "facing a 40% pot bet",
@@ -293,8 +293,8 @@
   "terminals": 12,
   "variant": "cfr+",
   "iterations": 200,
-  "seconds": 0.1064,
-  "exploitability_pct_pot": 0.17317965926822368
+  "seconds": 0.1045,
+  "exploitability_pct_pot": 0.16796871058887675
  },
  {
   "spot": "facing a 40% pot bet",
@@ -302,8 +302,8 @@
   "terminals": 12,
   "variant": "cfr+",
   "iterations": 400,
-  "seconds": 0.2089,
-  "exploitability_pct_pot": 0.05993088886038507
+  "seconds": 0.2071,
+  "exploitability_pct_pot": 0.05678470059845893
  },
  {
   "spot": "facing a 40% pot bet",
@@ -311,8 +311,8 @@
   "terminals": 12,
   "variant": "cfr+",
   "iterations": 800,
-  "seconds": 0.4061,
-  "exploitability_pct_pot": 0.020737250782121207
+  "seconds": 0.4097,
+  "exploitability_pct_pot": 0.020237120658457286
  },
  {
   "spot": "facing a 40% pot bet",
@@ -321,7 +321,7 @@
   "variant": "dcfr",
   "iterations": 10,
   "seconds": 0.0052,
-  "exploitability_pct_pot": 2.5470191742819734
+  "exploitability_pct_pot": 3.657749702420648
  },
  {
   "spot": "facing a 40% pot bet",
@@ -329,8 +329,8 @@
   "terminals": 12,
   "variant": "dcfr",
   "iterations": 25,
-  "seconds": 0.013,
-  "exploitability_pct_pot": 11.552194803847648
+  "seconds": 0.0129,
+  "exploitability_pct_pot": 1.0958859745487048
  },
  {
   "spot": "facing a 40% pot bet",
@@ -338,8 +338,8 @@
   "terminals": 12,
   "variant": "dcfr",
   "iterations": 50,
-  "seconds": 0.0257,
-  "exploitability_pct_pot": 2.410862188868838
+  "seconds": 0.0259,
+  "exploitability_pct_pot": 0.8455857837613586
  },
  {
   "spot": "facing a 40% pot bet",
@@ -347,8 +347,8 @@
   "terminals": 12,
   "variant": "dcfr",
   "iterations": 100,
-  "seconds": 0.0521,
-  "exploitability_pct_pot": 0.5304208306373873
+  "seconds": 0.0514,
+  "exploitability_pct_pot": 0.49731708427839294
  },
  {
   "spot": "facing a 40% pot bet",
@@ -356,8 +356,8 @@
   "terminals": 12,
   "variant": "dcfr",
   "iterations": 200,
-  "seconds": 0.1043,
-  "exploitability_pct_pot": 0.12514306231911618
+  "seconds": 0.102,
+  "exploitability_pct_pot": 0.0869690608283193
  },
  {
   "spot": "facing a 40% pot bet",
@@ -365,8 +365,8 @@
   "terminals": 12,
   "variant": "dcfr",
   "iterations": 400,
-  "seconds": 0.2081,
-  "exploitability_pct_pot": 0.031818881778420405
+  "seconds": 0.2018,
+  "exploitability_pct_pot": 0.027895193734844524
  },
  {
   "spot": "facing a 40% pot bet",
@@ -374,8 +374,8 @@
   "terminals": 12,
   "variant": "dcfr",
   "iterations": 800,
-  "seconds": 0.4135,
-  "exploitability_pct_pot": 0.012230965574128306
+  "seconds": 0.4014,
+  "exploitability_pct_pot": 0.007767649653416697
  },
  {
   "spot": "checked to, pot 2000",
@@ -383,143 +383,143 @@
   "terminals": 19,
   "variant": "cfr",
   "iterations": 10,
-  "seconds": 0.0088,
-  "exploitability_pct_pot": 9.411963826313219
+  "seconds": 0.0084,
+  "exploitability_pct_pot": 11.808522780179391
  },
  {
   "spot": "checked to, pot 2000",
   "decisions": 10,
   "terminals": 19,
   "variant": "cfr",
+  "iterations": 25,
+  "seconds": 0.0206,
+  "exploitability_pct_pot": 4.996994371394326
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 50,
+  "seconds": 0.0408,
+  "exploitability_pct_pot": 2.6724720349546787
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 100,
+  "seconds": 0.0803,
+  "exploitability_pct_pot": 1.4178141388017849
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 200,
+  "seconds": 0.1576,
+  "exploitability_pct_pot": 0.7304685393482601
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 400,
+  "seconds": 0.3116,
+  "exploitability_pct_pot": 0.3848227112995673
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 800,
+  "seconds": 0.6275,
+  "exploitability_pct_pot": 0.19524686572248412
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 10,
+  "seconds": 0.0087,
+  "exploitability_pct_pot": 9.473971597800572
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 25,
+  "seconds": 0.0216,
+  "exploitability_pct_pot": 3.4059534922341554
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 50,
+  "seconds": 0.043,
+  "exploitability_pct_pot": 1.1822268560972973
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 100,
+  "seconds": 0.0847,
+  "exploitability_pct_pot": 0.4104527645090116
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 200,
+  "seconds": 0.1663,
+  "exploitability_pct_pot": 0.17151832048250668
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 400,
+  "seconds": 0.3298,
+  "exploitability_pct_pot": 0.05714046287801296
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 800,
+  "seconds": 0.6576,
+  "exploitability_pct_pot": 0.017078654393706927
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 10,
+  "seconds": 0.0087,
+  "exploitability_pct_pot": 6.9328957377141265
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
   "iterations": 25,
   "seconds": 0.0218,
-  "exploitability_pct_pot": 3.730592263973846
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr",
-  "iterations": 50,
-  "seconds": 0.0426,
-  "exploitability_pct_pot": 2.0736513549007953
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr",
-  "iterations": 100,
-  "seconds": 0.0848,
-  "exploitability_pct_pot": 1.191469704853172
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr",
-  "iterations": 200,
-  "seconds": 0.1697,
-  "exploitability_pct_pot": 0.6957817907470615
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr",
-  "iterations": 400,
-  "seconds": 0.3333,
-  "exploitability_pct_pot": 0.37302772169934323
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr",
-  "iterations": 800,
-  "seconds": 0.6504,
-  "exploitability_pct_pot": 0.1858997136319589
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 10,
-  "seconds": 0.0084,
-  "exploitability_pct_pot": 8.050587496206996
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 25,
-  "seconds": 0.0213,
-  "exploitability_pct_pot": 2.373118224801379
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 50,
-  "seconds": 0.0426,
-  "exploitability_pct_pot": 1.2048488468118532
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 100,
-  "seconds": 0.0853,
-  "exploitability_pct_pot": 0.5547842968474508
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 200,
-  "seconds": 0.1707,
-  "exploitability_pct_pot": 0.2642772714558447
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 400,
-  "seconds": 0.3422,
-  "exploitability_pct_pot": 0.09426884072140797
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "cfr+",
-  "iterations": 800,
-  "seconds": 0.6769,
-  "exploitability_pct_pot": 0.032241535029834976
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "dcfr",
-  "iterations": 10,
-  "seconds": 0.0084,
-  "exploitability_pct_pot": 8.949586734145905
- },
- {
-  "spot": "checked to, pot 2000",
-  "decisions": 10,
-  "terminals": 19,
-  "variant": "dcfr",
-  "iterations": 25,
-  "seconds": 0.0207,
-  "exploitability_pct_pot": 2.2069293457008854
+  "exploitability_pct_pot": 2.187726575852173
  },
  {
   "spot": "checked to, pot 2000",
@@ -527,8 +527,8 @@
   "terminals": 19,
   "variant": "dcfr",
   "iterations": 50,
-  "seconds": 0.0415,
-  "exploitability_pct_pot": 0.7131354711890865
+  "seconds": 0.0428,
+  "exploitability_pct_pot": 0.7108351204228199
  },
  {
   "spot": "checked to, pot 2000",
@@ -536,8 +536,8 @@
   "terminals": 19,
   "variant": "dcfr",
   "iterations": 100,
-  "seconds": 0.0838,
-  "exploitability_pct_pot": 0.338863090275582
+  "seconds": 0.0846,
+  "exploitability_pct_pot": 0.2380990866011956
  },
  {
   "spot": "checked to, pot 2000",
@@ -545,8 +545,8 @@
   "terminals": 19,
   "variant": "dcfr",
   "iterations": 200,
-  "seconds": 0.1692,
-  "exploitability_pct_pot": 0.10665702286422167
+  "seconds": 0.1699,
+  "exploitability_pct_pot": 0.07600455065586117
  },
  {
   "spot": "checked to, pot 2000",
@@ -554,8 +554,8 @@
   "terminals": 19,
   "variant": "dcfr",
   "iterations": 400,
-  "seconds": 0.3371,
-  "exploitability_pct_pot": 0.034173204857400566
+  "seconds": 0.3342,
+  "exploitability_pct_pot": 0.018245637046501884
  },
  {
   "spot": "checked to, pot 2000",
@@ -563,8 +563,8 @@
   "terminals": 19,
   "variant": "dcfr",
   "iterations": 800,
-  "seconds": 0.6745,
-  "exploitability_pct_pot": 0.011956953643982082
+  "seconds": 0.6629,
+  "exploitability_pct_pot": 0.005815033885329513
  },
  {
   "spot": "first to act, paired board",
@@ -572,8 +572,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 10,
-  "seconds": 0.0202,
-  "exploitability_pct_pot": 19.994868171692843
+  "seconds": 0.0173,
+  "exploitability_pct_pot": 27.815340852817116
  },
  {
   "spot": "first to act, paired board",
@@ -581,8 +581,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 25,
-  "seconds": 0.0497,
-  "exploitability_pct_pot": 7.967925923675328
+  "seconds": 0.0427,
+  "exploitability_pct_pot": 12.700038684484236
  },
  {
   "spot": "first to act, paired board",
@@ -590,8 +590,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 50,
-  "seconds": 0.0979,
-  "exploitability_pct_pot": 4.198944297284399
+  "seconds": 0.0843,
+  "exploitability_pct_pot": 6.4061393597605445
  },
  {
   "spot": "first to act, paired board",
@@ -599,8 +599,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 100,
-  "seconds": 0.1904,
-  "exploitability_pct_pot": 2.219962784393556
+  "seconds": 0.1674,
+  "exploitability_pct_pot": 3.354259126341379
  },
  {
   "spot": "first to act, paired board",
@@ -608,8 +608,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 200,
-  "seconds": 0.3816,
-  "exploitability_pct_pot": 1.1228766910836943
+  "seconds": 0.3336,
+  "exploitability_pct_pot": 1.693477180309591
  },
  {
   "spot": "first to act, paired board",
@@ -617,8 +617,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 400,
-  "seconds": 0.7263,
-  "exploitability_pct_pot": 0.5500780225982117
+  "seconds": 0.6816,
+  "exploitability_pct_pot": 0.8891091713256691
  },
  {
   "spot": "first to act, paired board",
@@ -626,8 +626,8 @@
   "terminals": 41,
   "variant": "cfr",
   "iterations": 800,
-  "seconds": 1.4303,
-  "exploitability_pct_pot": 0.2967583832844838
+  "seconds": 1.3787,
+  "exploitability_pct_pot": 0.4573465072243842
  },
  {
   "spot": "first to act, paired board",
@@ -635,8 +635,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 10,
-  "seconds": 0.0186,
-  "exploitability_pct_pot": 19.15213637498405
+  "seconds": 0.0193,
+  "exploitability_pct_pot": 16.820721974101584
  },
  {
   "spot": "first to act, paired board",
@@ -644,8 +644,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 25,
-  "seconds": 0.0466,
-  "exploitability_pct_pot": 6.845416443140951
+  "seconds": 0.0484,
+  "exploitability_pct_pot": 5.793170261296527
  },
  {
   "spot": "first to act, paired board",
@@ -653,8 +653,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 50,
-  "seconds": 0.0928,
-  "exploitability_pct_pot": 2.9452212784541842
+  "seconds": 0.0964,
+  "exploitability_pct_pot": 2.727636699418239
  },
  {
   "spot": "first to act, paired board",
@@ -662,8 +662,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 100,
-  "seconds": 0.185,
-  "exploitability_pct_pot": 0.9964709774147475
+  "seconds": 0.1908,
+  "exploitability_pct_pot": 0.9018581602104854
  },
  {
   "spot": "first to act, paired board",
@@ -671,8 +671,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 200,
-  "seconds": 0.367,
-  "exploitability_pct_pot": 0.2870288959556599
+  "seconds": 0.3765,
+  "exploitability_pct_pot": 0.3546907438310172
  },
  {
   "spot": "first to act, paired board",
@@ -680,8 +680,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 400,
-  "seconds": 0.7316,
-  "exploitability_pct_pot": 0.0834860593549962
+  "seconds": 0.7442,
+  "exploitability_pct_pot": 0.15905382142708535
  },
  {
   "spot": "first to act, paired board",
@@ -689,8 +689,8 @@
   "terminals": 41,
   "variant": "cfr+",
   "iterations": 800,
-  "seconds": 1.4503,
-  "exploitability_pct_pot": 0.021921083378816302
+  "seconds": 1.4805,
+  "exploitability_pct_pot": 0.062092097547989875
  },
  {
   "spot": "first to act, paired board",
@@ -698,8 +698,8 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 10,
-  "seconds": 0.0183,
-  "exploitability_pct_pot": 28.313726215008348
+  "seconds": 0.0187,
+  "exploitability_pct_pot": 11.919905918430695
  },
  {
   "spot": "first to act, paired board",
@@ -707,8 +707,8 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 25,
-  "seconds": 0.0456,
-  "exploitability_pct_pot": 7.0812600004839625
+  "seconds": 0.0465,
+  "exploitability_pct_pot": 4.353249034122578
  },
  {
   "spot": "first to act, paired board",
@@ -716,8 +716,8 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 50,
-  "seconds": 0.0999,
-  "exploitability_pct_pot": 1.577827317679784
+  "seconds": 0.0915,
+  "exploitability_pct_pot": 1.2876048185702915
  },
  {
   "spot": "first to act, paired board",
@@ -725,8 +725,8 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 100,
-  "seconds": 0.1914,
-  "exploitability_pct_pot": 0.3942653698214045
+  "seconds": 0.1821,
+  "exploitability_pct_pot": 0.35274387510461064
  },
  {
   "spot": "first to act, paired board",
@@ -734,8 +734,8 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 200,
-  "seconds": 0.3734,
-  "exploitability_pct_pot": 0.09579683660529763
+  "seconds": 0.3647,
+  "exploitability_pct_pot": 0.14073802563538096
  },
  {
   "spot": "first to act, paired board",
@@ -743,8 +743,8 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 400,
-  "seconds": 0.7336,
-  "exploitability_pct_pot": 0.024527208418575697
+  "seconds": 0.7403,
+  "exploitability_pct_pot": 0.05241526760264718
  },
  {
   "spot": "first to act, paired board",
@@ -752,7 +752,7 @@
   "terminals": 41,
   "variant": "dcfr",
   "iterations": 800,
-  "seconds": 1.4456,
-  "exploitability_pct_pot": 0.006352563206751445
+  "seconds": 1.4794,
+  "exploitability_pct_pot": 0.014468986591270827
  }
 ]

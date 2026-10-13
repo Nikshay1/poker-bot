@@ -66,6 +66,10 @@ class PolicyConfig:
     # Sizing and range updates.
     commit_frac: float = 0.4  # a bet using this share of the stack becomes all-in
     epsilon: float = 0.10  # weight of the uniform component in the action likelihood
+    # Share of each range kept at the player's preflop range, whatever the
+    # postflop betting said. It stands for "the model of the opponent may be
+    # wrong about this whole line", and stops ranges from being capped.
+    range_floor: float = 0.0
 
 
 @dataclass

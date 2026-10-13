@@ -220,16 +220,17 @@ def advise(
     tracker = tracker or RangeTracker(cfg)
     tracker.catch_up(spot)
     if solver is not None and spot.street == 3:
+        beliefs = tracker.beliefs()
         solution = solve_river(
             spot,
-            (tracker.ranges[0], tracker.ranges[1]),
+            beliefs,
             sizing=solver.sizing,
             variant=solver.variant,
             time_budget=solver.time_budget,
             max_iterations=solver.max_iterations,
             target_pct_pot=solver.target_pct_pot,
         )
-        return recommend_from_solution(spot, solution, tracker.ranges[1 - spot.seat], rng, started)
+        return recommend_from_solution(spot, solution, beliefs[1 - spot.seat], rng, started)
     strategy = tracker.strategy(spot)
     return recommend_from_strategy(spot, strategy, LAYER_HEURISTIC, rng, started)
 

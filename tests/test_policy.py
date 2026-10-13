@@ -233,3 +233,31 @@ def test_assumed_checks_are_not_evidence():
     # A complete state from the engine has nothing unobserved.
     engine = HandState(GameConfig(), tuple(range(9)))
     assert engine.view().unobserved == ()
+
+
+def test_range_floor_keeps_strong_hands_possible():
+    import dataclasses
+
+    # A real history: the big blind checks the flop, the turn and the river.
+    state = HandState(GameConfig(), tuple(parse_cards("AsQd" + "5c4d" + "7h8h2cKd3s")))
+    for kind, amount in [(RAISE, 250), (CALL, 0), *[(CHECK, 0)] * 5]:
+        state.apply(Action(kind, amount))
+    spot = state.view()
+    assert spot.seat == 0 and spot.street == 3 and spot.unobserved == ()
+
+    sharp = RangeTracker(CFG)
+    sharp.catch_up(spot)
+    assert sharp.beliefs()[1] is sharp.ranges[1]  # no floor: decisions use the tracked range
+
+    floored = RangeTracker(dataclasses.replace(CFG, version="floor", range_floor=0.2))
+    floored.catch_up(spot)
+    belief = floored.beliefs()[1]
+    assert belief.sum() == pytest.approx(1.0)
+    kings = combo_index(*parse_cards("KsKc"))  # top set, which the model would have bet
+    share_sharp = sharp.ranges[1][kings] / sharp.ranges[1].sum()
+    # The floor guarantees at least 20% of the hand's share of the preflop range.
+    preflop = floored._preflop[1]
+    assert belief[kings] >= 0.2 * preflop[kings] / preflop.sum() - 1e-12
+    assert belief[kings] > 20 * share_sharp
+    # Blocked combos stay impossible.
+    assert belief[combo_index(*parse_cards("KdKs"))] == 0.0

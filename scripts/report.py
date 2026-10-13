@@ -1,6 +1,6 @@
 """Print the match table of an evaluation run as Markdown.
 
-    uv run python scripts/report.py docs/data/matches_seed1000.json
+uv run python scripts/report.py docs/data/matches_seed1000.json
 """
 
 import json

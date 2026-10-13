@@ -92,22 +92,42 @@ class RangeTracker:
         else:
             self.ranges = [np.array(r, dtype=np.float64) for r in ranges]
         self._board: tuple[int, ...] = ()
+        self._preflop: list[np.ndarray] | None = None  # ranges as the flop was dealt
         self._cache: dict[int, Strategy] = {}
         self.n_seen = 0  # how much of the history has been processed
 
     def _sync_board(self, board: tuple[int, ...]) -> None:
         if board != self._board:
+            if self._preflop is None and board:
+                self._preflop = [r.copy() for r in self.ranges]
             blocked = blocked_combos(board)
-            for r in self.ranges:
+            for r in self.ranges + (self._preflop or []):
                 r[blocked] = 0.0
             self._board = board
+
+    def beliefs(self) -> tuple[np.ndarray, np.ndarray]:
+        """The ranges that decisions are based on.
+
+        These are the tracked ranges mixed with the preflop ranges in the
+        proportion ``range_floor``. The tracked ranges themselves keep being
+        updated sharply; the floor is applied only when they are read, so it
+        does not compound from street to street.
+        """
+        floor = self.cfg.range_floor
+        if floor <= 0.0 or self._preflop is None:
+            return self.ranges[0], self.ranges[1]
+        mixed = []
+        for tracked, preflop in zip(self.ranges, self._preflop):
+            mixed.append((1.0 - floor) * tracked / tracked.sum() + floor * preflop / preflop.sum())
+        return mixed[0], mixed[1]
 
     def strategy(self, spot: Spot) -> Strategy:
         """The model strategy for the player to act, over that player's whole range."""
         key = len(spot.history)
         if key not in self._cache:
             self._sync_board(spot.board)
-            own, opp = self.ranges[spot.seat], self.ranges[1 - spot.seat]
+            beliefs = self.beliefs()
+            own, opp = beliefs[spot.seat], beliefs[1 - spot.seat]
             self._cache[key] = self.strategy_fn(spot, own, opp, self.cfg)
         return self._cache[key]
 
