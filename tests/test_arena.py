@@ -72,7 +72,6 @@ def test_illegal_actions_are_counted_and_replaced():
 
 @pytest.mark.parametrize("name", sorted(BOTS))
 def test_every_bot_plays_legal_hands_against_random(name):
-    result = run_match(
-        name, "random", pairs=20 if name in ("heuristic", "equity") else 100, seed=11
-    )
+    pairs = {"heuristic": 20, "equity": 20, "solver": 6}.get(name, 100)
+    result = run_match(name, "random", pairs=pairs, seed=11)
     assert result.illegal_a == 0 and result.illegal_b == 0

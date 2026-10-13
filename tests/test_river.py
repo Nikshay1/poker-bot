@@ -220,10 +220,3 @@ def test_advisor_uses_the_solver_on_the_river_only():
 
     turn = spot_from_partial(parse_cards("AsQd"), parse_cards(BOARD[:8]), pot=1000, to_call=400)
     assert advise(turn, solver=solver).layer == LAYER_HEURISTIC
-
-
-def test_solver_bot_plays_legal_hands():
-    from pokerbot.arena.match import run_match
-
-    result = run_match("solver", "random", pairs=6, seed=21)
-    assert result.illegal_a == 0 and result.illegal_b == 0

@@ -1,4 +1,4 @@
-"""Command line: ``pokerbot advise``, ``pokerbot match``, ``pokerbot bench``."""
+"""Command line: ``pokerbot advise``, ``match``, ``bench`` and ``slumbot``."""
 
 from __future__ import annotations
 
@@ -74,6 +74,22 @@ def _bench(args) -> int:
     return 0
 
 
+def _slumbot(args) -> int:
+    from pokerbot.arena.slumbot import run_session
+
+    result = run_session(args.bot, args.hands, args.seed, args.log)
+    if args.json:
+        print(json.dumps(result, indent=2))
+    else:
+        low, high = result["bb_per_100"] - result["ci95"], result["bb_per_100"] + result["ci95"]
+        print(
+            f"{result['bot']} vs Slumbot: {result['bb_per_100']:+.1f} bb/100 "
+            f"(95% CI {low:+.1f} to {high:+.1f}) over {result['hands']} hands "
+            f"in {result['seconds']:.0f} s. These are single hands, not duplicate pairs."
+        )
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="pokerbot", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -112,6 +128,14 @@ def main(argv=None) -> int:
     bench.add_argument("--quick", action="store_true")
     bench.add_argument("--json", action="store_true")
     bench.set_defaults(run=_bench)
+
+    slumbot = sub.add_parser("slumbot", help="play against Slumbot over its public API")
+    slumbot.add_argument("--bot", default="solver")
+    slumbot.add_argument("--hands", type=int, default=100)
+    slumbot.add_argument("--seed", type=int, default=0)
+    slumbot.add_argument("--log", help="append one JSON line per hand to this file")
+    slumbot.add_argument("--json", action="store_true")
+    slumbot.set_defaults(run=_slumbot)
 
     args = parser.parse_args(argv)
     return args.run(args)

@@ -1,0 +1,47 @@
+import numpy as np
+import pytest
+
+from pokerbot.cards import CLASS_SIZE, class_from_label
+from pokerbot.policy.pushfold import class_deal_probability, solve_pushfold
+
+
+def test_deal_probability_accounts_for_shared_cards():
+    p = class_deal_probability()
+    assert p.sum() == pytest.approx(1.0)
+    np.testing.assert_allclose(p, p.T)
+    # Marginals are the class sizes: 6 combos for a pair, 4 suited, 12 offsuit.
+    np.testing.assert_allclose(p.sum(axis=1), CLASS_SIZE / 1326)
+    aa, kk = class_from_label("AA"), class_from_label("KK")
+    # Two players holding aces need all four aces: 6 ordered pairs of disjoint combos.
+    assert p[aa, aa] == pytest.approx(6 / (1326 * 1225))
+    assert p[aa, kk] == pytest.approx(36 / (1326 * 1225))
+
+
+@pytest.mark.parametrize("stack", [5.0, 10.0, 20.0])
+def test_pushfold_is_solved_to_high_accuracy(stack):
+    solution = solve_pushfold(stack)
+    assert solution.exploitability < 1e-5
+    aa, worst = class_from_label("AA"), class_from_label("32o")
+    assert solution.jam[aa] == pytest.approx(1.0) and solution.call[aa] == pytest.approx(1.0)
+    assert solution.call[worst] == pytest.approx(0.0, abs=1e-6)
+
+
+def test_ranges_tighten_as_stacks_deepen():
+    jams = [solve_pushfold(s).jam_frequency for s in (5.0, 10.0, 20.0, 50.0)]
+    calls = [solve_pushfold(s).call_frequency for s in (5.0, 10.0, 20.0, 50.0)]
+    assert jams == sorted(jams, reverse=True)
+    assert calls == sorted(calls, reverse=True)
+
+
+def test_ten_big_blind_ranges_match_the_published_chart():
+    # Widely published values for the 10 big blind push-or-fold equilibrium
+    # are about 58% jamming and 37% calling.
+    solution = solve_pushfold(10.0)
+    assert solution.jam_frequency == pytest.approx(0.583, abs=0.01)
+    assert solution.call_frequency == pytest.approx(0.374, abs=0.01)
+    assert "AA#" in solution.chart("jam")
+
+
+def test_a_very_short_stack_calls_everything():
+    # With 2 big blinds the big blind already has half its stack in the pot.
+    assert solve_pushfold(2.0).call_frequency == pytest.approx(1.0, abs=1e-6)
