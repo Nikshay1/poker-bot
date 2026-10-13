@@ -5,10 +5,11 @@ Everything here was measured on one laptop (16 threads, 15 GB RAM). Each number 
 ## Summary
 
 1. **The solver is correct.** It reproduces the known solutions of Kuhn and Leduc poker, matches the published push-or-fold chart, and an independent solver's best-response code reports the same exploitability for its river solutions to nine decimal places.
-2. **The river solver earns chips.** Adding it to the heuristic bot wins **+39.1 bb/100** (95% interval +26.4 to +51.9) over 20,000 hands in a head-to-head duplicate match.
-3. **Solver precision is not the limit; the assumptions are.** A river solve reaches about 0.1% of the pot in exploitability. But changing the assumed opponent range changes the recommended action in 5% to 16% of test situations, and a richer bet tree in 6%. The first run of this experiment showed 20% to 30%, which exposed a design mistake that was then fixed.
-4. **Both bots beat all three baselines** by wide margins, with no illegal action in 50,000 evaluation hands.
-5. **Against Slumbot** the sample is too small to say anything about strength. See the section below for what it does and does not show.
+2. **The river solver earns chips.** Adding it to the heuristic bot wins **+33.7 bb/100** (95% interval +22.6 to +44.7) over 20,000 hands in a head-to-head duplicate match.
+3. **Solver precision is not the limit; the assumptions are.** A river solve reaches about 0.1% of the pot in exploitability. Changing the assumed opponent range still changes the recommended action in up to 16% of test situations.
+4. **Two mistakes were found by measurement and fixed.** The model-error experiment exposed that made-up history was being used as evidence. A session against Slumbot exposed all-in bets of up to 21 times the pot. Both came from trusting the range estimate too much.
+5. **Both bots beat all three baselines** by wide margins, with no illegal action in 60,000 evaluation hands.
+6. **Strength against strong opponents is not established.** 300 hands against Slumbot gave +135 bb/100 with an interval of -67 to +337.
 
 Terms used below:
 
@@ -18,7 +19,7 @@ Terms used below:
 
 ## 1. Correctness
 
-`uv run pytest` runs 121 checks in about 15 seconds; `uv run pytest -m slow` adds the exhaustive one.
+`uv run pytest` runs 126 checks in about 20 seconds; `uv run pytest -m slow` adds the exhaustive one.
 
 | What | Check | Result |
 |---|---|---|
@@ -54,20 +55,20 @@ The second row is the strong one. The strategy was exported into the reference p
 
 `uv run python scripts/convergence.py`
 
-Exploitability as a percentage of the pot, on four river situations with tracked ranges and the default bet tree. Each cell lists the four situations in order: first to act (24 decisions), facing a bet (6), checked to (10), first to act on a paired board (22).
+Exploitability as a percentage of the pot, on four river situations with tracked ranges and the default bet tree. Each cell lists the four situations in order: first to act (22 decisions), facing a bet (5), checked to (11), first to act on a paired board (26).
 
 | Iterations | Plain CFR | CFR+ | Discounted CFR | DCFR time, seconds |
 |---|---|---|---|---|
-| 50 | 11.4 / 1.63 / 2.67 / 6.41 | 4.85 / 0.82 / 1.18 / 2.73 | 1.97 / 0.85 / 0.71 / 1.29 | 0.10 / 0.03 / 0.04 / 0.09 |
-| 100 | 5.84 / 0.84 / 1.42 / 3.35 | 1.61 / 0.52 / 0.41 / 0.90 | 1.14 / 0.50 / 0.24 / 0.35 | 0.20 / 0.05 / 0.08 / 0.18 |
-| 200 | 2.87 / 0.44 / 0.73 / 1.69 | 0.62 / 0.17 / 0.17 / 0.35 | 0.32 / 0.09 / 0.08 / 0.14 | 0.40 / 0.10 / 0.17 / 0.36 |
-| 400 | 1.47 / 0.21 / 0.38 / 0.89 | 0.28 / 0.06 / 0.06 / 0.16 | 0.11 / 0.03 / 0.02 / 0.05 | 0.81 / 0.20 / 0.33 / 0.74 |
-| 800 | 0.75 / 0.10 / 0.20 / 0.46 | 0.13 / 0.02 / 0.02 / 0.06 | 0.04 / 0.01 / 0.01 / 0.01 | 1.63 / 0.40 / 0.66 / 1.48 |
+| 50 | 5.55 / 1.23 / 1.31 / 4.28 | 2.16 / 0.26 / 0.50 / 1.37 | 0.755 / 0.082 / 0.557 / 0.865 | 0.09 / 0.02 / 0.05 / 0.11 |
+| 100 | 2.99 / 0.58 / 0.82 / 2.07 | 0.66 / 0.09 / 0.19 / 0.59 | 0.266 / 0.028 / 0.163 / 0.438 | 0.19 / 0.04 / 0.09 / 0.22 |
+| 200 | 1.40 / 0.27 / 0.43 / 1.07 | 0.26 / 0.04 / 0.07 / 0.27 | 0.097 / 0.010 / 0.065 / 0.158 | 0.37 / 0.08 / 0.19 / 0.44 |
+| 400 | 0.70 / 0.14 / 0.24 / 0.56 | 0.11 / 0.02 / 0.03 / 0.11 | 0.036 / 0.005 / 0.020 / 0.052 | 0.75 / 0.17 / 0.37 / 0.88 |
+| 800 | 0.36 / 0.07 / 0.13 / 0.29 | 0.05 / 0.01 / 0.01 / 0.04 | 0.011 / 0.001 / 0.006 / 0.015 | 1.50 / 0.33 / 0.75 / 1.76 |
 
 What this shows:
 
-- Discounted CFR is the most accurate from 100 iterations on, in all four situations. At 800 iterations it is roughly 10 to 50 times more accurate than plain CFR.
-- A solve of 200 iterations takes 0.1 to 0.4 seconds and reaches 0.1% to 0.3% of the pot. The match bot stops at 0.25% of the pot or 300 iterations.
+- Discounted CFR is the most accurate from 100 iterations on, in all four situations. At 800 iterations it is 19 to 64 times more accurate than plain CFR.
+- A solve of 200 iterations takes 0.1 to 0.4 seconds and reaches 0.01% to 0.16% of the pot. The match bot stops at 0.25% of the pot or 300 iterations.
 - Bigger trees converge more slowly and cost more per iteration.
 
 On the small games the same pattern holds. After 1,000 iterations on Leduc poker, exploitability is 0.0118 for plain CFR, 0.00026 for CFR+ and 0.00017 for Discounted CFR, in units of the ante.
@@ -76,13 +77,13 @@ On the small games the same pattern holds. After 1,000 iterations on Leduc poker
 
 `uv run python scripts/model_error.py`
 
-A solve can be exact and still answer the wrong question, because the opponent's range and the bet sizes are assumptions. This experiment holds 64 river situations fixed (4 boards, 4 hands, 4 betting lines) and changes one assumption at a time. Every solve reached about 0.09% of the pot, so the differences below are not numerical noise.
+A solve can be exact and still answer the wrong question, because the opponent's range and the bet sizes are assumptions. This experiment holds 64 river situations fixed (4 boards, 4 hands, 4 betting lines) and changes one assumption at a time. Every solve reached about 0.08% of the pot, so the differences below are not numerical noise.
 
 | Assumption changed | Top action changes | Distance, hero's hand | Distance, hero's whole range |
 |---|---|---|---|
-| Range inferred less sharply (uniform component 0.3 instead of 0.1) | 3 of 64 (5%) | 0.05 | 0.07 |
-| Opponent may hold any hand | 10 of 64 (16%) | 0.17 | 0.20 |
-| Richer bet tree (3 bet sizes, 2 raise sizes) | 4 of 64 (6%) | 0.04 | 0.03 |
+| Range inferred less sharply (uniform component 0.3 instead of 0.1) | 2 of 64 (3%) | 0.04 | 0.04 |
+| Opponent may hold any hand | 10 of 64 (16%) | 0.17 | 0.15 |
+| Richer bet tree (4 bet sizes, 2 raise sizes, unlimited all-in) | 1 of 64 (2%) | 0.03 | 0.03 |
 
 Distance is total-variation distance between strategies, grouped into fold, check or call, and bet or raise: 0 means identical, 1 means completely different.
 
@@ -90,7 +91,7 @@ An example. With King-Queen on a board of 7h 8h 2c Kd 3s, facing a bet of two th
 
 | Opponent range | Solver's answer for King-Queen |
 |---|---|
-| The model's estimate, which accounts for the bet | Call, 100% |
+| The model's estimate, which accounts for the bet | Call, 99% |
 | Any hand | Raise, 100% |
 
 Both answers are numerically exact for their own inputs. Ignoring what the bet says about the opponent's hand turns a call into a raise.
@@ -99,76 +100,129 @@ Both answers are numerically exact for their own inputs. Ignoring what the bet s
 
 The first run of this experiment gave much larger numbers:
 
-| Assumption changed | Top action changes, first run | After the fix |
-|---|---|---|
-| Range inferred less sharply | 13 of 64 (20%) | 3 of 64 (5%) |
-| Opponent may hold any hand | 19 of 64 (30%) | 10 of 64 (16%) |
-| Richer bet tree | 2 of 64 (3%) | 4 of 64 (6%) |
+| Assumption changed | First run | After the fix | Final version |
+|---|---|---|---|
+| Range inferred less sharply | 13 of 64 (20%) | 3 of 64 (5%) | 2 of 64 (3%) |
+| Opponent may hold any hand | 19 of 64 (30%) | 10 of 64 (16%) | 10 of 64 (16%) |
+| Richer bet tree | 2 of 64 (3%) | 4 of 64 (6%) | 1 of 64 (2%) |
 
-The cause: these situations are built from partial input (cards and pot), and the advisor fills in the missing history as "earlier streets were checked through". The range tracker then used those made-up checks as evidence that the opponent was weak. The clearest symptom was pocket aces on 9s 8s 7d 6c 2h facing a bet, where the solver raised 100% of the time, and recommended an all-in with one pair in a similar spot.
+The cause: these situations are built from partial input (cards and pot), and the advisor fills in the missing history as "earlier streets were checked through". The range tracker then used those made-up checks as evidence that the opponent was weak. The clearest symptom was pocket aces on 9s 8s 7d 6c 2h facing a bet, where the solver raised 100% of the time. In a similar spot it recommended an all-in with one pair.
 
-The fix: filled-in actions are marked as unobserved and no longer narrow any range. The aces now call. Match play was never affected, because a match has a complete, real history; a re-run evaluation match gave a bit-identical result. The first-run data is kept in `docs/data/model_error_before_fix.json`.
+The fix: filled-in actions are marked as unobserved and no longer narrow any range. The aces now call. Match play was never affected, because a match has a complete, real history; a re-run evaluation match gave a bit-identical result. The first-run data is kept in `docs/data/model_error_before_fix.json`. The final column also includes the two guards from section 5, and its richer tree is larger than in the earlier runs.
 
-What follows from all this:
+What follows from this:
 
-- The solver's 0.1% figure must not be read as the accuracy of the bot's decisions. Even after the fix, the range assumption moves the answer far more often than numerical error could.
-- Where the history is real, sharp inference is only as good as the model of the opponent. Improving that model is worth more than more iterations.
+- The solver's 0.1% figure must not be read as the accuracy of the bot's decisions. The range assumption moves the answer far more often than numerical error could.
+- Where the history is real, inference is only as good as the model of the opponent. Section 5 shows what happens when that model is wrong.
 
 ## 4. Match results
 
-`uv run python scripts/evaluate.py --seed 1000` then `uv run python scripts/report.py docs/data/matches_seed1000.json`
+`uv run python scripts/evaluate.py --seed 2000` then `uv run python scripts/report.py docs/data/matches_seed2000.json`
 
-Final evaluation: seed 1000, which was not used for anything else, with the bots frozen at commit `afbdae9`. Stacks are 100 big blinds, reset every hand.
+Final evaluation: seed 2000, used for nothing else, with the bots frozen at commit `d9bfd00`. Stacks are 100 big blinds, reset every hand.
 
 | Bot | Opponent | Win rate, bb/100 | 95% interval | Hands |
 |---|---|---|---|---|
-| solver | heuristic | +39.1 | +26.4 to +51.9 | 20,000 |
-| solver | equity | +226.9 | +174.3 to +279.5 | 6,000 |
-| solver | call | +572.8 | +434.9 to +710.7 | 3,000 |
-| solver | random | +330.6 | +254.8 to +406.3 | 3,000 |
-| heuristic | equity | +160.7 | +125.5 to +195.8 | 6,000 |
-| heuristic | call | +287.8 | +250.6 to +324.9 | 3,000 |
-| heuristic | random | +306.8 | +237.2 to +376.4 | 3,000 |
-| equity | call | +201.7 | +183.3 to +220.0 | 3,000 |
-| equity | random | +582.4 | +506.3 to +658.5 | 3,000 |
+| solver | heuristic | +33.7 | +22.6 to +44.7 | 20,000 |
+| solver | sharp | -7.1 | -30.8 to +16.5 | 10,000 |
+| solver | equity | +170.0 | +131.7 to +208.4 | 6,000 |
+| solver | call | +334.1 | +275.4 to +392.8 | 3,000 |
+| solver | random | +293.7 | +225.9 to +361.5 | 3,000 |
+| heuristic | equity | +150.5 | +116.5 to +184.6 | 6,000 |
+| heuristic | call | +276.7 | +238.7 to +314.7 | 3,000 |
+| heuristic | random | +293.0 | +223.1 to +362.9 | 3,000 |
+| equity | call | +201.5 | +183.2 to +219.7 | 3,000 |
+| equity | random | +605.1 | +525.3 to +684.9 | 3,000 |
 
-Illegal actions across all 50,000 hands: 0.
+Illegal actions across all 60,000 hands: 0.
 
 The bots:
 
-- **solver**: the heuristic bot with river decisions solved.
+- **solver**: the heuristic bot with river decisions solved. This is the final bot.
 - **heuristic**: the heuristic advisor on every street.
+- **sharp**: the solver bot without the two guards of section 5.
 - **equity**: plays its equity against a random hand, ignoring what the betting says. This is the natural first attempt at the task.
 - **call**: never folds, never raises.
 - **random**: picks among fold, check or call, and a random raise.
 
 How to read the table:
 
-- **The first row is the ablation.** The two bots differ only on the river, so +39.1 bb/100 is what the river solver adds. The interval excludes zero by a wide margin.
-- The heuristic bot beats the equity bot by 161 bb/100. Reading the opponent's range from the betting is worth more than raw hand strength.
+- **The first row is the ablation.** The two bots differ only on the river, so +33.7 bb/100 is what the river solver adds. The interval excludes zero by a wide margin.
+- **The second row is the price of the guards.** Head to head against the unguarded version the difference is -7.1 with an interval from -30.8 to +16.5: not separated from zero.
+- The heuristic bot beats the equity bot by 150 bb/100. Reading the opponent's range from the betting is worth more than raw hand strength.
 - These baselines are weak. Beating them shows the bots are sound, not that they are strong. Neither bot adapts to its opponent: the equity bot beats the random bot by more than the solver does, because a bot that simply bets its good hands happens to exploit random play well.
-- Win rates against the call and random bots have wide intervals because those opponents put in huge pots at random.
 
-### Tuning record
+## 5. Slumbot, and two guards against overconfidence
 
-Tuning used seed 200 only. One change was adopted.
+`uv run pokerbot slumbot --bot solver --hands 300 --log <file>`, then `scripts/slumbot_report.py` and `scripts/replay_overbets.py` on the log.
 
-| Variant | Against the base heuristic | Against the equity bot |
+Slumbot is the 2018 Annual Computer Poker Competition champion, playable over a public API at 200 big blinds deep. These hands are not duplicate pairs, so the intervals are over single hands and are very wide.
+
+### What the first session showed
+
+| | Before the guards (`sharp`) | Final bot |
 |---|---|---|
-| Base (extra bluffs on flop and turn) | | +101.2 (+53.5 to +148.9) |
-| Bluff at the theoretical ratio on every street | +53.8 (+22.1 to +85.5) | +154.7 (+110.9 to +198.4) |
-| Range inferred less sharply (0.3) | -48.2 (-82.1 to -14.3) | +99.5 (+51.9 to +147.0) |
+| Hands | 300 | 300 |
+| Win rate, bb/100 | +10.3 | +134.8 |
+| 95% interval | -215.9 to +236.6 | -67.4 to +336.9 |
+| Bets of 100 big blinds or more | 13 | 2 |
+| Bets after the flop of more than twice the pot | 12 | 1 |
+| Hands won or lost for 150 big blinds or more | 2 | 0 |
 
-- The first guess multiplied the theoretical bluff ratio by 2 on the flop and 1.5 on the turn. It was a leak, and both comparisons say so, so the multipliers were set to 1.
-- Softer range inference was no better against the equity bot. Its loss against the base heuristic is not strong evidence, because in that match the opponent plays exactly the model that sharp inference assumes.
+**Neither win rate says anything about strength.** Both intervals include zero comfortably, and the difference between the two sessions is also noise.
 
-An earlier ablation on seed 100, before the tuning, gave solver against heuristic +35.0 (-2.8 to +72.7) over 4,000 hands: the same direction, but too few hands to conclude. It is kept in `docs/data/early_ablation_seed100.txt` and is not part of the final numbers.
+The betting profile is what mattered. In the first session the bot moved all-in 13 times, in most cases for 6 to 21 times the pot. In one hand it held Jack-Two on a board of Ks 8d 7h 9h 6c, Slumbot checked for the third time, and the bot bet 192 big blinds into a pot of 15 as a bluff. Slumbot held a straight.
 
-## 5. Slumbot
+The cause is the same as in section 3, this time with real history. The range model assumes the opponent plays like the bot's own heuristic, which bets its strong hands. After three checks the model had removed every strong hand from Slumbot's range, and against a range with no strong hands a huge bet is correct. A strong opponent checks strong hands some of the time.
 
-SLUMBOT_SECTION
+### The two guards
 
-## 6. Push-or-fold
+- **Range floor.** When a range is read for a decision, 20% of it is the player's preflop range, whatever the postflop betting said. This stands for "my model of this opponent may be wrong about the whole line". The tracked range is still updated sharply; the floor is applied only on reading, so it does not compound.
+- **All-in limit.** The bet tree offers all-in only when it is at most three times the pot, and gains a bet of 1.5 times the pot so that large bets remain possible. This is a hard risk limit: a bluff of 20 pots is only right if the opponent folds more than 95% of the time, and nothing here justifies that confidence.
+
+### Evidence for adopting them
+
+Replaying the 13 logged spots. For each, the situation was rebuilt exactly and each variant was asked what it would do. The number is the share of the hand's strategy that is all-in.
+
+| Variant | Average all-in share over the 13 spots | The Jack-Two bluff |
+|---|---|---|
+| No guards | 90% | 89% |
+| Range floor 0.1 | 54% | 71% |
+| Range floor 0.2 | 40% | 1% |
+| Range floor 0.2 and all-in limit (final) | 8% | 0% |
+
+The one spot where the final bot still moves all-in is a made flush betting 1.9 times the pot.
+
+Tuning matches on seed 200, each 6,000 hands unless noted. "Trapper" is the unguarded solver bot changed to check its strongest hands on the flop and turn, which is exactly the behaviour the range model does not expect.
+
+| Variant | Against the unguarded bot | Against the equity bot (4,000 hands) | Against the trapper |
+|---|---|---|---|
+| No guards | | +191.8 (+125.1 to +258.5) | +50.6 (0.0 to +101.3) |
+| Range floor 0.1 | -14.3 (-42.8 to +14.2) | | |
+| Range floor 0.2 | -24.1 (-55.4 to +7.3) | +186.0 (+128.5 to +243.5) | +77.0 (+28.0 to +125.9) |
+| All-in limit only | -9.2 (-29.2 to +10.9) | | |
+| Both (final) | -17.3 (-47.5 to +12.9) | | +86.9 (+38.9 to +134.9) |
+
+How to read this:
+
+- No comparison in the table is statistically significant. The guards were not adopted because they win more chips.
+- They were adopted because they remove a failure that was seen in real play, at a cost that could not be distinguished from zero in three tuning matches and again on the fresh evaluation seed (-7.1, -30.8 to +16.5).
+- The direction against the trapper favours the guards, as expected, but that is a hint and not a result.
+- **The guards do have a known cost.** Against the always-call bot the final bot wins +334.1 bb/100 (+275.4 to +392.8) and the unguarded bot +488.7 (+346.9 to +630.4) on the same seed. Unlimited all-in value bets are ideal against an opponent that never folds. A bot that adapted to its opponent would lift the limit there; this one does not adapt.
+
+## 6. Tuning record
+
+All tuning used seed 200. The evaluation seeds (1000, then 2000) were not used for tuning.
+
+| Change | Evidence | Decision |
+|---|---|---|
+| Bluff at the theoretical ratio on every street, instead of 2x on the flop and 1.5x on the turn | +53.8 (+22.1 to +85.5) head to head; against the equity bot +154.7 instead of +101.2 | Adopted |
+| Infer ranges less sharply (uniform component 0.3) | -48.2 (-82.1 to -14.3) head to head; no change against the equity bot | Rejected. The head-to-head loss is weak evidence, because there the opponent plays exactly the model that sharp inference assumes |
+| Range floor and all-in limit | Section 5 | Adopted as risk controls |
+
+An evaluation of the version before the guards was run on seed 1000 and is kept in `docs/data/matches_seed1000.json`. There the solver bot beat the heuristic bot by +39.1 (+26.4 to +51.9) over 20,000 hands, in line with the final figure.
+
+## 7. Push-or-fold
 
 `solve_pushfold(stack)` in `pokerbot.policy.pushfold`. The small blind may only go all-in or fold and the big blind may only call or fold. Every row is solved to an exploitability below 2e-6 big blinds.
 
@@ -183,7 +237,7 @@ SLUMBOT_SECTION
 
 The value turns negative as stacks deepen because being restricted to all-in or fold becomes a handicap. That is why the bot uses this table only at 10 big blinds or less. Equities come from a Monte Carlo table with a standard error near 0.001 per entry, so the ranges are exact for that table, not for the true equities.
 
-## 7. Speed
+## 8. Speed
 
 `uv run pokerbot bench`
 
@@ -192,10 +246,11 @@ The value turns negative as stacks deepen because being restricted to all-in or 
 | Hand evaluator, one thread | 7 to 11 million 7-card hands per second |
 | Equity of all 1326 combos against a range, all threads | flop 11 ms, turn 0.9 ms, river 0.1 ms |
 | Same on the flop, one thread | 54 ms |
-| Heuristic decision, median / 99th percentile | preflop 0.4 / 0.8 ms, flop 28 / 34 ms, turn 3 / 19 ms, river 1 / 3 ms |
+| Heuristic decision, median / 99th percentile | preflop 0.4 / 0.6 ms, flop 28 / 35 ms, turn 3 / 20 ms, river 1 / 3 ms |
 | First decision in a fresh process | 160 ms |
 | River solve, 200 iterations | 0.1 to 0.4 s depending on tree size |
 | Heuristic self-play, one process | 21 hands per second |
+| Solver bot in a 16-process match | about 15 hands per second |
 | Peak memory | 270 MB |
 
 Three optimizations made the evaluation affordable. None changed a result: after each one a reference match gave bit-identical numbers.
@@ -206,17 +261,18 @@ Three optimizations made the evaluation affordable. None changed a result: after
 | Compiled solver kernels | River solve about 3 times faster |
 | One thread per match worker | Removed contention between worker processes |
 
-## 8. What is not shown
+## 9. What is not shown
 
-- **Strength against strong opponents.** The only strong opponent available is Slumbot, and the sample there is small.
+- **Strength against strong opponents.** The only strong opponent available is Slumbot, and 300 hands cannot separate the bot from it in either direction.
 - **Whole-game exploitability.** Only the river subgame and push-or-fold are solved. The flop, turn and deep-stack preflop play are heuristic, and nothing here bounds how exploitable they are.
-- **Small edges.** With about 13 hands per second for the solver bot, an edge under roughly 10 bb/100 could not be separated from zero in the time available.
+- **Small edges.** At about 15 hands per second, an edge under roughly 10 bb/100 could not be separated from zero in the time available.
 - **Three or more players.** That layer is equity analysis and was not evaluated in matches.
+- **Robustness beyond the two failures found.** The guards address what was observed. Other consequences of a wrong opponent model may remain.
 
-## 9. What I would do next
+## 10. What I would do next
 
-In order of expected value, from the model-error result:
+In order of expected value:
 
 1. **Better range estimates.** Replace the fixed heuristic likelihood on the turn with solved strategies, by solving the turn to the end of the hand. Keep it only if a duplicate match shows a gain.
-2. **Opponent adaptation.** Track how often an opponent folds, calls and raises, and tilt the assumed ranges, with a cap so the bot stays hard to exploit.
-3. **Variance reduction.** Add all-in equity adjustment or AIVAT so that smaller edges become measurable.
+2. **Opponent adaptation.** Track how often an opponent folds, calls and raises, and adjust the assumed ranges and the all-in limit, with a cap so the bot stays hard to exploit. The always-call result shows what this is worth.
+3. **Variance reduction.** Add all-in equity adjustment or AIVAT so that smaller edges, and a Slumbot result, become measurable.

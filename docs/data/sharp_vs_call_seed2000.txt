@@ -1,0 +1,1 @@
+sharp vs call: +488.7 bb/100 (95% CI +346.9 to +630.4) over 3000 hands in 1500 duplicate pairs; 667.4 / 0.0 ms per decision; illegal actions 0 / 0; 480 s

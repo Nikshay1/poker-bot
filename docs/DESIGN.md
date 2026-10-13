@@ -84,6 +84,7 @@ These were fixed before any solver code. Every module follows them.
 
 - `P(action | hand, public state)` comes from one fixed, versioned policy model: the heuristic advisor's own policy.
 - It is mixed with a uniform component of weight 0.1, so an unexpected or off-tree action lowers the weight of surprising hands without removing them. A range can never collapse to zero.
+- **Range floor.** When a range is read for a decision, 20% of it is the player's preflop range, whatever the postflop betting said. The per-action mixing above protects against one surprising action; the floor protects against the model being wrong about a whole line, for example an opponent who checks strong hands. The tracked range itself is still updated sharply, and the floor is applied only on reading, so it does not compound from street to street.
 
 ### Output
 
@@ -135,7 +136,8 @@ These are heuristics. Equity on the flop and turn assumes the hand is checked to
 ## How the river is solved
 
 - **Inputs:** the board, the pot, both stacks, both ranges, and a bet-size configuration.
-- **Tree:** starts at the actual situation, so a bet the opponent has made is in it exactly and no translation between sizes is needed. Below the root it keeps bets of 33% and 75% of the pot, raises of 75% of the pot after calling, all-in, and at most three bets and raises.
+- **Tree:** starts at the actual situation, so a bet the opponent has made is in it exactly and no translation between sizes is needed. Below the root it keeps bets of 33%, 75% and 150% of the pot, raises of 75% of the pot after calling, and at most three bets and raises.
+- **All-in limit.** All-in is offered only when it is at most three times the pot. A bet of many pots is right only if the range estimate is right nearly always, and the estimate does not deserve that trust. This is a risk limit, not a claim about equilibrium play.
 - **Algorithm:** CFR in vector form: at each decision the strategy is a matrix of hands by actions. One traversal serves plain CFR, CFR+ and Discounted CFR. Discounted CFR is the default.
 - **Terminal values in one pass.** At a fold every compatible opponent hand pays the same amount, so the value is that amount times the compatible reach, found from one total and 52 per-card sums. At showdown, hands are sorted by strength once per solve; the reach a hand beats is then a running sum, corrected by per-card running sums for the combos that share a card. Both are tested against the full 1326 x 1326 matrix product.
 - **Quality measure:** exploitability, defined as half the sum of both players' best-response gains (NashConv / 2), as a percentage of the pot. It is exact for the given bet tree and root ranges and says nothing outside them.
@@ -173,9 +175,10 @@ Speed sets how many hands an evaluation can afford. Three changes mattered, and 
 ## Known limits
 
 - Before the flop, on the flop and on the turn the bot is heuristic. Only the river and short-stack push-or-fold are solved, each within its own stated game.
-- The river solve depends on the ranges it is given, and those come from the heuristic model. [RESULTS.md](RESULTS.md) shows this is the largest source of error.
+- The river solve depends on the ranges it is given, and those come from the heuristic model. [RESULTS.md](RESULTS.md) shows this is the largest source of error, and that against Slumbot it led to all-in bets of many times the pot before the range floor and the all-in limit were added.
+- The two guards cost value against opponents who never fold, since unlimited value bets are ideal there.
 - Solving each spot well does not bound the exploitability of the whole strategy.
-- The bot does not adapt to its opponent. Against a bot that never folds it still bluffs.
+- The bot does not adapt to its opponent. Against a bot that never folds it still bluffs, and it does not lift its all-in limit.
 - Support for three or more players is equity analysis with a conservative rule.
 - Small edges cannot be measured in the time available.
 
