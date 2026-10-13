@@ -75,3 +75,13 @@ def test_every_bot_plays_legal_hands_against_random(name):
     pairs = {"heuristic": 8, "equity": 8, "solver": 4}.get(name, 100)
     result = run_match(name, "random", pairs=pairs, seed=11)
     assert result.illegal_a == 0 and result.illegal_b == 0
+
+
+def test_bot_specs_accept_policy_overrides():
+    bot = make_bot("heuristic:epsilon=0.3,bluff_mult=1/1.5/1.2/1", seed=2)
+    assert bot.cfg.epsilon == 0.3 and bot.cfg.bluff_mult == (1.0, 1.5, 1.2, 1.0)
+    assert bot.cfg.version != make_bot("heuristic").cfg.version
+    assert make_bot("solver:epsilon=0.2").cfg.epsilon == 0.2
+    for bad in ("nobody", "call:epsilon=0.3", "heuristic:nonsense=1", "heuristic:version=2"):
+        with pytest.raises(ValueError):
+            make_bot(bad)

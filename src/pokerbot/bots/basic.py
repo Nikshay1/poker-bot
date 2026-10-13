@@ -6,6 +6,8 @@ state. It never sees the engine or the opponent's cards.
 
 from __future__ import annotations
 
+from dataclasses import replace
+
 import numpy as np
 
 from pokerbot.advisor import SolverConfig, advise
@@ -115,7 +117,27 @@ class SolverBot(HeuristicBot):
 BOTS = {cls.name: cls for cls in (RandomBot, CallBot, EquityBot, HeuristicBot, SolverBot)}
 
 
-def make_bot(name: str, seed: int = 0) -> Bot:
+def make_bot(spec: str, seed: int = 0) -> Bot:
+    """Build a bot from a name, optionally with policy overrides.
+
+    ``"heuristic"`` is the default bot. ``"heuristic:epsilon=0.3"`` changes
+    one policy value, and ``"solver:bluff_mult=1/1.5/1.2/1"`` sets a
+    per-street tuple. Overrides exist so that variants can be compared in
+    matches without editing code.
+    """
+    name, _, params = spec.partition(":")
     if name not in BOTS:
         raise ValueError(f"unknown bot {name!r}; choose from {sorted(BOTS)}")
-    return BOTS[name](seed)
+    if not params:
+        return BOTS[name](seed)
+    if not issubclass(BOTS[name], HeuristicBot):
+        # A bad bot spec is bad input, reported like the other spec errors.
+        raise ValueError(f"bot {name!r} takes no policy overrides")  # noqa: TRY004
+    overrides = {}
+    for item in params.split(","):
+        key, _, value = item.partition("=")
+        if key not in PolicyConfig.__dataclass_fields__ or key == "version":
+            raise ValueError(f"unknown policy setting {key!r}")
+        parts = [float(x) for x in value.split("/")]
+        overrides[key] = tuple(parts) if len(parts) > 1 else parts[0]
+    return BOTS[name](seed, replace(PolicyConfig(), version=f"h1:{params}", **overrides))
