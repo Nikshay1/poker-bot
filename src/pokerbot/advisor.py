@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 import numpy as np
 
 from pokerbot.cards import cards_to_str, combo_index
+from pokerbot.equity import range_equity
 from pokerbot.game.state import (
     CALL,
     CHECK,
@@ -25,10 +26,24 @@ from pokerbot.game.state import (
     Spot,
     SpotError,
 )
+from pokerbot.game.tree import BetSizing
 from pokerbot.policy.base import B_CALL, B_FOLD, B_RAISE, PolicyConfig, Strategy
 from pokerbot.ranges import RangeTracker
+from pokerbot.solver.river import RiverSolution, solve_river
 
 LAYER_HEURISTIC = "heuristic"
+LAYER_RIVER = "river solver"
+
+
+@dataclass(frozen=True)
+class SolverConfig:
+    """How the river is solved. ``time_budget`` is in seconds per decision."""
+
+    sizing: BetSizing = field(default_factory=BetSizing)
+    variant: str = "dcfr"
+    time_budget: float = 0.5
+    max_iterations: int = 2000
+    target_pct_pot: float | None = 0.25
 
 
 @dataclass
@@ -142,22 +157,79 @@ def recommend_from_strategy(
     )
 
 
+def recommend_from_solution(
+    spot: Spot,
+    solution: RiverSolution,
+    opp_range: np.ndarray,
+    rng: np.random.Generator | None = None,
+    started: float | None = None,
+) -> Recommendation:
+    """Read the hero's hand out of a river solution."""
+    k = combo_index(*spot.hole)
+    row = solution.strategy[k].astype(np.float64)
+    row = row / row.sum()
+    choice = int(rng.choice(len(row), p=row)) if rng is not None else int(np.argmax(row))
+    action = solution.actions[choice]
+    if not spot.legal().allows(action):
+        raise RuntimeError(f"the solver produced an illegal action: {action}")
+    _, values = solution.for_hand(spot.hole)
+    names = [str(a) for a in solution.actions]
+    equity = float(range_equity(spot.board, opp_range)[k])
+    how = {"converged": "reached the accuracy target", "time": "used its time budget"}.get(
+        solution.stopped, "reached the iteration limit"
+    )
+    accuracy = (
+        f"exploitability {solution.exploitability_pct_pot:.2f}% of the pot, "
+        "within this bet tree and these ranges"
+    )
+    notes = [
+        f"solved {solution.iterations} iterations and {how}",
+        accuracy,
+        f"bet tree: {solution.n_decisions} decisions, {solution.n_terminals} endings",
+    ]
+    return Recommendation(
+        action=action,
+        probabilities={name: float(p) for name, p in zip(names, row)},
+        ev={name: float(v) for name, v in zip(names, values)},
+        equity=None if np.isnan(equity) else equity,
+        layer=LAYER_RIVER,
+        assumptions=list(spot.assumptions),
+        notes=notes,
+        iterations=solution.iterations,
+        seconds=0.0 if started is None else time.perf_counter() - started,
+    )
+
+
 def advise(
     spot: Spot,
     cfg: PolicyConfig | None = None,
     tracker: RangeTracker | None = None,
     rng: np.random.Generator | None = None,
+    solver: SolverConfig | None = None,
 ) -> Recommendation:
     """Recommend an action for a complete heads-up situation.
 
     With ``rng`` the action is sampled from the hand's mixed strategy (what a
     playing bot should do); without it the most likely action is returned.
     A ``tracker`` kept across the decisions of one hand avoids redoing work.
+    With ``solver`` set, river decisions are solved; everything else, and the
+    range updates on every street, use the heuristic policy.
     """
     started = time.perf_counter()
     spot.validate()
     tracker = tracker or RangeTracker(cfg)
     tracker.catch_up(spot)
+    if solver is not None and spot.street == 3:
+        solution = solve_river(
+            spot,
+            (tracker.ranges[0], tracker.ranges[1]),
+            sizing=solver.sizing,
+            variant=solver.variant,
+            time_budget=solver.time_budget,
+            max_iterations=solver.max_iterations,
+            target_pct_pot=solver.target_pct_pot,
+        )
+        return recommend_from_solution(spot, solution, tracker.ranges[1 - spot.seat], rng, started)
     strategy = tracker.strategy(spot)
     return recommend_from_strategy(spot, strategy, LAYER_HEURISTIC, rng, started)
 

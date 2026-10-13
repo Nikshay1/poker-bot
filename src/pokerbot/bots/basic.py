@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from pokerbot.advisor import advise
+from pokerbot.advisor import SolverConfig, advise
 from pokerbot.cards import COMBO_CLASS, combo_index
 from pokerbot.equity import range_equity, uniform_range
 from pokerbot.game.state import CALL, CHECK, FOLD, RAISE, Action, Spot
@@ -100,7 +100,17 @@ class HeuristicBot(Bot):
         return advise(spot, self.cfg, self.tracker, self.rng).action
 
 
-BOTS = {cls.name: cls for cls in (RandomBot, CallBot, EquityBot, HeuristicBot)}
+class SolverBot(HeuristicBot):
+    """The heuristic bot with river decisions solved by CFR."""
+
+    name = "solver"
+    solver = SolverConfig()
+
+    def act(self, spot: Spot) -> Action:
+        return advise(spot, self.cfg, self.tracker, self.rng, self.solver).action
+
+
+BOTS = {cls.name: cls for cls in (RandomBot, CallBot, EquityBot, HeuristicBot, SolverBot)}
 
 
 def make_bot(name: str, seed: int = 0) -> Bot:

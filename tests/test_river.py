@@ -202,3 +202,28 @@ def test_stops_early_once_the_target_is_met():
     solution = solve_river(spot, ranges, time_budget=30, max_iterations=5000, target_pct_pot=0.5)
     assert solution.stopped == "converged" and solution.iterations < 1000
     assert solution.exploitability_pct_pot <= 0.5
+
+
+def test_advisor_uses_the_solver_on_the_river_only():
+    from pokerbot.advisor import LAYER_HEURISTIC, LAYER_RIVER, SolverConfig, advise
+
+    solver = SolverConfig(time_budget=5.0, max_iterations=150, target_pct_pot=None)
+    river = spot_from_partial(parse_cards("AsQd"), parse_cards(BOARD), pot=1000, to_call=400)
+    rec = advise(river, solver=solver)
+    assert rec.layer == LAYER_RIVER and rec.iterations == 150
+    assert river.legal().allows(rec.action)
+    assert sum(rec.probabilities.values()) == pytest.approx(1.0)
+    assert rec.ev["fold"] == pytest.approx(0.0, abs=1e-6)
+    assert set(rec.ev) == set(rec.probabilities)
+    assert any("within this bet tree and these ranges" in note for note in rec.notes)
+    assert advise(river).layer == LAYER_HEURISTIC  # no solver unless asked
+
+    turn = spot_from_partial(parse_cards("AsQd"), parse_cards(BOARD[:8]), pot=1000, to_call=400)
+    assert advise(turn, solver=solver).layer == LAYER_HEURISTIC
+
+
+def test_solver_bot_plays_legal_hands():
+    from pokerbot.arena.match import run_match
+
+    result = run_match("solver", "random", pairs=6, seed=21)
+    assert result.illegal_a == 0 and result.illegal_b == 0

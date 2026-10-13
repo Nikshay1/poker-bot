@@ -11,7 +11,7 @@ from pokerbot.game.state import GameConfig, SpotError
 
 
 def _advise(args) -> int:
-    from pokerbot.advisor import advise, spot_from_partial
+    from pokerbot.advisor import SolverConfig, advise, spot_from_partial
     from pokerbot.policy.multiway import advise_multiway
 
     try:
@@ -42,7 +42,8 @@ def _advise(args) -> int:
                 big_blind=args.bb,
                 starting_stack_bb=args.stack_bb,
             )
-            rec = advise(spot)
+            solver = None if args.no_solver else SolverConfig(time_budget=args.time)
+            rec = advise(spot, solver=solver)
             text = rec.render(spot)
     except SpotError as err:
         payload = err.as_dict()
@@ -88,6 +89,10 @@ def main(argv=None) -> int:
     advise.add_argument("--bb", type=int, default=100, help="big blind in chips")
     advise.add_argument(
         "--stack-bb", type=float, default=100.0, help="starting stacks in big blinds"
+    )
+    advise.add_argument("--time", type=float, default=2.0, help="seconds allowed for a river solve")
+    advise.add_argument(
+        "--no-solver", action="store_true", help="use the heuristic on the river too"
     )
     advise.add_argument("--json", action="store_true")
     advise.set_defaults(run=_advise)
