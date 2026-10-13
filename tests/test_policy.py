@@ -210,3 +210,26 @@ def test_multiway_equity_analysis():
         advise_multiway(hole, board, pot=1000, to_call=400, stack=300, n_opponents=2)
     assert err.value.code == "side_pot_unsupported"
     assert top_fraction_range(0.30).sum() / N_COMBOS == pytest.approx(0.30, abs=0.02)
+
+
+def test_assumed_checks_are_not_evidence():
+    import dataclasses
+
+    # A river spot from partial input: the flop and turn checks are filler.
+    spot = partial("AsQd", "7h8h2cKd3s", pot=1000, to_call=400)
+    assert spot.unobserved == (2, 3, 4, 5)
+    assert [spot.history[i][2] for i in spot.unobserved] == [CHECK] * 4
+    assert any("not used to narrow ranges" in a for a in spot.assumptions)
+
+    filler, observed = RangeTracker(CFG), RangeTracker(CFG)
+    filler.catch_up(spot)
+    observed.catch_up(dataclasses.replace(spot, unobserved=()))  # as if the checks were seen
+    kings = combo_index(*parse_cards("KsKc"))  # top set
+    air = combo_index(*parse_cards("5c4d"))
+    # Seeing two checks makes a set unlikely; assuming them must not.
+    assert filler.ranges[1][kings] / filler.ranges[1][air] > 20 * (
+        observed.ranges[1][kings] / observed.ranges[1][air]
+    )
+    # A complete state from the engine has nothing unobserved.
+    engine = HandState(GameConfig(), tuple(range(9)))
+    assert engine.view().unobserved == ()

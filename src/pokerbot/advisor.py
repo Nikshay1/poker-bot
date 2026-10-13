@@ -251,6 +251,10 @@ def spot_from_partial(
     produces the stated pot: the button raised, the big blind called, earlier
     streets were checked, and any amount to call is a bet made on the current
     street. Each such choice is listed in ``Spot.assumptions``.
+
+    The preflop line is used to set the starting ranges, since the pot size
+    supports it. The checks on earlier streets are pure filler and are marked
+    in ``Spot.unobserved`` so that ranges are not narrowed by them.
     """
     hole, board = tuple(hole), tuple(board)
     if position not in ("button", "bb"):
@@ -259,6 +263,7 @@ def spot_from_partial(
         raise SpotError("bad_board", "the board must have 0, 3, 4 or 5 cards")
     seat = 0 if position == "button" else 1
     assumptions = ["heads-up, no rake"]
+    unobserved: list[int] = []
     start = int(round(starting_stack_bb * big_blind))
     if stack is None:
         assumptions.append(f"both players started the hand with {starting_stack_bb:g} big blinds")
@@ -305,9 +310,13 @@ def spot_from_partial(
             )
         street = (0, 3, 4, 5).index(len(board))
         for earlier in range(1, street):
+            # Filler: nobody saw these checks, so they say nothing about ranges.
+            unobserved += [len(history), len(history) + 1]
             history += [(earlier, 1, CHECK, 0), (earlier, 0, CHECK, 0)]
         if street > 1:
-            assumptions.append("earlier streets were checked through")
+            assumptions.append(
+                "earlier streets were checked through; this is filler and is not used to narrow ranges"
+            )
         if seat == 0:
             if to_call:
                 history.append((street, 1, RAISE, to_call))
@@ -340,6 +349,7 @@ def spot_from_partial(
         last_raise=state.last_raise,
         history=tuple(state.history),
         assumptions=tuple(assumptions),
+        unobserved=tuple(unobserved),
     )
     spot.validate()
     return spot

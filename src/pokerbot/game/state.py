@@ -110,6 +110,9 @@ class Spot:
     last_raise: int = 100
     history: tuple[tuple[int, int, str, int], ...] = ()  # (street, seat, kind, amount)
     assumptions: tuple[str, ...] = ()
+    # Positions in ``history`` that were filled in to complete partial input.
+    # They are not observations and must not be used as evidence about ranges.
+    unobserved: tuple[int, ...] = ()
 
     @property
     def street(self) -> int:

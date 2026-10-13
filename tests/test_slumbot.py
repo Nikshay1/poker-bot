@@ -71,3 +71,32 @@ def test_no_decision_when_the_hand_is_over_or_not_our_turn():
     assert spot_from_response(response("b20000c", 1)) is None  # all-in and called
     with pytest.raises(ValueError):
         spot_from_response(response("b150", 0))  # below the minimum raise
+
+
+def test_summary_statistics():
+    from pokerbot.arena.slumbot import summarise
+
+    result = summarise([100, -100, 300, -300], bot="x")
+    assert result["hands"] == 4 and result["bb_per_100"] == 0.0 and result["bot"] == "x"
+    # Standard deviation of (1, -1, 3, -3) big blinds is sqrt(20 / 3).
+    assert result["stdev_hand_bb"] == pytest.approx((20 / 3) ** 0.5)
+    assert result["ci95"] == pytest.approx(1.96 * (20 / 3) ** 0.5 / 2 * 100)
+
+
+def test_a_network_failure_drops_the_hand_and_continues(monkeypatch):
+    import urllib.error
+
+    from pokerbot.arena import slumbot
+
+    calls = {"n": 0}
+
+    def fake_play_hand(bot, token):
+        calls["n"] += 1
+        if calls["n"] == 2:
+            raise urllib.error.URLError("timed out")
+        return {"winnings": 100, "token": "t"}
+
+    monkeypatch.setattr(slumbot, "play_hand", fake_play_hand)
+    monkeypatch.setattr(slumbot.time, "sleep", lambda seconds: None)
+    result = slumbot.run_session("call", hands=3)
+    assert result["hands"] == 3 and result["dropped_hands"] == 1 and calls["n"] == 4

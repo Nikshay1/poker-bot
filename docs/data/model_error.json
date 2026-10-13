@@ -6,24 +6,24 @@
   "base": {
    "fold_call_raise": [
     0.0,
-    0.273,
-    0.727
+    0.999,
+    0.001
    ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
+   "top": "check/call",
+   "exploitability_pct_pot": 0.103,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
     0.0,
-    0.994,
-    0.006
+    0.998,
+    0.002
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.721,
-   "range_distance": 0.134
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.23
   },
   "uniform": {
    "fold_call_raise": [
@@ -32,20 +32,20 @@
     0.001
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.726,
-   "range_distance": 0.527
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.0,
+   "range_distance": 0.391
   },
   "sizes": {
    "fold_call_raise": [
     0.0,
-    0.03,
-    0.97
+    0.998,
+    0.002
    ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.126,
-   "hand_distance": 0.242,
-   "range_distance": 0.075
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.001,
+   "range_distance": 0.053
   }
  },
  {
@@ -59,7 +59,7 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.089,
+   "exploitability_pct_pot": 0.099,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
@@ -72,7 +72,7 @@
    "top": "bet/raise",
    "exploitability_pct_pot": 0.097,
    "hand_distance": 0.0,
-   "range_distance": 0.25
+   "range_distance": 0.222
   },
   "uniform": {
    "fold_call_raise": [
@@ -81,9 +81,9 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.075,
+   "exploitability_pct_pot": 0.061,
    "hand_distance": 0.0,
-   "range_distance": 0.698
+   "range_distance": 0.732
   },
   "sizes": {
    "fold_call_raise": [
@@ -92,9 +92,9 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.117,
+   "exploitability_pct_pot": 0.096,
    "hand_distance": 0.0,
-   "range_distance": 0.023
+   "range_distance": 0.089
   }
  },
  {
@@ -108,7 +108,7 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
+   "exploitability_pct_pot": 0.093,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
@@ -119,9 +119,156 @@
     1.0
    ],
    "top": "bet/raise",
+   "exploitability_pct_pot": 0.09,
+   "hand_distance": 0.0,
+   "range_distance": 0.145
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.017,
+    0.983
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.017,
+   "range_distance": 0.144
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.0,
+   "range_distance": 0.035
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "KcQc",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.085,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.061,
+   "hand_distance": 0.0,
+   "range_distance": 0.027
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.057,
+   "hand_distance": 0.0,
+   "range_distance": 0.147
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
    "exploitability_pct_pot": 0.087,
    "hand_distance": 0.0,
-   "range_distance": 0.148
+   "range_distance": 0.002
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "9c9d",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.744,
+    0.256
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.103,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.003,
+    0.997
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.741,
+   "range_distance": 0.23
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.77,
+    0.23
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.026,
+   "range_distance": 0.391
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.365,
+    0.635
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.379,
+   "range_distance": 0.053
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "9c9d",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.0,
+   "range_distance": 0.222
   },
   "uniform": {
    "fold_call_raise": [
@@ -130,167 +277,20 @@
     0.993
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.089,
+   "exploitability_pct_pot": 0.061,
    "hand_distance": 0.007,
-   "range_distance": 0.185
+   "range_distance": 0.732
   },
   "sizes": {
    "fold_call_raise": [
     0.0,
     0.0,
     1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.0,
-   "range_distance": 0.015
-  }
- },
- {
-  "board": "dry",
-  "hand": "KcQc",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.0,
-   "range_distance": 0.034
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.045,
-   "hand_distance": 0.0,
-   "range_distance": 0.133
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.0,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "dry",
-  "hand": "9c9d",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.33,
-    0.67
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.218,
-    0.782
    ],
    "top": "bet/raise",
    "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.112,
-   "range_distance": 0.134
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.801,
-    0.199
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.471,
-   "range_distance": 0.527
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.248,
-    0.752
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.126,
-   "hand_distance": 0.082,
-   "range_distance": 0.075
-  }
- },
- {
-  "board": "dry",
-  "hand": "9c9d",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.089,
    "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.097,
-   "hand_distance": 0.0,
-   "range_distance": 0.25
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.021,
-    0.979
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.021,
-   "range_distance": 0.698
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.117,
-   "hand_distance": 0.0,
-   "range_distance": 0.023
+   "range_distance": 0.089
   }
  },
  {
@@ -304,570 +304,31 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.0,
-   "range_distance": 0.148
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.951,
-    0.049
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.089,
-   "hand_distance": 0.951,
-   "range_distance": 0.185
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.0,
-   "range_distance": 0.015
-  }
- },
- {
-  "board": "dry",
-  "hand": "9c9d",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.0,
-   "range_distance": 0.034
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.027,
-    0.973
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.045,
-   "hand_distance": 0.027,
-   "range_distance": 0.133
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.0,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "dry",
-  "hand": "AsQd",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.11,
-    0.89
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.05,
-    0.95
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.06,
-   "range_distance": 0.134
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
    "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.89,
-   "range_distance": 0.527
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.003,
-    0.997
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.126,
-   "hand_distance": 0.107,
-   "range_distance": 0.075
-  }
- },
- {
-  "board": "dry",
-  "hand": "AsQd",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.002,
-    0.998
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.089,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
     0.0,
-    0.427,
-    0.573
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.097,
-   "hand_distance": 0.426,
-   "range_distance": 0.25
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.998,
-   "range_distance": 0.698
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.012,
-    0.988
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.117,
-   "hand_distance": 0.01,
-   "range_distance": 0.023
-  }
- },
- {
-  "board": "dry",
-  "hand": "AsQd",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.003,
-    0.996,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
     0.001,
-    0.989,
-    0.01
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.01,
-   "range_distance": 0.148
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.089,
-   "hand_distance": 0.004,
-   "range_distance": 0.185
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.001,
-    0.997,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.002,
-   "range_distance": 0.015
-  }
- },
- {
-  "board": "dry",
-  "hand": "AsQd",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.979,
-    0.021
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.02,
-   "range_distance": 0.034
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.045,
-   "hand_distance": 0.021,
-   "range_distance": 0.133
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.999,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.02,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "dry",
-  "hand": "6s5s",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.022,
-    0.978
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.022,
-   "range_distance": 0.134
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.978,
-   "range_distance": 0.527
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.006,
-    0.994
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.126,
-   "hand_distance": 0.017,
-   "range_distance": 0.075
-  }
- },
- {
-  "board": "dry",
-  "hand": "6s5s",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.089,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.097,
-   "hand_distance": 0.0,
-   "range_distance": 0.25
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.032,
-    0.968
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.032,
-   "range_distance": 0.698
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.117,
-   "hand_distance": 0.0,
-   "range_distance": 0.023
-  }
- },
- {
-  "board": "dry",
-  "hand": "6s5s",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.648,
-    0.0,
-    0.352
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.473,
-    0.0,
-    0.527
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.175,
-   "range_distance": 0.148
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.685,
-    0.0,
-    0.315
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.089,
-   "hand_distance": 0.037,
-   "range_distance": 0.185
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.752,
-    0.0,
-    0.248
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.104,
-   "range_distance": 0.015
-  }
- },
- {
-  "board": "dry",
-  "hand": "6s5s",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.463,
-    0.0,
-    0.537
+    0.999
    ],
    "top": "bet/raise",
    "exploitability_pct_pot": 0.09,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.309,
-    0.0,
-    0.691
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.154,
-   "range_distance": 0.034
+   "hand_distance": 0.001,
+   "range_distance": 0.145
   },
   "uniform": {
    "fold_call_raise": [
+    0.0,
     0.984,
-    0.0,
     0.016
    ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.045,
-   "hand_distance": 0.521,
-   "range_distance": 0.133
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.701,
-    0.0,
-    0.299
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.075,
-   "hand_distance": 0.238,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "JhTh",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.991,
-    0.009
-   ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.939,
-    0.061
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.052,
-   "range_distance": 0.157
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.961,
-    0.039
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.03,
-   "range_distance": 0.528
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.979,
-    0.021
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.11,
-   "hand_distance": 0.011,
-   "range_distance": 0.063
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "JhTh",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.219
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.637
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.984,
+   "range_distance": 0.144
   },
   "sizes": {
    "fold_call_raise": [
@@ -876,63 +337,14 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
+   "exploitability_pct_pot": 0.081,
    "hand_distance": 0.0,
-   "range_distance": 0.101
+   "range_distance": 0.035
   }
  },
  {
-  "board": "three hearts",
-  "hand": "JhTh",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.271
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.0,
-   "range_distance": 0.352
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.005
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "JhTh",
+  "board": "dry",
+  "hand": "9c9d",
   "line": "facing a pot-sized bet",
   "base": {
    "fold_call_raise": [
@@ -941,105 +353,7 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.083,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.0,
-   "range_distance": 0.085
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.023,
-   "hand_distance": 0.0,
-   "range_distance": 0.093
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.0,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "AsKs",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.012,
-    0.988
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.002,
-    0.998
-   ],
-   "top": "bet/raise",
    "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.011,
-   "range_distance": 0.157
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.015,
-    0.985
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.003,
-   "range_distance": 0.528
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.004,
-    0.996
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.11,
-   "hand_distance": 0.008,
-   "range_distance": 0.063
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "AsKs",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
@@ -1050,363 +364,118 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
+   "exploitability_pct_pot": 0.061,
    "hand_distance": 0.0,
-   "range_distance": 0.219
+   "range_distance": 0.027
   },
   "uniform": {
    "fold_call_raise": [
     0.0,
-    0.0,
-    1.0
+    0.044,
+    0.956
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.637
+   "exploitability_pct_pot": 0.057,
+   "hand_distance": 0.044,
+   "range_distance": 0.147
   },
   "sizes": {
    "fold_call_raise": [
     0.0,
     0.0,
     1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.101
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "AsKs",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.271
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.043,
-    0.957
    ],
    "top": "bet/raise",
    "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.043,
-   "range_distance": 0.352
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
    "hand_distance": 0.0,
-   "range_distance": 0.005
+   "range_distance": 0.002
   }
  },
  {
-  "board": "three hearts",
-  "hand": "AsKs",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.083,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.0,
-   "range_distance": 0.085
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.023,
-   "hand_distance": 0.0,
-   "range_distance": 0.093
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.0,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "QcJc",
+  "board": "dry",
+  "hand": "AsQd",
   "line": "first to act",
   "base": {
    "fold_call_raise": [
     0.0,
-    0.395,
-    0.605
+    0.995,
+    0.005
    ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
+   "top": "check/call",
+   "exploitability_pct_pot": 0.103,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.955,
-    0.045
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.56,
-   "range_distance": 0.157
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.604,
-   "range_distance": 0.528
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.375,
-    0.625
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.11,
-   "hand_distance": 0.02,
-   "range_distance": 0.063
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "QcJc",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.0,
-   "range_distance": 0.219
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.999,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.999,
-   "range_distance": 0.637
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.101
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "QcJc",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.115,
-    0.885
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.999,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.885,
-   "range_distance": 0.271
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.999,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.885,
-   "range_distance": 0.352
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.226,
-    0.774
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.111,
-   "range_distance": 0.005
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "QcJc",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.003,
-    0.997
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.083,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.997,
-   "range_distance": 0.085
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.023,
-   "hand_distance": 0.997,
-   "range_distance": 0.093
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.002,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "three hearts",
-  "hand": "7c6c",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.0,
-   "range_distance": 0.157
-  },
-  "uniform": {
    "fold_call_raise": [
     0.0,
     0.994,
     0.006
    ],
    "top": "check/call",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.001,
+   "range_distance": 0.23
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.005,
+   "range_distance": 0.391
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.985,
+    0.015
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.01,
+   "range_distance": 0.053
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "AsQd",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
    "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.994,
-   "range_distance": 0.528
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.0,
+   "range_distance": 0.222
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.061,
+   "hand_distance": 1.0,
+   "range_distance": 0.732
   },
   "sizes": {
    "fold_call_raise": [
@@ -1415,9 +484,940 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.11,
+   "exploitability_pct_pot": 0.096,
    "hand_distance": 0.0,
-   "range_distance": 0.063
+   "range_distance": 0.089
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "AsQd",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.09,
+   "hand_distance": 0.0,
+   "range_distance": 0.145
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.0,
+   "range_distance": 0.144
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.0,
+   "range_distance": 0.035
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "AsQd",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.974,
+    0.026
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.085,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.998,
+    0.001
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.061,
+   "hand_distance": 0.025,
+   "range_distance": 0.027
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.057,
+   "hand_distance": 0.026,
+   "range_distance": 0.147
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.962,
+    0.038
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.087,
+   "hand_distance": 0.012,
+   "range_distance": 0.002
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "6s5s",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.103,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.23
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 1.0,
+   "range_distance": 0.391
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.0,
+   "range_distance": 0.053
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "6s5s",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.0,
+   "range_distance": 0.222
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.311,
+    0.689
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.061,
+   "hand_distance": 0.311,
+   "range_distance": 0.732
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.089
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "6s5s",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.635,
+    0.0,
+    0.365
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.705,
+    0.0,
+    0.294
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.09,
+   "hand_distance": 0.07,
+   "range_distance": 0.145
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.988,
+    0.0,
+    0.012
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.353,
+   "range_distance": 0.144
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.509,
+    0.0,
+    0.491
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.126,
+   "range_distance": 0.035
+  }
+ },
+ {
+  "board": "dry",
+  "hand": "6s5s",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.932,
+    0.0,
+    0.068
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.085,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.367,
+    0.0,
+    0.633
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.061,
+   "hand_distance": 0.565,
+   "range_distance": 0.027
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.997,
+    0.0,
+    0.003
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.057,
+   "hand_distance": 0.065,
+   "range_distance": 0.147
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.9,
+    0.0,
+    0.1
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.087,
+   "hand_distance": 0.031,
+   "range_distance": 0.002
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "JhTh",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.993,
+    0.007
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.559,
+    0.441
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.434,
+   "range_distance": 0.146
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.999,
+    0.001
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.006,
+   "range_distance": 0.559
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.983,
+    0.017
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.01,
+   "range_distance": 0.102
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "JhTh",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.092,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.092
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.074,
+   "hand_distance": 0.0,
+   "range_distance": 0.538
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.0,
+   "range_distance": 0.051
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "JhTh",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.097
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.0,
+   "range_distance": 0.13
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.014
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "JhTh",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.0,
+   "range_distance": 0.037
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.026,
+   "hand_distance": 0.0,
+   "range_distance": 0.073
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.075,
+   "hand_distance": 0.0,
+   "range_distance": 0.021
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "AsKs",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.273,
+    0.727
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.049,
+    0.951
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.224,
+   "range_distance": 0.146
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.346,
+    0.654
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.073,
+   "range_distance": 0.559
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.068,
+    0.932
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.205,
+   "range_distance": 0.102
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "AsKs",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.092,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.092
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.074,
+   "hand_distance": 0.0,
+   "range_distance": 0.538
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.0,
+   "range_distance": 0.051
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "AsKs",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.097
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.007,
+    0.993
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.007,
+   "range_distance": 0.13
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.014
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "AsKs",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.0,
+   "range_distance": 0.037
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.026,
+   "hand_distance": 0.0,
+   "range_distance": 0.073
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.075,
+   "hand_distance": 0.0,
+   "range_distance": 0.021
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "QcJc",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.963,
+    0.037
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.929,
+    0.071
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.034,
+   "range_distance": 0.146
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.999,
+    0.001
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.036,
+   "range_distance": 0.559
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.885,
+    0.115
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.078,
+   "range_distance": 0.102
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "QcJc",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.092,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.092
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.996,
+    0.004
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.074,
+   "hand_distance": 0.996,
+   "range_distance": 0.538
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.0,
+   "range_distance": 0.051
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "QcJc",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.927,
+    0.073
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.927,
+   "range_distance": 0.097
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.998,
+    0.002
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.998,
+   "range_distance": 0.13
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.001,
+    0.999
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.001,
+   "range_distance": 0.014
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "QcJc",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.102,
+    0.898
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.613,
+    0.387
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.511,
+   "range_distance": 0.037
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.026,
+   "hand_distance": 0.898,
+   "range_distance": 0.073
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.001,
+    0.999
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.075,
+   "hand_distance": 0.101,
+   "range_distance": 0.021
+  }
+ },
+ {
+  "board": "three hearts",
+  "hand": "7c6c",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.0,
+   "range_distance": 0.146
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.999,
+   "range_distance": 0.559
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.0,
+   "range_distance": 0.102
   }
  },
  {
@@ -1427,24 +1427,24 @@
   "base": {
    "fold_call_raise": [
     0.0,
-    0.756,
-    0.244
+    0.892,
+    0.108
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.096,
+   "exploitability_pct_pot": 0.092,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
     0.0,
-    0.011,
-    0.989
+    0.665,
+    0.335
    ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.745,
-   "range_distance": 0.219
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.227,
+   "range_distance": 0.092
   },
   "uniform": {
    "fold_call_raise": [
@@ -1453,20 +1453,20 @@
     0.005
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.088,
-   "hand_distance": 0.239,
-   "range_distance": 0.637
+   "exploitability_pct_pot": 0.074,
+   "hand_distance": 0.104,
+   "range_distance": 0.538
   },
   "sizes": {
    "fold_call_raise": [
     0.0,
-    0.533,
-    0.467
+    0.534,
+    0.466
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.223,
-   "range_distance": 0.101
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.358,
+   "range_distance": 0.051
   }
  },
  {
@@ -1475,25 +1475,25 @@
   "line": "facing 2/3 pot",
   "base": {
    "fold_call_raise": [
-    0.999,
-    0.0,
-    0.001
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
     1.0,
     0.0,
     0.0
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.096,
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.999,
+    0.0,
+    0.001
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.093,
    "hand_distance": 0.001,
-   "range_distance": 0.271
+   "range_distance": 0.097
   },
   "uniform": {
    "fold_call_raise": [
@@ -1502,20 +1502,20 @@
     0.002
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.087,
-   "hand_distance": 0.001,
-   "range_distance": 0.352
+   "exploitability_pct_pot": 0.081,
+   "hand_distance": 0.002,
+   "range_distance": 0.13
   },
   "sizes": {
    "fold_call_raise": [
-    0.998,
+    1.0,
     0.0,
-    0.002
+    0.0
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.001,
-   "range_distance": 0.005
+   "exploitability_pct_pot": 0.093,
+   "hand_distance": 0.0,
+   "range_distance": 0.014
   }
  },
  {
@@ -1524,25 +1524,25 @@
   "line": "facing a pot-sized bet",
   "base": {
    "fold_call_raise": [
-    0.704,
+    0.823,
     0.0,
-    0.296
+    0.177
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.083,
+   "exploitability_pct_pot": 0.096,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
-    0.247,
+    0.45,
     0.0,
-    0.753
+    0.55
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.458,
-   "range_distance": 0.085
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.373,
+   "range_distance": 0.037
   },
   "uniform": {
    "fold_call_raise": [
@@ -1551,20 +1551,20 @@
     0.0
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.023,
-   "hand_distance": 0.295,
-   "range_distance": 0.093
+   "exploitability_pct_pot": 0.026,
+   "hand_distance": 0.177,
+   "range_distance": 0.073
   },
   "sizes": {
    "fold_call_raise": [
-    0.517,
+    0.654,
     0.0,
-    0.483
+    0.346
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.187,
-   "range_distance": 0.009
+   "exploitability_pct_pot": 0.075,
+   "hand_distance": 0.168,
+   "range_distance": 0.021
   }
  },
  {
@@ -1574,24 +1574,24 @@
   "base": {
    "fold_call_raise": [
     0.0,
-    0.094,
-    0.906
+    0.0,
+    1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.107,
+   "exploitability_pct_pot": 0.097,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
     0.0,
-    0.002,
-    0.998
+    0.007,
+    0.993
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.092,
-   "range_distance": 0.409
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.006,
+   "range_distance": 0.308
   },
   "uniform": {
    "fold_call_raise": [
@@ -1600,194 +1600,292 @@
     0.0
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.906,
-   "range_distance": 0.729
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 1.0,
+   "range_distance": 0.686
   },
   "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.0,
+   "range_distance": 0.07
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "JcTc",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.089,
+   "hand_distance": 0.0,
+   "range_distance": 0.181
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.051,
+   "hand_distance": 0.0,
+   "range_distance": 0.527
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.053
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "JcTc",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.078,
+   "hand_distance": 0.0,
+   "range_distance": 0.174
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.072,
+   "hand_distance": 0.0,
+   "range_distance": 0.277
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.0,
+   "range_distance": 0.017
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "JcTc",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.066,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.073
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.0,
+   "range_distance": 0.384
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.087,
+   "hand_distance": 0.0,
+   "range_distance": 0.017
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "AsAd",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.981,
+    0.019
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.971,
+    0.029
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.009,
+   "range_distance": 0.308
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.019,
+   "range_distance": 0.686
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.991,
+    0.009
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.01,
+   "range_distance": 0.07
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "AsAd",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.089,
+   "hand_distance": 0.0,
+   "range_distance": 0.181
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.978,
+    0.022
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.051,
+   "hand_distance": 0.978,
+   "range_distance": 0.527
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.053
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "AsAd",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
    "fold_call_raise": [
     0.0,
     0.003,
     0.997
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.124,
-   "hand_distance": 0.091,
-   "range_distance": 0.072
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "JcTc",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.0,
-   "range_distance": 0.409
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.043,
-   "hand_distance": 0.0,
-   "range_distance": 0.477
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.0,
-   "range_distance": 0.057
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "JcTc",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.098,
-   "hand_distance": 0.0,
-   "range_distance": 0.301
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.076,
-   "hand_distance": 0.0,
-   "range_distance": 0.304
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.0,
-   "range_distance": 0.034
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "JcTc",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.07,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.0,
-   "range_distance": 0.286
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.063,
-   "hand_distance": 0.0,
-   "range_distance": 0.278
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.056,
-   "hand_distance": 0.0,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "AsAd",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.956,
-    0.044
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.107,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.235,
-    0.765
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.721,
-   "range_distance": 0.409
+   "exploitability_pct_pot": 0.078,
+   "hand_distance": 0.003,
+   "range_distance": 0.174
   },
   "uniform": {
    "fold_call_raise": [
@@ -1796,26 +1894,26 @@
     0.0
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.044,
-   "range_distance": 0.729
+   "exploitability_pct_pot": 0.072,
+   "hand_distance": 1.0,
+   "range_distance": 0.277
   },
   "sizes": {
    "fold_call_raise": [
     0.0,
-    0.572,
-    0.428
+    0.0,
+    1.0
    ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.124,
-   "hand_distance": 0.384,
-   "range_distance": 0.072
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.0,
+   "range_distance": 0.017
   }
  },
  {
   "board": "four to a straight",
   "hand": "AsAd",
-  "line": "checked to",
+  "line": "facing a pot-sized bet",
   "base": {
    "fold_call_raise": [
     0.0,
@@ -1823,31 +1921,31 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
+   "exploitability_pct_pot": 0.066,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
     0.0,
-    0.0,
-    1.0
+    0.128,
+    0.872
    ],
    "top": "bet/raise",
    "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.0,
-   "range_distance": 0.409
+   "hand_distance": 0.128,
+   "range_distance": 0.073
   },
   "uniform": {
    "fold_call_raise": [
     0.0,
-    0.987,
-    0.013
+    1.0,
+    0.0
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.043,
-   "hand_distance": 0.987,
-   "range_distance": 0.477
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 1.0,
+   "range_distance": 0.384
   },
   "sizes": {
    "fold_call_raise": [
@@ -1856,23 +1954,23 @@
     1.0
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
+   "exploitability_pct_pot": 0.087,
    "hand_distance": 0.0,
-   "range_distance": 0.057
+   "range_distance": 0.017
   }
  },
  {
   "board": "four to a straight",
-  "hand": "AsAd",
-  "line": "facing 2/3 pot",
+  "hand": "KhQh",
+  "line": "first to act",
   "base": {
    "fold_call_raise": [
     0.0,
-    0.0,
-    1.0
+    0.01,
+    0.99
    ],
    "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
+   "exploitability_pct_pot": 0.097,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
@@ -1883,129 +1981,31 @@
     0.002
    ],
    "top": "check/call",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.987,
+   "range_distance": 0.308
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.99,
+   "range_distance": 0.686
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.009,
+    0.991
+   ],
+   "top": "bet/raise",
    "exploitability_pct_pot": 0.098,
-   "hand_distance": 0.998,
-   "range_distance": 0.301
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.076,
-   "hand_distance": 1.0,
-   "range_distance": 0.304
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.0,
-   "range_distance": 0.034
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "AsAd",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.07,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.623,
-    0.377
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.623,
-   "range_distance": 0.286
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.063,
-   "hand_distance": 1.0,
-   "range_distance": 0.278
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.056,
-   "hand_distance": 0.0,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "KhQh",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.247,
-    0.753
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.107,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.799,
-    0.201
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.552,
-   "range_distance": 0.409
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.753,
-   "range_distance": 0.729
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.772,
-    0.228
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.124,
-   "hand_distance": 0.525,
-   "range_distance": 0.072
+   "hand_distance": 0.001,
+   "range_distance": 0.07
   }
  },
  {
@@ -2015,242 +2015,242 @@
   "base": {
    "fold_call_raise": [
     0.0,
-    0.686,
-    0.314
+    0.13,
+    0.87
    ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.094,
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.091,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
     0.0,
-    0.0,
-    1.0
+    0.81,
+    0.19
    ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.686,
-   "range_distance": 0.409
+   "top": "check/call",
+   "exploitability_pct_pot": 0.089,
+   "hand_distance": 0.681,
+   "range_distance": 0.181
   },
   "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.051,
+   "hand_distance": 0.87,
+   "range_distance": 0.527
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.001,
+    0.999
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.129,
+   "range_distance": 0.053
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "KhQh",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.589,
+    0.288,
+    0.123
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.084,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.35,
+    0.199,
+    0.45
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.078,
+   "hand_distance": 0.328,
+   "range_distance": 0.174
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.95,
+    0.0,
+    0.05
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.072,
+   "hand_distance": 0.361,
+   "range_distance": 0.277
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.584,
+    0.279,
+    0.137
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.014,
+   "range_distance": 0.017
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "KhQh",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.007,
+    0.553,
+    0.44
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.066,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.128,
+    0.494,
+    0.378
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.122,
+   "range_distance": 0.073
+  },
+  "uniform": {
+   "fold_call_raise": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "top": "fold",
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.993,
+   "range_distance": 0.384
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.022,
+    0.451,
+    0.527
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.087,
+   "hand_distance": 0.102,
+   "range_distance": 0.017
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "3c3d",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.171,
+    0.829
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.097,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.828,
+   "range_distance": 0.308
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.829,
+   "range_distance": 0.686
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.166,
+    0.834
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.098,
+   "hand_distance": 0.005,
+   "range_distance": 0.07
+  }
+ },
+ {
+  "board": "four to a straight",
+  "hand": "3c3d",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.936,
+    0.064
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.997,
+    0.003
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.089,
+   "hand_distance": 0.061,
+   "range_distance": 0.181
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.051,
+   "hand_distance": 0.064,
+   "range_distance": 0.527
+  },
+  "sizes": {
    "fold_call_raise": [
     0.0,
     0.999,
     0.001
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.043,
-   "hand_distance": 0.313,
-   "range_distance": 0.477
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.472,
-    0.528
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.214,
-   "range_distance": 0.057
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "KhQh",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.618,
-    0.38,
-    0.001
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.366,
-    0.26,
-    0.374
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.098,
-   "hand_distance": 0.373,
-   "range_distance": 0.301
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.958,
-    0.0,
-    0.042
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.076,
-   "hand_distance": 0.38,
-   "range_distance": 0.304
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.667,
-    0.33,
-    0.003
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.05,
-   "range_distance": 0.034
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "KhQh",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.033,
-    0.964,
-    0.004
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.07,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.866,
-    0.0,
-    0.134
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.964,
-   "range_distance": 0.286
-  },
-  "uniform": {
-   "fold_call_raise": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "top": "fold",
-   "exploitability_pct_pot": 0.063,
-   "hand_distance": 0.967,
-   "range_distance": 0.278
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.016,
-    0.982,
-    0.002
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.056,
-   "hand_distance": 0.019,
-   "range_distance": 0.009
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "3c3d",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.084,
-    0.916
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.107,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.916,
-   "range_distance": 0.409
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.916,
-   "range_distance": 0.729
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.111,
-    0.889
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.124,
-   "hand_distance": 0.028,
-   "range_distance": 0.072
-  }
- },
- {
-  "board": "four to a straight",
-  "hand": "3c3d",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.998,
-    0.002
-   ],
-   "top": "check/call",
    "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.099,
-   "hand_distance": 0.002,
-   "range_distance": 0.409
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.043,
-   "hand_distance": 0.002,
-   "range_distance": 0.477
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.096,
-   "hand_distance": 0.002,
-   "range_distance": 0.057
+   "hand_distance": 0.062,
+   "range_distance": 0.053
   }
  },
  {
@@ -2259,47 +2259,47 @@
   "line": "facing 2/3 pot",
   "base": {
    "fold_call_raise": [
-    0.993,
-    0.007,
+    0.99,
+    0.009,
     0.0
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.099,
+   "exploitability_pct_pot": 0.084,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
-    0.745,
-    0.191,
-    0.063
+    0.981,
+    0.014,
+    0.005
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.098,
-   "hand_distance": 0.248,
-   "range_distance": 0.301
+   "exploitability_pct_pot": 0.078,
+   "hand_distance": 0.009,
+   "range_distance": 0.174
   },
   "uniform": {
    "fold_call_raise": [
-    0.977,
-    0.007,
-    0.015
+    0.979,
+    0.016,
+    0.005
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.076,
-   "hand_distance": 0.016,
-   "range_distance": 0.304
+   "exploitability_pct_pot": 0.072,
+   "hand_distance": 0.012,
+   "range_distance": 0.277
   },
   "sizes": {
    "fold_call_raise": [
-    0.998,
-    0.001,
+    0.987,
+    0.013,
     0.0
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.085,
-   "hand_distance": 0.006,
-   "range_distance": 0.034
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.004,
+   "range_distance": 0.017
   }
  },
  {
@@ -2308,47 +2308,47 @@
   "line": "facing a pot-sized bet",
   "base": {
    "fold_call_raise": [
-    0.57,
-    0.375,
-    0.055
+    0.623,
+    0.363,
+    0.013
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.07,
+   "exploitability_pct_pot": 0.066,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
    "fold_call_raise": [
-    0.112,
-    0.883,
+    0.048,
+    0.947,
     0.005
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.049,
-   "hand_distance": 0.508,
-   "range_distance": 0.286
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.584,
+   "range_distance": 0.073
   },
   "uniform": {
    "fold_call_raise": [
-    0.013,
-    0.987,
+    0.014,
+    0.986,
     0.0
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.063,
-   "hand_distance": 0.612,
-   "range_distance": 0.278
+   "exploitability_pct_pot": 0.083,
+   "hand_distance": 0.623,
+   "range_distance": 0.384
   },
   "sizes": {
    "fold_call_raise": [
-    0.589,
-    0.325,
-    0.085
+    0.611,
+    0.388,
+    0.001
    ],
    "top": "fold",
-   "exploitability_pct_pot": 0.056,
-   "hand_distance": 0.05,
-   "range_distance": 0.009
+   "exploitability_pct_pot": 0.087,
+   "hand_distance": 0.025,
+   "range_distance": 0.017
   }
  },
  {
@@ -2358,770 +2358,35 @@
   "base": {
    "fold_call_raise": [
     0.0,
-    0.949,
-    0.051
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.999,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.05,
-   "range_distance": 0.238
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.986,
-    0.014
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.038,
-   "range_distance": 0.535
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.865,
-    0.135
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.192,
-   "hand_distance": 0.084,
-   "range_distance": 0.057
-  }
- },
- {
-  "board": "paired",
-  "hand": "KhQh",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.119,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.095,
-   "hand_distance": 0.0,
-   "range_distance": 0.376
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.0,
-   "range_distance": 0.58
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.059
-  }
- },
- {
-  "board": "paired",
-  "hand": "KhQh",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.328
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.071,
-   "hand_distance": 0.0,
-   "range_distance": 0.33
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.01
-  }
- },
- {
-  "board": "paired",
-  "hand": "KhQh",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.074,
-   "hand_distance": 0.0,
-   "range_distance": 0.023
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.0,
-   "range_distance": 0.033
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.092,
-   "hand_distance": 0.0,
-   "range_distance": 0.002
-  }
- },
- {
-  "board": "paired",
-  "hand": "AcAd",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.016,
-    0.984
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.047,
-    0.953
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.032,
-   "range_distance": 0.238
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.327,
-    0.673
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.312,
-   "range_distance": 0.535
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.058,
-    0.942
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.192,
-   "hand_distance": 0.043,
-   "range_distance": 0.057
-  }
- },
- {
-  "board": "paired",
-  "hand": "AcAd",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.119,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.095,
-   "hand_distance": 0.0,
-   "range_distance": 0.376
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.0,
-   "range_distance": 0.58
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.059
-  }
- },
- {
-  "board": "paired",
-  "hand": "AcAd",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.328
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.071,
-   "hand_distance": 0.0,
-   "range_distance": 0.33
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.01
-  }
- },
- {
-  "board": "paired",
-  "hand": "AcAd",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.074,
-   "hand_distance": 0.0,
-   "range_distance": 0.023
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.0,
-   "range_distance": 0.033
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.092,
-   "hand_distance": 0.0,
-   "range_distance": 0.002
-  }
- },
- {
-  "board": "paired",
-  "hand": "7h6h",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.813,
-    0.187
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.658,
-    0.342
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.154,
-   "range_distance": 0.238
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.999,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.187,
-   "range_distance": 0.535
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.742,
-    0.258
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.192,
-   "hand_distance": 0.071,
-   "range_distance": 0.057
-  }
- },
- {
-  "board": "paired",
-  "hand": "7h6h",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.119,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.095,
-   "hand_distance": 0.0,
-   "range_distance": 0.376
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 0.0,
-   "range_distance": 0.58
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.059
-  }
- },
- {
-  "board": "paired",
-  "hand": "7h6h",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.328
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.169,
-    0.831
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.071,
-   "hand_distance": 0.169,
-   "range_distance": 0.33
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.01
-  }
- },
- {
-  "board": "paired",
-  "hand": "7h6h",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.074,
-   "hand_distance": 0.0,
-   "range_distance": 0.023
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.068,
-   "hand_distance": 0.0,
-   "range_distance": 0.033
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.092,
-   "hand_distance": 0.0,
-   "range_distance": 0.002
-  }
- },
- {
-  "board": "paired",
-  "hand": "QcJc",
-  "line": "first to act",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.747,
-    0.253
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.084,
-    0.916
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.662,
-   "range_distance": 0.238
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.253,
-   "range_distance": 0.535
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.435,
-    0.565
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.192,
-   "hand_distance": 0.312,
-   "range_distance": 0.057
-  }
- },
- {
-  "board": "paired",
-  "hand": "QcJc",
-  "line": "checked to",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.119,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.095,
-   "hand_distance": 0.0,
-   "range_distance": 0.376
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.078,
-   "hand_distance": 1.0,
-   "range_distance": 0.58
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "top": "bet/raise",
-   "exploitability_pct_pot": 0.123,
-   "hand_distance": 0.0,
-   "range_distance": 0.059
-  }
- },
- {
-  "board": "paired",
-  "hand": "QcJc",
-  "line": "facing 2/3 pot",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.077,
-   "hand_distance": 0.0,
-   "range_distance": 0.0
-  },
-  "soft": {
-   "fold_call_raise": [
-    0.002,
     0.997,
-    0.001
+    0.003
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.093,
-   "hand_distance": 0.002,
-   "range_distance": 0.328
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.071,
-   "hand_distance": 0.0,
-   "range_distance": 0.33
-  },
-  "sizes": {
-   "fold_call_raise": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.094,
-   "hand_distance": 0.0,
-   "range_distance": 0.01
-  }
- },
- {
-  "board": "paired",
-  "hand": "QcJc",
-  "line": "facing a pot-sized bet",
-  "base": {
-   "fold_call_raise": [
-    0.0,
-    0.998,
-    0.001
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.077,
+   "exploitability_pct_pot": 0.091,
    "hand_distance": 0.0,
    "range_distance": 0.0
   },
   "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.993,
+    0.007
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.005,
+   "range_distance": 0.161
+  },
+  "uniform": {
    "fold_call_raise": [
     0.0,
     0.996,
     0.004
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.074,
-   "hand_distance": 0.003,
-   "range_distance": 0.023
-  },
-  "uniform": {
-   "fold_call_raise": [
-    0.002,
-    0.998,
-    0.0
-   ],
-   "top": "check/call",
-   "exploitability_pct_pot": 0.068,
+   "exploitability_pct_pot": 0.091,
    "hand_distance": 0.002,
-   "range_distance": 0.033
+   "range_distance": 0.436
   },
   "sizes": {
    "fold_call_raise": [
@@ -3130,9 +2395,744 @@
     0.002
    ],
    "top": "check/call",
-   "exploitability_pct_pot": 0.092,
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.0,
+   "range_distance": 0.068
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "KhQh",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.236
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.066,
+   "hand_distance": 0.0,
+   "range_distance": 0.679
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.107,
+   "hand_distance": 0.0,
+   "range_distance": 0.1
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "KhQh",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.319
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.306
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.086,
+   "hand_distance": 0.0,
+   "range_distance": 0.023
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "KhQh",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.052,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.04,
+   "hand_distance": 0.0,
+   "range_distance": 0.025
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.058,
+   "hand_distance": 0.0,
+   "range_distance": 0.042
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.0,
+   "range_distance": 0.006
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "AcAd",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.988,
+    0.012
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.057,
+    0.943
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.932,
+   "range_distance": 0.161
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.201,
+    0.799
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.787,
+   "range_distance": 0.436
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.989,
+    0.011
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
    "hand_distance": 0.001,
-   "range_distance": 0.002
+   "range_distance": 0.068
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "AcAd",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.236
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.066,
+   "hand_distance": 0.0,
+   "range_distance": 0.679
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.107,
+   "hand_distance": 0.0,
+   "range_distance": 0.1
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "AcAd",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.319
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.306
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.086,
+   "hand_distance": 0.0,
+   "range_distance": 0.023
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "AcAd",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.052,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.04,
+   "hand_distance": 0.0,
+   "range_distance": 0.025
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.058,
+   "hand_distance": 0.0,
+   "range_distance": 0.042
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.0,
+   "range_distance": 0.006
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "7h6h",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.994,
+    0.006
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.064,
+    0.936
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.93,
+   "range_distance": 0.161
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.998,
+    0.002
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.004,
+   "range_distance": 0.436
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.996,
+    0.004
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.002,
+   "range_distance": 0.068
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "7h6h",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.236
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.066,
+   "hand_distance": 0.0,
+   "range_distance": 0.679
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.107,
+   "hand_distance": 0.0,
+   "range_distance": 0.1
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "7h6h",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.319
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.559,
+    0.441
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.559,
+   "range_distance": 0.306
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.086,
+   "hand_distance": 0.0,
+   "range_distance": 0.023
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "7h6h",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.052,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.04,
+   "hand_distance": 0.0,
+   "range_distance": 0.025
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.058,
+   "hand_distance": 0.0,
+   "range_distance": 0.042
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.0,
+   "range_distance": 0.006
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "QcJc",
+  "line": "first to act",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.886,
+    0.114
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.35,
+    0.65
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.095,
+   "hand_distance": 0.536,
+   "range_distance": 0.161
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.091,
+   "hand_distance": 0.114,
+   "range_distance": 0.436
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.822,
+    0.178
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.096,
+   "hand_distance": 0.064,
+   "range_distance": 0.068
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "QcJc",
+  "line": "checked to",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.094,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.0,
+   "range_distance": 0.236
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.066,
+   "hand_distance": 1.0,
+   "range_distance": 0.679
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "top": "bet/raise",
+   "exploitability_pct_pot": 0.107,
+   "hand_distance": 0.0,
+   "range_distance": 0.1
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "QcJc",
+  "line": "facing 2/3 pot",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.082,
+   "hand_distance": 0.0,
+   "range_distance": 0.319
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    0.999,
+    0.001
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.099,
+   "hand_distance": 0.001,
+   "range_distance": 0.306
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.086,
+   "hand_distance": 0.0,
+   "range_distance": 0.023
+  }
+ },
+ {
+  "board": "paired",
+  "hand": "QcJc",
+  "line": "facing a pot-sized bet",
+  "base": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.052,
+   "hand_distance": 0.0,
+   "range_distance": 0.0
+  },
+  "soft": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.04,
+   "hand_distance": 0.0,
+   "range_distance": 0.025
+  },
+  "uniform": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.058,
+   "hand_distance": 0.0,
+   "range_distance": 0.042
+  },
+  "sizes": {
+   "fold_call_raise": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "top": "check/call",
+   "exploitability_pct_pot": 0.088,
+   "hand_distance": 0.0,
+   "range_distance": 0.006
   }
  }
 ]

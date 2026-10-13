@@ -75,18 +75,27 @@ def _bench(args) -> int:
 
 
 def _slumbot(args) -> int:
-    from pokerbot.arena.slumbot import run_session
+    from pokerbot.arena.slumbot import run_session, summarise_log
 
     result = run_session(args.bot, args.hands, args.seed, args.log)
+    if args.log:
+        result["log_total"] = summarise_log(args.log)
     if args.json:
         print(json.dumps(result, indent=2))
-    else:
-        low, high = result["bb_per_100"] - result["ci95"], result["bb_per_100"] + result["ci95"]
-        print(
-            f"{result['bot']} vs Slumbot: {result['bb_per_100']:+.1f} bb/100 "
-            f"(95% CI {low:+.1f} to {high:+.1f}) over {result['hands']} hands "
-            f"in {result['seconds']:.0f} s. These are single hands, not duplicate pairs."
+        return 0
+
+    def line(label, r):
+        low, high = r["bb_per_100"] - r["ci95"], r["bb_per_100"] + r["ci95"]
+        return (
+            f"{label}: {r['bb_per_100']:+.1f} bb/100 (95% CI {low:+.1f} to {high:+.1f}) "
+            f"over {r['hands']} hands"
         )
+
+    print(line(f"{result['bot']} vs Slumbot, this session", result))
+    print(f"hands dropped after a network failure: {result['dropped_hands']}")
+    if args.log:
+        print(line("whole log", result["log_total"]))
+    print("These are single hands, not duplicate pairs.")
     return 0
 
 

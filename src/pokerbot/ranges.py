@@ -93,7 +93,7 @@ class RangeTracker:
             self.ranges = [np.array(r, dtype=np.float64) for r in ranges]
         self._board: tuple[int, ...] = ()
         self._cache: dict[int, Strategy] = {}
-        self.n_observed = 0
+        self.n_seen = 0  # how much of the history has been processed
 
     def _sync_board(self, board: tuple[int, ...]) -> None:
         if board != self._board:
@@ -122,11 +122,18 @@ class RangeTracker:
         if peak > 0:
             updated /= peak
         self.ranges[spot.seat] = updated
-        self.n_observed += 1
 
     def catch_up(self, spot: Spot) -> None:
-        """Process the part of ``spot.history`` not seen yet, then sync the board."""
+        """Process the part of ``spot.history`` not seen yet, then sync the board.
+
+        Actions listed in ``spot.unobserved`` were assumed, not seen, so they
+        leave the ranges unchanged.
+        """
         steps = replay(spot)
-        for before, kind, _ in steps[self.n_observed :]:
-            self.observe(before, kind)
+        skip = set(spot.unobserved)
+        for i in range(self.n_seen, len(steps)):
+            before, kind, _ = steps[i]
+            if i not in skip:
+                self.observe(before, kind)
+        self.n_seen = len(steps)
         self._sync_board(spot.board)

@@ -29,6 +29,7 @@ import json
 import math
 import re
 import time
+import urllib.error
 import urllib.request
 
 import numpy as np
@@ -137,28 +138,62 @@ def play_hand(bot: Bot, token: str | None = None) -> dict:
     }
 
 
-def run_session(bot_name: str, hands: int, seed: int = 0, log_path: str | None = None) -> dict:
-    """Play ``hands`` hands and summarise the result in big blinds per 100 hands."""
+def summarise(winnings_chips, **extra) -> dict:
+    """Win rate in big blinds per 100 hands with a 95% interval over hands."""
+    bb = np.array(winnings_chips, dtype=np.float64) / CONFIG.big_blind
+    n = len(bb)
+    stdev = float(bb.std(ddof=1)) if n > 1 else float("nan")
+    return {
+        "hands": n,
+        "bb_per_100": float(bb.mean() * 100) if n else float("nan"),
+        "ci95": float(1.96 * stdev / math.sqrt(n) * 100) if n > 1 else float("nan"),
+        "stdev_hand_bb": stdev,
+        **extra,
+    }
+
+
+def summarise_log(log_path: str) -> dict:
+    """Summary of every hand in a session log, across runs."""
+    with open(log_path) as log:
+        records = [json.loads(line) for line in log if line.strip()]
+    return summarise([r["winnings"] for r in records])
+
+
+def run_session(
+    bot_name: str,
+    hands: int,
+    seed: int = 0,
+    log_path: str | None = None,
+    max_dropped: int = 20,
+) -> dict:
+    """Play ``hands`` hands and summarise the result.
+
+    A network failure in the middle of a hand cannot be retried safely,
+    because the server may or may not have applied the last action. That hand
+    is dropped and counted, and play continues in a fresh session. Errors in
+    this program's own logic are not caught.
+    """
     bot = make_bot(bot_name, seed)
     token = None
     results = []
+    dropped = 0
     started = time.perf_counter()
-    for _ in range(hands):
-        record = play_hand(bot, token)
+    while len(results) < hands:
+        try:
+            record = play_hand(bot, token)
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as err:
+            dropped += 1
+            token = None
+            if dropped > max_dropped:
+                raise SlumbotError(f"too many network failures, last: {err}") from err
+            time.sleep(2.0)
+            continue
         token = record.pop("token")
         results.append(record["winnings"])
         if log_path:
             # Appended hand by hand, so an interrupted session keeps what it played.
             with open(log_path, "a") as log:
                 log.write(json.dumps(record) + "\n")
-    bb = np.array(results, dtype=np.float64) / CONFIG.big_blind
-    n = len(bb)
-    stdev = float(bb.std(ddof=1)) if n > 1 else float("nan")
-    return {
-        "bot": bot_name,
-        "hands": n,
-        "bb_per_100": float(bb.mean() * 100),
-        "ci95": float(1.96 * stdev / math.sqrt(n) * 100) if n > 1 else float("nan"),
-        "stdev_hand_bb": stdev,
-        "seconds": time.perf_counter() - started,
-    }
+    return summarise(
+        results, bot=bot_name, dropped_hands=dropped, seconds=time.perf_counter() - started
+    )
