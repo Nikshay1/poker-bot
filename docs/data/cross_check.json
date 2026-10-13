@@ -1,0 +1,36 @@
+{
+ "board": "KsTh7s4d2s",
+ "pot": 1000,
+ "stack": 9500,
+ "bet_sizes": [
+  0.5,
+  1.0
+ ],
+ "max_raises": 2,
+ "hands_per_player": 150,
+ "decisions": 20,
+ "terminals": 37,
+ "iterations": 2000,
+ "seconds": 29.03,
+ "exploitability_own_measure": 0.03930593925206338,
+ "exploitability_reference_measure": 0.03930593925173298,
+ "best_response_values_own_plus_half_pot": [
+  455.5012487048691,
+  544.577363173635
+ ],
+ "best_response_values_reference": [
+  455.5012487048689,
+  544.5773631736346
+ ],
+ "first_player_value_bracket": [
+  455.42263682636496,
+  455.5012487048691
+ ],
+ "reference_iterations": 300,
+ "reference_seconds": 30.54,
+ "reference_exploitability": 1.177157437856863,
+ "reference_first_player_value_bracket": [
+  454.1602957989794,
+  456.5146106746931
+ ]
+}
