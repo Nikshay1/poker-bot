@@ -1,0 +1,24 @@
+{
+ "seed": 1000,
+ "commit": "afbdae9",
+ "uncommitted_source_changes": false,
+ "finished": "2026-10-13 17:26",
+ "matches": [
+  {
+   "bot_a": "solver",
+   "bot_b": "heuristic",
+   "pairs": 10000,
+   "hands": 20000,
+   "bb_per_100": 39.14025,
+   "ci95": 12.784096749202506,
+   "stdev_pair_bb": 6.522498341429849,
+   "stdev_hand_bb": 20.52870740279025,
+   "illegal_a": 0,
+   "illegal_b": 0,
+   "ms_per_decision_a": 296.68411590617933,
+   "ms_per_decision_b": 132.44155146817948,
+   "seconds": 1525.6663591259985,
+   "seed": 1000
+  }
+ ]
+}
