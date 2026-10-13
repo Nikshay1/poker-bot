@@ -19,7 +19,12 @@ from pokerbot.game.state import CALL, CHECK, FOLD, RAISE, Action, Legal, Spot, l
 class BetSizing:
     bet_fracs: tuple[float, ...] = (0.33, 0.75)  # opening bets, as fractions of the pot
     raise_fracs: tuple[float, ...] = (0.75,)  # raises, as fractions of the pot after calling
-    all_in: bool = True  # always offer all-in when a raise is legal
+    all_in: bool = True  # offer all-in when a raise is legal
+    # Offer all-in only when it is at most this multiple of the pot (the pot
+    # after calling, for a raise). None means no limit. A limit keeps the
+    # solver from staking a whole deep stack on a small pot, which is only
+    # right if the estimated ranges are right.
+    all_in_max_pot: float | None = None
     max_raises: int = 3  # bets and raises allowed below the root
     commit_frac: float = 0.67  # a size using this share of the stack becomes all-in
 
@@ -136,6 +141,9 @@ def tree_actions(state: BetState, sizing: BetSizing) -> list[Action]:
             raise_to = legal.max_raise_to
         sizes.add(raise_to)
     if sizing.all_in:
-        sizes.add(legal.max_raise_to)
+        level = state.street_contrib[me] if to_call == 0 else state.street_contrib[opp]
+        limit = sizing.all_in_max_pot
+        if limit is None or legal.max_raise_to - level <= limit * (pot + to_call):
+            sizes.add(legal.max_raise_to)
     actions.extend(Action(RAISE, size) for size in sorted(sizes))
     return actions

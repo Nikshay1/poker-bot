@@ -1,0 +1,6 @@
+solver:range_floor=0.2 vs solver: -24.1 bb/100 (95% CI -55.4 to +7.3) over 6000 hands in 3000 duplicate pairs; 269.7 / 278.3 ms per decision; illegal actions 0 / 0; 608 s
+solver vs equity: +191.8 bb/100 (95% CI +125.1 to +258.5) over 4000 hands in 2000 duplicate pairs; 473.2 / 60.2 ms per decision; illegal actions 0 / 0; 498 s
+solver:range_floor=0.2 vs equity: +186.0 bb/100 (95% CI +128.5 to +243.5) over 4000 hands in 2000 duplicate pairs; 493.0 / 60.3 ms per decision; illegal actions 0 / 0; 521 s
+solver:range_floor=0.1 vs solver: -14.3 bb/100 (95% CI -42.8 to +14.2) over 6000 hands in 3000 duplicate pairs; 257.0 / 259.3 ms per decision; illegal actions 0 / 0; 572 s
+solver vs solver:slowplay_equity=0.8: +50.6 bb/100 (95% CI -0.0 to +101.3) over 6000 hands in 3000 duplicate pairs; 331.2 / 290.2 ms per decision; illegal actions 0 / 0; 738 s
+solver:range_floor=0.2 vs solver:slowplay_equity=0.8: +77.0 bb/100 (95% CI +28.0 to +125.9) over 6000 hands in 3000 duplicate pairs; 351.1 / 312.3 ms per decision; illegal actions 0 / 0; 794 s

@@ -261,3 +261,18 @@ def test_range_floor_keeps_strong_hands_possible():
     assert belief[kings] > 20 * share_sharp
     # Blocked combos stay impossible.
     assert belief[combo_index(*parse_cards("KdKs"))] == 0.0
+
+
+def test_slowplay_option_checks_the_strongest_hands_before_the_river():
+    import dataclasses
+
+    spot = partial("AsQd", "7h8h2c", pot=600, position="bb")
+    normal = RangeTracker(CFG).strategy(spot)
+    trapper = RangeTracker(dataclasses.replace(CFG, version="trap", slowplay_equity=0.8)).strategy(
+        spot
+    )
+    strong = normal.equity >= 0.8
+    assert normal.probs[strong, B_RAISE].min() == 1.0  # the normal policy bets them
+    assert trapper.probs[strong, B_RAISE].max() == 0.0  # the trapper checks them
+    weaker = (normal.equity < 0.8) & ~np.isnan(normal.equity)
+    np.testing.assert_array_equal(trapper.probs[weaker], normal.probs[weaker])

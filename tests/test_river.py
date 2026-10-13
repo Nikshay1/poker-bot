@@ -220,3 +220,21 @@ def test_advisor_uses_the_solver_on_the_river_only():
 
     turn = spot_from_partial(parse_cards("AsQd"), parse_cards(BOARD[:8]), pot=1000, to_call=400)
     assert advise(turn, solver=solver).layer == LAYER_HEURISTIC
+
+
+def test_all_in_can_be_limited_to_a_multiple_of_the_pot():
+    spot, _ = tracked("AsQd", pot=600, to_call=0, position="bb")
+    state = BetState.from_spot(spot)  # 9,700 behind into a pot of 600
+    free = tree_actions(state, BetSizing(bet_fracs=(0.33, 0.75, 1.5)))
+    capped = tree_actions(state, BetSizing(bet_fracs=(0.33, 0.75, 1.5), all_in_max_pot=3.0))
+    assert [a.amount for a in free[1:]] == [198, 450, 900, 9700]
+    assert [a.amount for a in capped[1:]] == [198, 450, 900]  # all-in would be 16 pots
+    # Once the pot has grown, all-in is within the limit and comes back.
+    deep = state.apply(capped[3]).apply(Action(RAISE, 3000))  # pot 4,500, facing 2,100
+    limited = BetSizing(bet_fracs=(0.33, 0.75, 1.5), all_in_max_pot=3.0)
+    assert tree_actions(deep, limited)[-1].amount == 9700
+    # A short stack can always go all-in.
+    short = spot_from_partial(
+        parse_cards("AsQd"), parse_cards(BOARD), pot=600, stack=900, position="bb"
+    )
+    assert tree_actions(BetState.from_spot(short), limited)[-1].amount == 900

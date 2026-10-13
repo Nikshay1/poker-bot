@@ -74,6 +74,8 @@ def postflop_strategy(
                 weights[value].sum() * size / (1.0 + size) * mult,
             )
             bet = value + bluff
+            if street < 3:
+                bet = np.where(equity >= cfg.slowplay_equity, 0.0, bet)
             notes.append(
                 f"bets {size:.0%} of the pot for value with equity of {value_cut:.0%} or more"
             )

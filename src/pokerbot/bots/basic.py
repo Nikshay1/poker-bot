@@ -14,6 +14,7 @@ from pokerbot.advisor import SolverConfig, advise
 from pokerbot.cards import COMBO_CLASS, combo_index
 from pokerbot.equity import range_equity, uniform_range
 from pokerbot.game.state import CALL, CHECK, FOLD, RAISE, Action, Spot
+from pokerbot.game.tree import BetSizing
 from pokerbot.policy.base import PolicyConfig
 from pokerbot.preflop_table import equity_vs_random
 from pokerbot.ranges import RangeTracker
@@ -114,7 +115,22 @@ class SolverBot(HeuristicBot):
         return advise(spot, self.cfg, self.tracker, self.rng, self.solver).action
 
 
-BOTS = {cls.name: cls for cls in (RandomBot, CallBot, EquityBot, HeuristicBot, SolverBot)}
+class CappedSolverBot(SolverBot):
+    """SolverBot with a 1.5x-pot bet added and all-in limited to three pots."""
+
+    name = "capped"
+    solver = SolverConfig(
+        sizing=BetSizing(bet_fracs=(0.33, 0.75, 1.5), all_in_max_pot=3.0),
+        time_budget=30.0,
+        max_iterations=300,
+        target_pct_pot=0.25,
+    )
+
+
+BOTS = {
+    cls.name: cls
+    for cls in (RandomBot, CallBot, EquityBot, HeuristicBot, SolverBot, CappedSolverBot)
+}
 
 
 def make_bot(spec: str, seed: int = 0) -> Bot:

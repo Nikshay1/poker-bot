@@ -62,6 +62,10 @@ class PolicyConfig:
     bluff_mult: tuple[float, ...] = (1.0, 1.0, 1.0, 1.0)
     call_margin: tuple[float, ...] = (0.0, 0.03, 0.02, 0.0)
     mdf_guard: float = 0.65  # defend at least this share of the minimum defence frequency
+    # Hands at or above this equity check the flop and turn instead of betting.
+    # Above 1 it is off. It is only used to build a test opponent that traps,
+    # which is exactly the behaviour the range model does not expect.
+    slowplay_equity: float = 2.0
 
     # Sizing and range updates.
     commit_frac: float = 0.4  # a bet using this share of the stack becomes all-in
