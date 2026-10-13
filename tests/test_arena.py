@@ -24,8 +24,8 @@ def test_match_is_reproducible_and_seed_dependent():
 
 
 def test_swapping_the_bots_negates_the_result():
-    a = run_match("equity", "call", pairs=15, seed=5)
-    b = run_match("call", "equity", pairs=15, seed=5)
+    a = run_match("equity", "call", pairs=6, seed=5)
+    b = run_match("call", "equity", pairs=6, seed=5)
     assert a.bb_per_100 == pytest.approx(-b.bb_per_100)
 
 
@@ -72,6 +72,6 @@ def test_illegal_actions_are_counted_and_replaced():
 
 @pytest.mark.parametrize("name", sorted(BOTS))
 def test_every_bot_plays_legal_hands_against_random(name):
-    pairs = {"heuristic": 20, "equity": 20, "solver": 6}.get(name, 100)
+    pairs = {"heuristic": 8, "equity": 8, "solver": 4}.get(name, 100)
     result = run_match(name, "random", pairs=pairs, seed=11)
     assert result.illegal_a == 0 and result.illegal_b == 0

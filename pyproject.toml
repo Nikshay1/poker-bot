@@ -40,3 +40,4 @@ ignore = ["RUF046"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["C408"]
+"scripts/*" = ["C408"]

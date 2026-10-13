@@ -45,3 +45,34 @@ def test_ten_big_blind_ranges_match_the_published_chart():
 def test_a_very_short_stack_calls_everything():
     # With 2 big blinds the big blind already has half its stack in the pot.
     assert solve_pushfold(2.0).call_frequency == pytest.approx(1.0, abs=1e-6)
+
+
+def test_short_stacked_button_plays_the_pushfold_equilibrium():
+    from pokerbot.advisor import advise
+    from pokerbot.cards import COMBO_CLASS, parse_cards
+    from pokerbot.game.state import GameConfig, HandState
+    from pokerbot.policy.base import B_RAISE
+    from pokerbot.ranges import RangeTracker
+
+    config = GameConfig(stacks=(800, 800))  # 8 big blinds each
+    state = HandState(config, tuple(parse_cards("AsKd" + "7c2d" + "2c3c4c5c9d")))
+    spot = state.view()
+    strategy = RangeTracker().strategy(spot)
+    solution = solve_pushfold(8.0)
+    assert strategy.raise_to == 800
+    np.testing.assert_allclose(strategy.probs[:, B_RAISE], solution.jam[COMBO_CLASS])
+    rec = advise(spot)
+    assert rec.action.kind == "raise" and rec.action.amount == 800
+    assert any("push-or-fold" in note for note in rec.notes)
+
+    # The big blind then decides by pot odds against that jamming range,
+    # which is its best response and so its side of the same equilibrium.
+    state.apply(rec.action)
+    reply = RangeTracker()
+    reply.catch_up(state.view())
+    call_frequency = reply.strategy(state.view()).probs[:, 1].mean()
+    assert call_frequency == pytest.approx(solution.call_frequency, abs=0.05)
+
+    # Deep stacks do not use the table.
+    deep = HandState(GameConfig(), tuple(parse_cards("AsKd" + "7c2d" + "2c3c4c5c9d"))).view()
+    assert RangeTracker().strategy(deep).raise_to == 250

@@ -50,6 +50,7 @@ class PolicyConfig:
     reraise_factor_oop: float = 3.5
     realization_ip: float = 1.0  # share of raw equity a call realizes, in position
     realization_oop: float = 0.8  # and out of position
+    pushfold_max_bb: float = 10.0  # at or below this stack the button plays push-or-fold
 
     # After the flop. Tuples are indexed by street: preflop, flop, turn, river.
     bet_frac: float = 0.66  # bet size as a fraction of the pot

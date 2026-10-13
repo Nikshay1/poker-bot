@@ -23,6 +23,7 @@ from pokerbot.policy.base import (
     sized,
     take_by_order,
 )
+from pokerbot.policy.pushfold import solve_pushfold
 from pokerbot.preflop_table import class_equity_vs_range, class_weights, equity_vs_random
 
 
@@ -41,7 +42,22 @@ def preflop_strategy(
     equity = None
     notes: list[str] = []
 
-    if n_raises == 0 and legal.can_raise:
+    # Effective stack at the start of the hand, in big blinds.
+    stack_bb = min(spot.stacks[i] + spot.total_contrib[i] for i in (0, 1)) / spot.big_blind
+    first_in = n_raises == 0 and to_call > 0 and not spot.history
+
+    if first_in and legal.can_raise and 1.0 < stack_bb <= cfg.pushfold_max_bb:
+        # Short stacks: the button goes all-in or folds, following the
+        # equilibrium of the push-or-fold game for this stack depth.
+        solution = solve_pushfold(round(stack_bb, 1))
+        raise_to = legal.max_raise_to
+        probs[:, B_RAISE] = solution.jam
+        probs[:, B_FOLD] = 1.0 - solution.jam
+        notes.append(
+            f"push-or-fold equilibrium at {stack_bb:.1f} big blinds: "
+            f"all-in with {solution.jam_frequency:.0%} of hands"
+        )
+    elif n_raises == 0 and legal.can_raise:
         order = np.argsort(-equity_vs_random(), kind="stable")
         if to_call > 0:
             # Button, first to act: open or fold.

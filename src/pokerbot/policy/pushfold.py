@@ -102,7 +102,7 @@ def pushfold_tree(stack_bb: float, small_blind: float = 0.5, big_blind: float = 
 
 
 @lru_cache(maxsize=64)
-def solve_pushfold(stack_bb: float, iterations: int = 3000) -> PushFold:
+def solve_pushfold(stack_bb: float, iterations: int = 1000) -> PushFold:
     """Solve the push-or-fold game for an effective stack in big blinds."""
     if stack_bb <= 1.0:
         raise ValueError("the effective stack must exceed one big blind")

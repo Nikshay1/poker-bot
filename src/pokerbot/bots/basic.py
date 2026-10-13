@@ -104,7 +104,9 @@ class SolverBot(HeuristicBot):
     """The heuristic bot with river decisions solved by CFR."""
 
     name = "solver"
-    solver = SolverConfig()
+    # A fixed iteration budget, not a time budget: the same seed then gives
+    # the same match whatever else the machine is doing.
+    solver = SolverConfig(time_budget=30.0, max_iterations=300, target_pct_pot=0.25)
 
     def act(self, spot: Spot) -> Action:
         return advise(spot, self.cfg, self.tracker, self.rng, self.solver).action

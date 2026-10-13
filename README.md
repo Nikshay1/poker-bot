@@ -18,8 +18,10 @@ Work in progress. This section is updated as each part lands.
 - [x] Cards, hand evaluator, equity
 - [x] Rules engine, baseline bots, match runner
 - [x] Heuristic advisor and command line
-- [ ] CFR validated on Kuhn and Leduc poker
-- [ ] River solver
+- [x] CFR validated on Kuhn and Leduc poker
+- [x] River solver
+- [x] Push-or-fold game solved
+- [x] Slumbot client
 - [ ] Results
 
 ## Setup
@@ -46,7 +48,11 @@ uv run pokerbot advise --hole QsQd --position bb --pot 350 --to-call 150 --json
 Chips are in units where the big blind is 100 unless `--bb` says otherwise.
 `--pot` includes any bet you are facing.
 
-Play a duplicate match between two bots (`random`, `call`, `equity`, `heuristic`):
+On the river the answer comes from the solver, with up to `--time` seconds
+(default 2). Earlier streets use the heuristic advisor.
+
+Play a duplicate match between two bots (`random`, `call`, `equity`,
+`heuristic`, `solver`):
 
 ```
 uv run pokerbot match heuristic equity --pairs 1000 --workers 16
