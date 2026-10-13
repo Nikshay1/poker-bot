@@ -61,10 +61,13 @@ class Recommendation:
         bb = spot.big_blind
         where = f" on {cards_to_str(spot.board)}" if spot.board else ""
         seat = "button" if spot.seat == 0 else "big blind"
+        chips = (
+            f"Pot {spot.pot} ({spot.pot / bb:.1f} bb), to call {spot.to_call}, "
+            f"stack behind {spot.stacks[spot.seat]}"
+        )
         lines = [
             f"Hand {cards_to_str(spot.hole)}{where} ({STREET_NAMES[spot.street]}, {seat})",
-            f"Pot {spot.pot} ({spot.pot / bb:.1f} bb), to call {spot.to_call}, "
-            f"stack behind {spot.stacks[spot.seat]}",
+            chips,
             "",
             f"Recommended: {self.action}",
         ]

@@ -60,13 +60,16 @@ class MultiwayRecommendation:
 
     def render_multiway(self, hole, board, pot, to_call) -> str:
         where = f" on {cards_to_str(board)}" if board else ""
+        equity = (
+            f"Equity: {self.equity:.1%} (±{1.96 * self.stderr:.1%}); "
+            f"an equal share would be {self.fair_share:.1%}"
+        )
         lines = [
             f"Hand {cards_to_str(hole)}{where}",
             f"Pot {pot}, to call {to_call}",
             "",
             f"Recommended: {self.action}",
-            f"Equity: {self.equity:.1%} (±{1.96 * self.stderr:.1%}); "
-            f"an equal share would be {self.fair_share:.1%}",
+            equity,
         ]
         evs = [f"{name} {value:+.0f}" for name, value in self.ev.items() if value is not None]
         if evs:

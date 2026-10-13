@@ -15,9 +15,9 @@ The reasoning behind these choices is in [docs/DESIGN.md](docs/DESIGN.md).
 Work in progress. This section is updated as each part lands.
 
 - [x] Design and contracts
-- [ ] Cards, hand evaluator, equity
-- [ ] Rules engine, baseline bots, match runner
-- [ ] Heuristic advisor and command line
+- [x] Cards, hand evaluator, equity
+- [x] Rules engine, baseline bots, match runner
+- [x] Heuristic advisor and command line
 - [ ] CFR validated on Kuhn and Leduc poker
 - [ ] River solver
 - [ ] Results
@@ -29,4 +29,31 @@ Requires [uv](https://docs.astral.sh/uv/).
 ```
 uv sync
 uv run pytest
+```
+
+## Use
+
+Ask for advice on one situation. Only the hole cards are required; anything
+left out is filled with a stated assumption.
+
+```
+uv run pokerbot advise --hole AsKd
+uv run pokerbot advise --hole 9h6h --board 7h8h2c --pot 1000 --to-call 400
+uv run pokerbot advise --hole AsAd --board 7h8h2c --pot 1000 --to-call 400 --players 4
+uv run pokerbot advise --hole QsQd --position bb --pot 350 --to-call 150 --json
+```
+
+Chips are in units where the big blind is 100 unless `--bb` says otherwise.
+`--pot` includes any bet you are facing.
+
+Play a duplicate match between two bots (`random`, `call`, `equity`, `heuristic`):
+
+```
+uv run pokerbot match heuristic equity --pairs 1000 --workers 16
+```
+
+Measure speed on this machine:
+
+```
+uv run pokerbot bench
 ```
