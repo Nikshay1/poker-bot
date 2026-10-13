@@ -139,3 +139,16 @@ def test_monte_carlo_rejects_impossible_range():
     weights[combo_index(*parse_cards("AsKd"))] = 1.0  # blocked by the hero's ace
     with pytest.raises(ValueError):
         monte_carlo_equity(hero, [], [weights])
+
+
+def test_radix_sort_orders_live_combos_by_strength():
+    from pokerbot.equity import sort_by_strength
+    from pokerbot.evaluator import combo_strengths
+
+    for text in ("7h8h2cKd3s", "AhKhQhJhTh", "2c2d2h2sKd"):
+        strengths = combo_strengths(parse_cards(text))
+        order = sort_by_strength(strengths)
+        assert len(order) == (strengths >= 0).sum() == 47 * 46 // 2
+        assert np.all(np.diff(strengths[order]) >= 0)
+        expected = np.argsort(strengths, kind="stable")[-len(order) :]
+        np.testing.assert_array_equal(order, expected)  # stable, like a stable argsort

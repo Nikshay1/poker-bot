@@ -11,7 +11,39 @@ import numpy as np
 from numba import njit, prange
 
 from pokerbot.cards import COMBO_CARDS, N_COMBOS
-from pokerbot.evaluator import evaluate
+from pokerbot.evaluator import board_combo_strengths, evaluate
+
+
+@njit(cache=True)
+def sort_by_strength(strengths):
+    """Indices of the live combos (strength >= 0) from weakest to strongest.
+
+    A radix sort on three bytes: strengths fit in 24 bits, and for about a
+    thousand small keys this is several times faster than a comparison sort.
+    It is stable, so equal strengths keep their original order.
+    """
+    n = strengths.shape[0]
+    a = np.empty(n, dtype=np.int64)
+    b = np.empty(n, dtype=np.int64)
+    m = 0
+    for k in range(n):
+        if strengths[k] >= 0:
+            a[m] = k
+            m += 1
+    count = np.empty(257, dtype=np.int64)
+    for byte in range(3):
+        shift = 8 * byte
+        count[:] = 0
+        for i in range(m):
+            count[((strengths[a[i]] >> shift) & 255) + 1] += 1
+        for d in range(256):
+            count[d + 1] += count[d]
+        for i in range(m):
+            d = (strengths[a[i]] >> shift) & 255
+            b[count[d]] = a[i]
+            count[d] += 1
+        a, b = b, a
+    return a[:m]
 
 
 @njit(cache=True)
@@ -25,22 +57,21 @@ def showdown_sums(strengths, opp_weights, combo_cards, win, tie, total):
     itself is subtracted once for each of its two cards, so it is added back.
     Combos with negative strength (blocked by the board) are skipped.
     """
-    n = strengths.shape[0]
-    order = np.argsort(strengths)
+    order = sort_by_strength(strengths)
+    n = order.shape[0]
     card_all = np.zeros(52)
     card_less = np.zeros(52)
     card_equal = np.zeros(52)
     weight_all = 0.0
-    for k in range(n):
+    for t in range(n):
+        k = order[t]
         w = opp_weights[k]
-        if strengths[k] >= 0 and w > 0.0:
+        if w > 0.0:
             weight_all += w
             card_all[combo_cards[k, 0]] += w
             card_all[combo_cards[k, 1]] += w
 
     i = 0
-    while i < n and strengths[order[i]] < 0:
-        i += 1
     weight_less = 0.0
     while i < n:
         strength = strengths[order[i]]
@@ -76,30 +107,16 @@ def showdown_sums(strengths, opp_weights, combo_cards, win, tie, total):
         i = j
 
 
-@njit(cache=True)
-def _strengths_into(cards, n_cards, dead, combo_cards, hand, out):
-    for i in range(n_cards):
-        hand[i] = cards[i]
-    for k in range(combo_cards.shape[0]):
-        c1 = combo_cards[k, 0]
-        c2 = combo_cards[k, 1]
-        if dead[c1] or dead[c2]:
-            out[k] = -1
-        else:
-            hand[n_cards] = c1
-            hand[n_cards + 1] = c2
-            out[k] = evaluate(hand)
-
-
 @njit(cache=True, parallel=True)
 def _range_sums(board, opp_weights, combo_cards):
     """Win, tie and total weight for every combo, summed over all runouts."""
     n_board = board.shape[0]
     n = combo_cards.shape[0]
     # One slot per first runout card keeps the parallel loop free of shared writes.
-    win = np.zeros((52, n))
-    tie = np.zeros((52, n))
-    total = np.zeros((52, n))
+    slots = 1 if n_board == 5 else 52
+    win = np.zeros((slots, n))
+    tie = np.zeros((slots, n))
+    total = np.zeros((slots, n))
     on_board = np.zeros(52, dtype=np.bool_)
     for i in range(n_board):
         on_board[board[i]] = True
@@ -107,8 +124,7 @@ def _range_sums(board, opp_weights, combo_cards):
     if n_board == 5:
         dead = on_board.copy()
         strengths = np.empty(n, dtype=np.int64)
-        hand = np.empty(7, dtype=np.int64)
-        _strengths_into(board, 5, dead, combo_cards, hand, strengths)
+        board_combo_strengths(board, dead, combo_cards, np.empty(169, dtype=np.int64), strengths)
         showdown_sums(strengths, opp_weights, combo_cards, win[0], tie[0], total[0])
     else:
         for first in prange(52):
@@ -121,9 +137,9 @@ def _range_sums(board, opp_weights, combo_cards):
             dead = on_board.copy()
             dead[first] = True
             strengths = np.empty(n, dtype=np.int64)
-            hand = np.empty(7, dtype=np.int64)
+            rank_table = np.empty(169, dtype=np.int64)
             if n_board == 4:
-                _strengths_into(cards, 5, dead, combo_cards, hand, strengths)
+                board_combo_strengths(cards, dead, combo_cards, rank_table, strengths)
                 showdown_sums(
                     strengths, opp_weights, combo_cards, win[first], tie[first], total[first]
                 )
@@ -133,7 +149,7 @@ def _range_sums(board, opp_weights, combo_cards):
                         continue
                     cards[4] = second
                     dead[second] = True
-                    _strengths_into(cards, 5, dead, combo_cards, hand, strengths)
+                    board_combo_strengths(cards, dead, combo_cards, rank_table, strengths)
                     showdown_sums(
                         strengths, opp_weights, combo_cards, win[first], tie[first], total[first]
                     )

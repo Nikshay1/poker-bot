@@ -9,6 +9,7 @@ results, never over single hands.
 from __future__ import annotations
 
 import math
+import os
 import time
 from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict, dataclass
@@ -69,7 +70,8 @@ class MatchResult:
             f"{self.bot_a} vs {self.bot_b}: {self.bb_per_100:+.1f} bb/100 "
             f"(95% CI {low:+.1f} to {high:+.1f}) over {self.hands} hands in {self.pairs} "
             f"duplicate pairs; {self.ms_per_decision_a:.1f} / {self.ms_per_decision_b:.1f} ms "
-            f"per decision; illegal actions {self.illegal_a} / {self.illegal_b}"
+            f"per decision; illegal actions {self.illegal_a} / {self.illegal_b}; "
+            f"{self.seconds:.0f} s"
         )
 
 
@@ -101,6 +103,9 @@ def _play_pairs(args):
     return out
 
 
+_SINGLE_THREAD = ("NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS")
+
+
 def _worker_init():
     # Each worker is one process; nested Numba threads would oversubscribe the CPU.
     import numba
@@ -128,9 +133,20 @@ def run_match(
             for first in range(0, pairs, chunk)
         ]
         rows = []
-        with ProcessPoolExecutor(workers, get_context("spawn"), _worker_init) as pool:
-            for part in pool.map(_play_pairs, jobs):
-                rows.extend(part)
+        # One thread per worker process. Without this each worker's math
+        # library starts a thread per core and the workers fight each other.
+        saved = {name: os.environ.get(name) for name in _SINGLE_THREAD}
+        os.environ.update(dict.fromkeys(_SINGLE_THREAD, "1"))
+        try:
+            with ProcessPoolExecutor(workers, get_context("spawn"), _worker_init) as pool:
+                for part in pool.map(_play_pairs, jobs):
+                    rows.extend(part)
+        finally:
+            for name, value in saved.items():
+                if value is None:
+                    os.environ.pop(name, None)
+                else:
+                    os.environ[name] = value
 
     data = np.array(rows, dtype=np.float64)
     bb = config.big_blind

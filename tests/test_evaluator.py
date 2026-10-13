@@ -215,3 +215,22 @@ def test_combo_strengths_marks_blocked_combos():
     values = combo_strengths(board)
     assert (values == -1).sum() == 1326 - 47 * 46 // 2
     assert values.max() >> CATEGORY_SHIFT == STRAIGHT  # JT makes broadway
+
+
+def test_rank_table_strengths_match_direct_evaluation():
+    # The fast per-board method must agree with evaluating every combo directly,
+    # including boards where a flush or straight flush is possible.
+    from pokerbot.cards import COMBO_CARDS
+
+    rng = random.Random(21)
+    boards = [rng.sample(range(N_CARDS), 5) for _ in range(300)]
+    boards += [parse_cards(b) for b in ("AhKhQh5c2d", "9h8h7h6h2c", "AhKhQhJhTh", "2c2d2h2sKd")]
+    for board in boards:
+        fast = combo_strengths(board)
+        for k in rng.sample(range(1326), 150):
+            c1, c2 = (int(c) for c in COMBO_CARDS[k])
+            if c1 in board or c2 in board:
+                assert fast[k] == -1
+            else:
+                direct = int(evaluate(np.array([*board, c1, c2], dtype=np.int64)))
+                assert int(fast[k]) == direct
