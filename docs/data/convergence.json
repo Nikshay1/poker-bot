@@ -1,0 +1,758 @@
+[
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 10,
+  "seconds": 0.0558,
+  "exploitability_pct_pot": 83.61313583835266
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 25,
+  "seconds": 0.1093,
+  "exploitability_pct_pot": 35.56703027541374
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 50,
+  "seconds": 0.1941,
+  "exploitability_pct_pot": 18.41536556269997
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 100,
+  "seconds": 0.3655,
+  "exploitability_pct_pot": 9.115422534774424
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 200,
+  "seconds": 0.6922,
+  "exploitability_pct_pot": 4.365747272195529
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 400,
+  "seconds": 1.2441,
+  "exploitability_pct_pot": 2.2354058057117108
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr",
+  "iterations": 800,
+  "seconds": 2.2648,
+  "exploitability_pct_pot": 1.196080505991379
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 10,
+  "seconds": 0.0271,
+  "exploitability_pct_pot": 45.579449070942474
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 25,
+  "seconds": 0.068,
+  "exploitability_pct_pot": 16.37444905520919
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 50,
+  "seconds": 0.1363,
+  "exploitability_pct_pot": 8.190380706826607
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 100,
+  "seconds": 0.2696,
+  "exploitability_pct_pot": 3.303873392012885
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 200,
+  "seconds": 0.5455,
+  "exploitability_pct_pot": 1.1371405187427932
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 400,
+  "seconds": 1.0891,
+  "exploitability_pct_pot": 0.43594935509697563
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "cfr+",
+  "iterations": 800,
+  "seconds": 2.2036,
+  "exploitability_pct_pot": 0.16137621479097727
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 10,
+  "seconds": 0.0261,
+  "exploitability_pct_pot": 44.39547474603852
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 25,
+  "seconds": 0.0669,
+  "exploitability_pct_pot": 11.56073095475709
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 50,
+  "seconds": 0.1402,
+  "exploitability_pct_pot": 5.116559471572458
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 100,
+  "seconds": 0.2765,
+  "exploitability_pct_pot": 1.5493382628344865
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 200,
+  "seconds": 0.5425,
+  "exploitability_pct_pot": 0.373052240687392
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 400,
+  "seconds": 1.0941,
+  "exploitability_pct_pot": 0.1692389309539301
+ },
+ {
+  "spot": "first to act, pot 600",
+  "decisions": 24,
+  "terminals": 45,
+  "variant": "dcfr",
+  "iterations": 800,
+  "seconds": 2.2025,
+  "exploitability_pct_pot": 0.08614880912708618
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 10,
+  "seconds": 0.0074,
+  "exploitability_pct_pot": 11.777727391888554
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 25,
+  "seconds": 0.0185,
+  "exploitability_pct_pot": 6.000998811896539
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 50,
+  "seconds": 0.0355,
+  "exploitability_pct_pot": 1.7603532123804926
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 100,
+  "seconds": 0.0699,
+  "exploitability_pct_pot": 1.4703143011540944
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 200,
+  "seconds": 0.1371,
+  "exploitability_pct_pot": 0.5736619022028663
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 400,
+  "seconds": 0.2724,
+  "exploitability_pct_pot": 0.32896765127805594
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr",
+  "iterations": 800,
+  "seconds": 0.5342,
+  "exploitability_pct_pot": 0.1855583449725174
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 10,
+  "seconds": 0.0075,
+  "exploitability_pct_pot": 18.90347262644117
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 25,
+  "seconds": 0.0182,
+  "exploitability_pct_pot": 5.236532425154881
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 50,
+  "seconds": 0.0365,
+  "exploitability_pct_pot": 2.224124049672841
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 100,
+  "seconds": 0.073,
+  "exploitability_pct_pot": 0.8002141972221096
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 200,
+  "seconds": 0.1473,
+  "exploitability_pct_pot": 0.2702396721894388
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 400,
+  "seconds": 0.3019,
+  "exploitability_pct_pot": 0.08535005210314636
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "cfr+",
+  "iterations": 800,
+  "seconds": 0.6135,
+  "exploitability_pct_pot": 0.027372348331154227
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 10,
+  "seconds": 0.0074,
+  "exploitability_pct_pot": 15.89352251613829
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 25,
+  "seconds": 0.0183,
+  "exploitability_pct_pot": 3.962314404951637
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 50,
+  "seconds": 0.0373,
+  "exploitability_pct_pot": 1.462694126672116
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 100,
+  "seconds": 0.0754,
+  "exploitability_pct_pot": 0.494180815780183
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 200,
+  "seconds": 0.156,
+  "exploitability_pct_pot": 0.12233769997345831
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 400,
+  "seconds": 0.3072,
+  "exploitability_pct_pot": 0.0323419866492685
+ },
+ {
+  "spot": "facing a 40% pot bet",
+  "decisions": 6,
+  "terminals": 12,
+  "variant": "dcfr",
+  "iterations": 800,
+  "seconds": 0.6119,
+  "exploitability_pct_pot": 0.01102105425528066
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 10,
+  "seconds": 0.012,
+  "exploitability_pct_pot": 10.971733049591316
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 25,
+  "seconds": 0.0308,
+  "exploitability_pct_pot": 4.491706861880337
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 50,
+  "seconds": 0.0611,
+  "exploitability_pct_pot": 2.5213469453424775
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 100,
+  "seconds": 0.1194,
+  "exploitability_pct_pot": 1.486926957697747
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 200,
+  "seconds": 0.2543,
+  "exploitability_pct_pot": 0.8171628096403559
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 400,
+  "seconds": 0.5042,
+  "exploitability_pct_pot": 0.41248739113392113
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr",
+  "iterations": 800,
+  "seconds": 0.966,
+  "exploitability_pct_pot": 0.21141877791181576
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 10,
+  "seconds": 0.0116,
+  "exploitability_pct_pot": 7.502352219544253
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 25,
+  "seconds": 0.029,
+  "exploitability_pct_pot": 2.4057733143821363
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 50,
+  "seconds": 0.0588,
+  "exploitability_pct_pot": 1.3925682786864062
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 100,
+  "seconds": 0.1183,
+  "exploitability_pct_pot": 0.5238076240389233
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 200,
+  "seconds": 0.2342,
+  "exploitability_pct_pot": 0.1982143427075968
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 400,
+  "seconds": 0.4603,
+  "exploitability_pct_pot": 0.07073243286379416
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "cfr+",
+  "iterations": 800,
+  "seconds": 0.8904,
+  "exploitability_pct_pot": 0.025589888533002637
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 10,
+  "seconds": 0.0107,
+  "exploitability_pct_pot": 7.5726741889653
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 25,
+  "seconds": 0.027,
+  "exploitability_pct_pot": 2.0488890765019026
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 50,
+  "seconds": 0.054,
+  "exploitability_pct_pot": 1.29174162135355
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 100,
+  "seconds": 0.1098,
+  "exploitability_pct_pot": 0.3667320728950077
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 200,
+  "seconds": 0.2252,
+  "exploitability_pct_pot": 0.11367522134500732
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 400,
+  "seconds": 0.4438,
+  "exploitability_pct_pot": 0.03952574204284254
+ },
+ {
+  "spot": "checked to, pot 2000",
+  "decisions": 10,
+  "terminals": 19,
+  "variant": "dcfr",
+  "iterations": 800,
+  "seconds": 0.9033,
+  "exploitability_pct_pot": 0.010862060307103506
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 10,
+  "seconds": 0.0321,
+  "exploitability_pct_pot": 21.269470440960983
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 25,
+  "seconds": 0.0787,
+  "exploitability_pct_pot": 9.477692228238952
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 50,
+  "seconds": 0.1546,
+  "exploitability_pct_pot": 4.930896201674674
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 100,
+  "seconds": 0.3,
+  "exploitability_pct_pot": 2.5822866048081847
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 200,
+  "seconds": 0.5991,
+  "exploitability_pct_pot": 1.4114915864122584
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 400,
+  "seconds": 1.2411,
+  "exploitability_pct_pot": 0.7272103060346768
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr",
+  "iterations": 800,
+  "seconds": 2.4302,
+  "exploitability_pct_pot": 0.3737910909232281
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 10,
+  "seconds": 0.031,
+  "exploitability_pct_pot": 19.34386105771144
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 25,
+  "seconds": 0.0769,
+  "exploitability_pct_pot": 7.254179085545347
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 50,
+  "seconds": 0.1517,
+  "exploitability_pct_pot": 2.706021181683507
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 100,
+  "seconds": 0.3084,
+  "exploitability_pct_pot": 0.9489455932085527
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 200,
+  "seconds": 0.6379,
+  "exploitability_pct_pot": 0.26535733751652657
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 400,
+  "seconds": 1.2294,
+  "exploitability_pct_pot": 0.07170213492590467
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "cfr+",
+  "iterations": 800,
+  "seconds": 2.2977,
+  "exploitability_pct_pot": 0.024826558152823235
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 10,
+  "seconds": 0.0255,
+  "exploitability_pct_pot": 20.92732995036606
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 25,
+  "seconds": 0.0622,
+  "exploitability_pct_pot": 5.570125589079548
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 50,
+  "seconds": 0.1218,
+  "exploitability_pct_pot": 1.2593185828363016
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 100,
+  "seconds": 0.2435,
+  "exploitability_pct_pot": 0.35047301436970574
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 200,
+  "seconds": 0.4918,
+  "exploitability_pct_pot": 0.08130255992467639
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 400,
+  "seconds": 1.0553,
+  "exploitability_pct_pot": 0.023356688379517248
+ },
+ {
+  "spot": "first to act, paired board",
+  "decisions": 22,
+  "terminals": 41,
+  "variant": "dcfr",
+  "iterations": 800,
+  "seconds": 2.3279,
+  "exploitability_pct_pot": 0.005498771428859091
+ }
+]

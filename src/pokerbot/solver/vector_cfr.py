@@ -21,19 +21,70 @@ best-response values (NashConv / 2), which is zero only at an equilibrium.
 from __future__ import annotations
 
 import numpy as np
+from numba import njit
 
 from pokerbot.solver.public_tree import CHANCE, TERMINAL, Node, Tree
 
 VARIANTS = ("cfr", "cfr+", "dcfr")
 
+# The two kernels below hold all the arithmetic done at a decision node. They
+# are compiled because, with a thousand hands and a handful of actions, the
+# overhead of separate NumPy calls costs more than the arithmetic itself.
+
+
+@njit(cache=True)
+def _regret_matching(regret, out):
+    n, n_actions = regret.shape
+    uniform = 1.0 / n_actions
+    for i in range(n):
+        total = 0.0
+        for a in range(n_actions):
+            if regret[i, a] > 0.0:
+                total += regret[i, a]
+        if total > 0.0:
+            for a in range(n_actions):
+                out[i, a] = regret[i, a] / total if regret[i, a] > 0.0 else 0.0
+        else:
+            for a in range(n_actions):
+                out[i, a] = uniform
+
+
+@njit(cache=True)
+def _update_node(
+    regret, strategy_sum, strategy, action_values, reach_self, mode, t, pos, neg, avg, value
+):
+    """Node value per hand, then the regret and average-strategy updates.
+
+    ``mode`` is 0 for plain CFR, 1 for CFR+ and 2 for Discounted CFR.
+    """
+    n, n_actions = regret.shape
+    for i in range(n):
+        v = 0.0
+        for a in range(n_actions):
+            v += strategy[i, a] * action_values[i, a]
+        value[i] = v
+        own = reach_self[i]
+        for a in range(n_actions):
+            instant = action_values[i, a] - v
+            played = own * strategy[i, a]
+            if mode == 0:
+                regret[i, a] += instant
+                strategy_sum[i, a] += played
+            elif mode == 1:
+                r = regret[i, a] + instant
+                regret[i, a] = max(0.0, r)
+                strategy_sum[i, a] += t * played
+            else:
+                r = regret[i, a]
+                regret[i, a] = (r * pos if r > 0.0 else r * neg) + instant
+                strategy_sum[i, a] = strategy_sum[i, a] * avg + played
+
 
 def regret_matching(regret: np.ndarray) -> np.ndarray:
     """Play each action in proportion to its positive regret; uniform if none."""
-    positive = np.maximum(regret, 0.0)
-    total = positive.sum(axis=1, keepdims=True)
-    uniform = 1.0 / regret.shape[1]
-    with np.errstate(divide="ignore", invalid="ignore"):
-        return np.where(total > 0, positive / total, uniform)
+    out = np.empty(regret.shape)
+    _regret_matching(np.ascontiguousarray(regret, dtype=np.float64), out)
+    return out
 
 
 class VectorCFR:
@@ -65,6 +116,8 @@ class VectorCFR:
         ]
         self.strategy_sum = [np.zeros_like(r) for r in self.regret]
         self.t = 0
+        self._mode = VARIANTS.index(variant)
+        self._pos = self._neg = self._avg = 1.0
 
     # Strategies -----------------------------------------------------------
 
@@ -118,22 +171,21 @@ class VectorCFR:
             action_values[:, a] = self._update(
                 child, player, reach_opp, reach_self * strategy[:, a]
             )
-        value = (strategy * action_values).sum(axis=1)
-        instant = action_values - value[:, None]
-        played = reach_self[:, None] * strategy
+        value = np.empty(strategy.shape[0])
         i = node.index
-        if self.variant == "cfr":
-            self.regret[i] += instant
-            self.strategy_sum[i] += played
-        elif self.variant == "cfr+":
-            self.regret[i] = np.maximum(self.regret[i] + instant, 0.0)
-            self.strategy_sum[i] += self.t * played
-        else:
-            regret = self.regret[i]
-            regret *= np.where(regret > 0, self._pos, self._neg)
-            regret += instant
-            self.strategy_sum[i] *= self._avg
-            self.strategy_sum[i] += played
+        _update_node(
+            self.regret[i],
+            self.strategy_sum[i],
+            strategy,
+            action_values,
+            reach_self,
+            self._mode,
+            float(self.t),
+            self._pos,
+            self._neg,
+            self._avg,
+            value,
+        )
         return value
 
     # Evaluation -----------------------------------------------------------
