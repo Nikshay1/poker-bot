@@ -1,0 +1,5 @@
+heuristic vs equity: +101.2 bb/100 (95% CI +53.5 to +148.9) over 4000 hands in 2000 duplicate pairs; 365.4 / 179.3 ms per decision; illegal actions 0 / 0
+heuristic:epsilon=0.3 vs heuristic: -48.2 bb/100 (95% CI -82.1 to -14.3) over 6000 hands in 3000 duplicate pairs; 118.3 / 119.6 ms per decision; illegal actions 0 / 0; 281 s
+heuristic:bluff_mult=1/1/1/1 vs heuristic: +53.8 bb/100 (95% CI +22.1 to +85.5) over 6000 hands in 3000 duplicate pairs; 120.8 / 117.8 ms per decision; illegal actions 0 / 0; 264 s
+heuristic:epsilon=0.3 vs equity: +99.5 bb/100 (95% CI +51.9 to +147.0) over 4000 hands in 2000 duplicate pairs; 128.0 / 62.8 ms per decision; illegal actions 0 / 0; 188 s
+heuristic:bluff_mult=1/1/1/1 vs equity: +154.7 bb/100 (95% CI +110.9 to +198.4) over 4000 hands in 2000 duplicate pairs; 126.8 / 60.8 ms per decision; illegal actions 0 / 0; 179 s

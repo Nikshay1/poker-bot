@@ -1,0 +1,2 @@
+solver vs heuristic: +35.0 bb/100 (95% CI -2.8 to +72.7) over 4000 hands in 2000 duplicate pairs; 344.6 / 289.0 ms per decision; illegal actions 0 / 0
+solver vs equity: +73.1 bb/100 (95% CI -28.1 to +174.4) over 2000 hands in 1000 duplicate pairs; 398.8 / 157.2 ms per decision; illegal actions 0 / 0

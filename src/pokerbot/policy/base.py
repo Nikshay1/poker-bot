@@ -37,7 +37,7 @@ class PolicyConfig:
     any value changes so results stay traceable.
     """
 
-    version: str = "h1"
+    version: str = "h2"
 
     # Before the flop.
     open_frac: float = 0.82  # share of hands the button opens
@@ -57,7 +57,9 @@ class PolicyConfig:
     raise_factor: float = 3.0  # raise to this multiple of the bet faced
     value_raise_equity: float = 0.80
     bluff_ceiling: float = 0.40  # only hands below this equity are used as bluffs
-    bluff_mult: tuple[float, ...] = (1.0, 2.0, 1.5, 1.0)
+    # Multiplier on the theoretical bluff-to-value ratio. A first guess of
+    # (1, 2, 1.5, 1) lost to all ones in tuning matches, see docs/RESULTS.md.
+    bluff_mult: tuple[float, ...] = (1.0, 1.0, 1.0, 1.0)
     call_margin: tuple[float, ...] = (0.0, 0.03, 0.02, 0.0)
     mdf_guard: float = 0.65  # defend at least this share of the minimum defence frequency
 

@@ -82,7 +82,7 @@ def main():
                 combo = combo_index(*spot.hole)
                 trackers = {
                     "base": RangeTracker(PolicyConfig()),
-                    "soft": RangeTracker(PolicyConfig(version="h1-soft", epsilon=0.3)),
+                    "soft": RangeTracker(PolicyConfig(version="soft", epsilon=0.3)),
                 }
                 for tracker in trackers.values():
                     tracker.catch_up(spot)

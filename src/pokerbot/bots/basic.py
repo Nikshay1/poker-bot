@@ -140,4 +140,6 @@ def make_bot(spec: str, seed: int = 0) -> Bot:
             raise ValueError(f"unknown policy setting {key!r}")
         parts = [float(x) for x in value.split("/")]
         overrides[key] = tuple(parts) if len(parts) > 1 else parts[0]
-    return BOTS[name](seed, replace(PolicyConfig(), version=f"h1:{params}", **overrides))
+    return BOTS[name](
+        seed, replace(PolicyConfig(), version=f"{PolicyConfig().version}:{params}", **overrides)
+    )
