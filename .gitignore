@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+# Numba on-disk cache
+*.nbi
+*.nbc
+# Local match logs and scratch output
+runs/
