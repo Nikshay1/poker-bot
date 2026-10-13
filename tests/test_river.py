@@ -20,7 +20,7 @@ def tracked(hole, **kw):
     spot = spot_from_partial(parse_cards(hole), parse_cards(BOARD), **kw)
     tracker = RangeTracker()
     tracker.catch_up(spot)
-    return spot, tuple(tracker.ranges)
+    return spot, tracker.beliefs()
 
 
 def test_fast_terminals_match_the_matrix_product():
@@ -82,7 +82,9 @@ def test_bet_state_agrees_with_the_engine_on_random_river_lines():
 def test_tree_actions_are_legal_ordered_and_capped():
     spot, _ = tracked("AsQd", pot=600, to_call=0, position="bb")
     state = BetState.from_spot(spot)
-    sizing = BetSizing(bet_fracs=(0.33, 0.75), raise_fracs=(0.75,), max_raises=2)
+    sizing = BetSizing(
+        bet_fracs=(0.33, 0.75), raise_fracs=(0.75,), max_raises=2, all_in_max_pot=None
+    )
     actions = tree_actions(state, sizing)
     assert [a.kind for a in actions] == [CHECK, RAISE, RAISE, RAISE]
     assert [a.amount for a in actions[1:]] == [198, 450, 9700]  # two sizes and all-in
@@ -225,7 +227,7 @@ def test_advisor_uses_the_solver_on_the_river_only():
 def test_all_in_can_be_limited_to_a_multiple_of_the_pot():
     spot, _ = tracked("AsQd", pot=600, to_call=0, position="bb")
     state = BetState.from_spot(spot)  # 9,700 behind into a pot of 600
-    free = tree_actions(state, BetSizing(bet_fracs=(0.33, 0.75, 1.5)))
+    free = tree_actions(state, BetSizing(bet_fracs=(0.33, 0.75, 1.5), all_in_max_pot=None))
     capped = tree_actions(state, BetSizing(bet_fracs=(0.33, 0.75, 1.5), all_in_max_pot=3.0))
     assert [a.amount for a in free[1:]] == [198, 450, 900, 9700]
     assert [a.amount for a in capped[1:]] == [198, 450, 900]  # all-in would be 16 pots
@@ -238,3 +240,22 @@ def test_all_in_can_be_limited_to_a_multiple_of_the_pot():
         parse_cards("AsQd"), parse_cards(BOARD), pot=600, stack=900, position="bb"
     )
     assert tree_actions(BetState.from_spot(short), limited)[-1].amount == 900
+
+
+def test_default_bet_tree_never_stakes_a_deep_stack_on_a_small_pot():
+    spot, _ = tracked("AsQd", pot=600, to_call=0, position="bb")
+    tree = build_river_tree(BetState.from_spot(spot), RiverBoard(spot.board), BetSizing())
+
+    def check(node, state):
+        if node.kind != "decision":
+            return
+        for action, child in zip(node.actions, node.children):
+            if action.kind == RAISE:
+                level = state.street_contrib[state.to_act]
+                if state.legal().call_amount:
+                    level = state.street_contrib[1 - state.to_act]
+                pot_after_call = state.pot + state.legal().call_amount
+                assert action.amount - level <= 3.0 * pot_after_call + 1
+            check(child, state.apply(action))
+
+    check(tree.root, BetState.from_spot(spot))

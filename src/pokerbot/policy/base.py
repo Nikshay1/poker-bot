@@ -37,7 +37,7 @@ class PolicyConfig:
     any value changes so results stay traceable.
     """
 
-    version: str = "h2"
+    version: str = "h3"
 
     # Before the flop.
     open_frac: float = 0.82  # share of hands the button opens
@@ -73,7 +73,8 @@ class PolicyConfig:
     # Share of each range kept at the player's preflop range, whatever the
     # postflop betting said. It stands for "the model of the opponent may be
     # wrong about this whole line", and stops ranges from being capped.
-    range_floor: float = 0.0
+    # Adopted at 0.2 after a session against Slumbot; see docs/RESULTS.md.
+    range_floor: float = 0.2
 
 
 @dataclass

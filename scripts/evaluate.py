@@ -20,6 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 # fewer hands because the difference is large.
 MATCHES = [
     ("solver", "heuristic", 10000),
+    ("solver", "sharp", 5000),
     ("solver", "equity", 3000),
     ("solver", "call", 1500),
     ("solver", "random", 1500),

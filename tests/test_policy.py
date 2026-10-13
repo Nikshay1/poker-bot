@@ -97,7 +97,7 @@ def test_minimum_defence_guard_limits_folding():
     tracker = RangeTracker(CFG)
     tracker.catch_up(spot)
     strategy = tracker.strategy(spot)
-    weights = np.where(np.isnan(strategy.equity), 0.0, tracker.ranges[spot.seat])
+    weights = np.where(np.isnan(strategy.equity), 0.0, tracker.beliefs()[spot.seat])
     folded = (weights * strategy.probs[:, B_FOLD]).sum() / weights.sum()
     risk = last_bet_risk(spot)
     assert risk == 600
@@ -110,7 +110,7 @@ def test_river_bluffs_use_the_weakest_hands():
     tracker = RangeTracker(CFG)
     tracker.catch_up(spot)
     strategy = tracker.strategy(spot)
-    weights = np.where(np.isnan(strategy.equity), 0.0, tracker.ranges[spot.seat])
+    weights = np.where(np.isnan(strategy.equity), 0.0, tracker.beliefs()[spot.seat])
     bets = strategy.probs[:, B_RAISE]
     value = (bets > 0) & (strategy.equity >= 0.6)
     bluff = (bets > 0) & (strategy.equity < CFG.bluff_ceiling)
@@ -245,11 +245,12 @@ def test_range_floor_keeps_strong_hands_possible():
     spot = state.view()
     assert spot.seat == 0 and spot.street == 3 and spot.unobserved == ()
 
-    sharp = RangeTracker(CFG)
+    sharp = RangeTracker(dataclasses.replace(CFG, version="sharp", range_floor=0.0))
     sharp.catch_up(spot)
     assert sharp.beliefs()[1] is sharp.ranges[1]  # no floor: decisions use the tracked range
 
-    floored = RangeTracker(dataclasses.replace(CFG, version="floor", range_floor=0.2))
+    assert CFG.range_floor == 0.2  # the default
+    floored = RangeTracker(CFG)
     floored.catch_up(spot)
     belief = floored.beliefs()[1]
     assert belief.sum() == pytest.approx(1.0)

@@ -7,7 +7,7 @@ holds a set of river situations fixed and changes one assumption at a time:
 * ``soft``    : ranges inferred with a larger uniform component (epsilon 0.3
                 instead of 0.1), so past actions narrow them less;
 * ``uniform`` : the opponent may hold any hand;
-* ``sizes``   : a richer bet tree (three bet sizes, two raise sizes).
+* ``sizes``   : a richer bet tree (four bet sizes, two raise sizes, all-in always).
 
 For the hero's hand it reports the recommended action under each, and the
 total-variation distance between each variant's strategy and the base one
@@ -51,7 +51,9 @@ LINES = [
     ("facing 2/3 pot", dict(pot=1000, to_call=400, position="button")),
     ("facing a pot-sized bet", dict(pot=1800, to_call=600, position="bb")),
 ]
-RICH = BetSizing(bet_fracs=(0.33, 0.75, 1.5), raise_fracs=(0.5, 1.0), max_raises=3)
+RICH = BetSizing(
+    bet_fracs=(0.25, 0.5, 1.0, 2.0), raise_fracs=(0.5, 1.0), max_raises=3, all_in_max_pot=None
+)
 SOLVE = dict(time_budget=60.0, max_iterations=600, target_pct_pot=0.1)
 
 

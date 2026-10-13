@@ -17,14 +17,14 @@ from pokerbot.game.state import CALL, CHECK, FOLD, RAISE, Action, Legal, Spot, l
 
 @dataclass(frozen=True)
 class BetSizing:
-    bet_fracs: tuple[float, ...] = (0.33, 0.75)  # opening bets, as fractions of the pot
+    bet_fracs: tuple[float, ...] = (0.33, 0.75, 1.5)  # opening bets, as fractions of the pot
     raise_fracs: tuple[float, ...] = (0.75,)  # raises, as fractions of the pot after calling
     all_in: bool = True  # offer all-in when a raise is legal
     # Offer all-in only when it is at most this multiple of the pot (the pot
     # after calling, for a raise). None means no limit. A limit keeps the
     # solver from staking a whole deep stack on a small pot, which is only
     # right if the estimated ranges are right.
-    all_in_max_pot: float | None = None
+    all_in_max_pot: float | None = 3.0
     max_raises: int = 3  # bets and raises allowed below the root
     commit_frac: float = 0.67  # a size using this share of the stack becomes all-in
 

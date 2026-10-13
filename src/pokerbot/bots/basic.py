@@ -115,21 +115,26 @@ class SolverBot(HeuristicBot):
         return advise(spot, self.cfg, self.tracker, self.rng, self.solver).action
 
 
-class CappedSolverBot(SolverBot):
-    """SolverBot with a 1.5x-pot bet added and all-in limited to three pots."""
+class SharpSolverBot(SolverBot):
+    """The solver bot as it was before two guards were added: no range floor,
+    and a bet tree of 33%, 75% and unlimited all-in. Kept so that matches can
+    measure what the guards cost and what they protect against."""
 
-    name = "capped"
+    name = "sharp"
     solver = SolverConfig(
-        sizing=BetSizing(bet_fracs=(0.33, 0.75, 1.5), all_in_max_pot=3.0),
+        sizing=BetSizing(bet_fracs=(0.33, 0.75), all_in_max_pot=None),
         time_budget=30.0,
         max_iterations=300,
         target_pct_pot=0.25,
     )
 
+    def __init__(self, seed: int = 0, cfg: PolicyConfig | None = None):
+        super().__init__(seed, cfg or replace(PolicyConfig(), version="h2", range_floor=0.0))
+
 
 BOTS = {
     cls.name: cls
-    for cls in (RandomBot, CallBot, EquityBot, HeuristicBot, SolverBot, CappedSolverBot)
+    for cls in (RandomBot, CallBot, EquityBot, HeuristicBot, SolverBot, SharpSolverBot)
 }
 
 
