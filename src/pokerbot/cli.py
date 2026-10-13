@@ -1,4 +1,4 @@
-"""Command line: ``pokerbot advise``, ``match``, ``bench`` and ``slumbot``."""
+"""Command line: ``pokerbot advise``, ``ui``, ``match``, ``bench`` and ``slumbot``."""
 
 from __future__ import annotations
 
@@ -54,6 +54,13 @@ def _advise(args) -> int:
         print(json.dumps(payload) if args.json else f"error: {err}", file=sys.stderr)
         return 2
     print(json.dumps(rec.to_dict(), indent=2) if args.json else text)
+    return 0
+
+
+def _ui(args) -> int:
+    from pokerbot.web.server import serve
+
+    serve(args.host, args.port, args.time, browser=not args.no_browser)
     return 0
 
 
@@ -121,6 +128,13 @@ def main(argv=None) -> int:
     )
     advise.add_argument("--json", action="store_true")
     advise.set_defaults(run=_advise)
+
+    ui = sub.add_parser("ui", help="open a web page that follows a hand and advises each decision")
+    ui.add_argument("--host", default="127.0.0.1", help="0.0.0.0 to reach it from a phone")
+    ui.add_argument("--port", type=int, default=8765)
+    ui.add_argument("--time", type=float, default=2.0, help="seconds allowed for a river solve")
+    ui.add_argument("--no-browser", action="store_true", help="do not open a browser window")
+    ui.set_defaults(run=_ui)
 
     match = sub.add_parser("match", help="play a duplicate match between two bots")
     match.add_argument("bot_a")

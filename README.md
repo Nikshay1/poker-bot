@@ -53,11 +53,27 @@ Requires [uv](https://docs.astral.sh/uv/).
 
 ```
 uv sync
-uv run pytest            # 126 checks, about 20 seconds
+uv run pytest            # 143 checks, about 25 seconds
 uv run pytest -m slow    # adds the exhaustive check of all 133,784,560 seven-card hands
 ```
 
 ## Use
+
+**Follow a hand in the browser.** This is the way to use it while a hand is being played.
+
+```
+uv run pokerbot ui                    # opens http://localhost:8765/
+uv run pokerbot ui --host 0.0.0.0     # also reachable from a phone on the same network
+```
+
+- Set the blinds, both stacks and your seat once. Pick your two cards.
+- Enter each action as it happens, and the board cards when they are dealt. Whenever it is your turn the page shows the recommended action, how the bot would mix its play, your equity and the EV of each option.
+- Record what you actually did, which may differ from the advice. One button records the recommended action.
+- When a hand ends, the stacks and the button carry over to the next one. After a showdown you say who won.
+- Cards can also be typed: rank then suit, for example `A` `S` `K` `D`. Backspace undoes the last entry.
+- The **3+ players** tab is a one-shot form (cards, pot, amount to call, players). It gives the multiway equity analysis, which is not a strategy.
+
+The heads-up tab assumes two players were dealt in. It does not model antes or straddles. The page runs on your machine and needs no internet connection.
 
 **Advice for one situation.** Only the hole cards are required. Anything left out is filled with a stated assumption.
 
@@ -113,10 +129,11 @@ src/pokerbot/
   solver/toy_games.py                    Kuhn and Leduc poker
   solver/terminal.py, solver/river.py    river payoffs and the river solver
   advisor.py, cli.py                     the entry point and the command line
+  live.py, web/                          following a hand as it is played; the local web page
   bots/, arena/                          bots, duplicate matches, Slumbot client
 scripts/                                 evaluation, convergence, model error, cross-check, Slumbot analysis
 docs/                                    design, results, raw data
-tests/                                   126 checks
+tests/                                   143 checks
 ```
 
 ## Limits

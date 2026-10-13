@@ -57,6 +57,7 @@ class Recommendation:
     notes: list[str] = field(default_factory=list)
     iterations: int | None = None
     seconds: float = 0.0
+    raise_to: int | None = None  # heuristic layer: the size behind the "raise" entry
 
     def to_dict(self) -> dict:
         return {
@@ -70,6 +71,7 @@ class Recommendation:
             "notes": self.notes,
             "iterations": self.iterations,
             "seconds": round(self.seconds, 4),
+            "raise_to": self.raise_to,
         }
 
     def render(self, spot: Spot) -> str:
@@ -154,6 +156,7 @@ def recommend_from_strategy(
         assumptions=list(spot.assumptions),
         notes=notes,
         seconds=0.0 if started is None else time.perf_counter() - started,
+        raise_to=strategy.action_for(B_RAISE, legal).amount if B_RAISE in names else None,
     )
 
 

@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pokerbot advisor</title>
+<style>
+:root {
+  --bg: #0f1412; --panel: #18201d; --panel2: #202a26; --line: #2c3833;
+  --text: #e8eeeb; --muted: #93a39c; --accent: #2fbf86; --accent-ink: #06261a;
+  --warn: #e0a23a; --bad: #e5645a; --card: #f6f5ef;
+  --spade: #1b1d1c; --heart: #d0342c; --diamond: #1c6fd4; --club: #1b8a40;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f3f5f2; --panel: #ffffff; --panel2: #eef2ef; --line: #d5ddd8;
+    --text: #17201c; --muted: #5d6c65; --accent: #14875a; --accent-ink: #ffffff;
+    --warn: #9a6400; --bad: #b9342a; --card: #ffffff;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 760px; margin: 0 auto; padding: 12px 16px 48px; }
+header {
+  max-width: 760px; margin: 0 auto; padding: 14px 16px 4px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+header h1 { font-size: 17px; margin: 0; font-weight: 650; letter-spacing: .2px; }
+header h1 span { color: var(--muted); font-weight: 400; }
+.tabs { margin-left: auto; display: flex; background: var(--panel2); border-radius: 9px; padding: 3px; }
+.tabs button, .seg button {
+  border: 0; background: transparent; color: var(--muted); padding: 6px 12px;
+  border-radius: 7px; font: inherit; cursor: pointer;
+}
+.tabs button.on, .seg button.on { background: var(--panel); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-top: 12px; }
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+/* cards */
+.table { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; }
+.slots { display: flex; gap: 6px; align-items: center; }
+.slots .gap { width: 6px; }
+.card {
+  width: 44px; height: 60px; border-radius: 7px; background: var(--card);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 19px; line-height: 1.05; border: 1px solid #0002;
+  user-select: none;
+}
+.card small { font-size: 17px; font-weight: 400; }
+.card.empty { background: transparent; border: 1.5px dashed var(--line); }
+.card.want { border: 2px solid var(--accent); }
+.card.click { cursor: pointer; }
+.s-s { color: var(--spade); } .s-h { color: var(--heart); } .s-d { color: var(--diamond); } .s-c { color: var(--club); }
+.picker { display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px; margin-top: 12px; }
+.picker button {
+  background: var(--card); border: 1px solid #0002; border-radius: 5px; padding: 3px 0;
+  font: 700 14px/1.1 system-ui, sans-serif; cursor: pointer; min-width: 0;
+  display: flex; flex-direction: column; align-items: center;
+}
+.picker button small { font-size: 13px; font-weight: 400; }
+.picker button:disabled { opacity: .18; cursor: default; }
+.picker button.pend { outline: 2px solid var(--accent); }
+
+/* advice */
+#advice .top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
+.badge.solver { color: var(--accent); border-color: var(--accent); }
+.move { font-size: 30px; font-weight: 750; letter-spacing: .3px; margin: 2px 0 8px; text-transform: uppercase; }
+.move.fold { color: var(--bad); } .move.raise { color: var(--accent); }
+.prompt { font-size: 19px; font-weight: 600; margin: 2px 0; }
+.mix { display: grid; grid-template-columns: max-content 1fr max-content max-content; gap: 5px 10px; align-items: center; margin: 6px 0; }
+.bar { height: 8px; background: var(--panel2); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.mix .ev { color: var(--muted); font-variant-numeric: tabular-nums; }
+.mix .pct { font-variant-numeric: tabular-nums; text-align: right; }
+details { margin-top: 8px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+details ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+.error { color: var(--bad); font-weight: 600; }
+
+/* entry */
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.row + .row { margin-top: 10px; }
+button.b {
+  border: 1px solid var(--line); background: var(--panel2); color: var(--text);
+  padding: 10px 14px; border-radius: 9px; font: inherit; font-weight: 600; cursor: pointer;
+}
+button.b:hover { border-color: var(--muted); }
+button.b.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.b.ghost { background: transparent; font-weight: 500; padding: 7px 11px; }
+button.chip { border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 5px 10px; border-radius: 99px; font: inherit; font-size: 13px; cursor: pointer; }
+button.chip:hover { color: var(--text); border-color: var(--muted); }
+input[type=number] {
+  width: 110px; padding: 9px 10px; border-radius: 9px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--text); font: inherit; font-variant-numeric: tabular-nums;
+}
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.stats div { background: var(--panel2); border-radius: 9px; padding: 8px 10px; }
+.stats b { display: block; font-size: 17px; font-variant-numeric: tabular-nums; }
+.stats span { font-size: 12px; color: var(--muted); }
+.hist p { margin: 3px 0; }
+.hist b { display: inline-block; min-width: 62px; color: var(--muted); font-weight: 600; text-transform: capitalize; }
+.setup { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.setup label { display: block; font-size: 12px; color: var(--muted); }
+.setup input { width: 100%; margin-top: 3px; }
+.seg { display: inline-flex; background: var(--panel2); border-radius: 9px; padding: 3px; margin-top: 3px; }
+footer { max-width: 760px; margin: 0 auto; padding: 0 16px 32px; color: var(--muted); font-size: 12.5px; }
+@media (max-width: 560px) {
+  .setup, .stats { grid-template-columns: repeat(2, 1fr); }
+  .card { width: 38px; height: 54px; font-size: 17px; }
+  .picker { gap: 3px; } .picker button { font-size: 12.5px; }
+  .move { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>pokerbot <span>advisor</span></h1>
+  <div class="tabs">
+    <button id="tab-hu">Heads-up</button>
+    <button id="tab-mw">3+ players</button>
+  </div>
+</header>
+<main id="app"></main>
+<footer id="foot"></footer>
+
+<script>
+"use strict";
+const RANKS = "AKQJT98765432", SUITS = "shdc";
+const SYM = { s: "♠", h: "♥", d: "♦", c: "♣" };
+const KEY = "pokerbot-ui-v1";
+const DEFAULT = {
+  mode: "hu", sb: 50, bb: 100, myStack: 10000, oppStack: 10000, position: "button",
+  hole: [null, null],
+  log: [],            // heads-up: {t:"card", c} and {t:"act", kind, amount}, in the order entered
+  mw: { hole: [null, null], board: [], players: 3, pot: "", toCall: "", stack: "" },
+};
+
+let S = load();
+let R = null;         // last heads-up reply
+let M = null;         // last multiway reply
+let ERR = null;       // last error message
+let busy = false, seq = 0, pendingRank = null, editSetup = false;
+
+function load() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY));
+    if (saved && Array.isArray(saved.log)) return { ...DEFAULT, ...saved, mw: { ...DEFAULT.mw, ...saved.mw } };
+  } catch (e) { /* fall through to a fresh state */ }
+  return JSON.parse(JSON.stringify(DEFAULT));
+}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* private mode */ } }
+
+function el(tag, attrs, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === "class") n.className = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (v === true) n.setAttribute(k, "");
+    else if (v !== false && v != null) n.setAttribute(k, v);
+  }
+  for (const kid of kids.flat()) {
+    if (kid == null || kid === false) continue;
+    n.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  }
+  return n;
+}
+const num = (x) => Number(x).toLocaleString("en-US");
+const signed = (x) => (x >= 0 ? "+" : "−") + num(Math.abs(Math.round(x)));
+const pct = (x) => (100 * x).toFixed(0) + "%";
+
+function cardEl(c, extra, onclick) {
+  if (!c) return el("div", { class: "card empty " + (extra || ""), onclick });
+  return el("div", { class: `card s-${c[1]} ${extra || ""}`, onclick }, c[0], el("small", null, SYM[c[1]]));
+}
+
+/* ---------- state helpers ---------- */
+const hu = () => S.mode === "hu";
+const board = () => S.log.filter((e) => e.t === "card").map((e) => e.c);
+const actions = () => S.log.filter((e) => e.t === "act").map((e) => ({ kind: e.kind, amount: e.amount }));
+const holeDone = (h) => h[0] && h[1];
+function used() {
+  const h = hu() ? S.hole : S.mw.hole, b = hu() ? board() : S.mw.board;
+  return new Set([...h, ...b].filter(Boolean));
+}
+function wants() {   // which card the picker fills next: "hole", "board" or null
+  if (hu()) {
+    if (!holeDone(S.hole)) return "hole";
+    return R && !ERR && R.waiting_for === "board" ? "board" : null;
+  }
+  if (!holeDone(S.mw.hole)) return "hole";
+  return S.mw.board.length < 5 ? "board" : null;
+}
+function pick(c) {
+  const w = wants();
+  if (!w || used().has(c)) return;
+  const h = hu() ? S.hole : S.mw.hole;
+  if (w === "hole") h[h[0] ? 1 : 0] = c;
+  else if (hu()) S.log.push({ t: "card", c });
+  else S.mw.board.push(c);
+  pendingRank = null;
+  refresh();
+}
+function act(kind, amount) { S.log.push({ t: "act", kind, amount: amount || 0 }); refresh(); }
+function undo() {
+  if (hu()) {
+    if (S.log.length) S.log.pop();
+    else if (S.hole[1]) S.hole[1] = null;
+    else S.hole[0] = null;
+  } else {
+    const m = S.mw;
+    if (m.board.length) m.board.pop();
+    else if (m.hole[1]) m.hole[1] = null;
+    else m.hole[0] = null;
+  }
+  refresh();
+}
+function newHand(outcome) {
+  // outcome: "fold" (result known), "won", "lost", "split", or undefined (no chip change)
+  if (R && R.waiting_for === "over" && outcome) {
+    let net = 0;
+    if (outcome === "fold") net = R.hero_net;
+    else if (outcome === "won") net = R.opponent.total_contrib;
+    else if (outcome === "lost") net = -R.hero.total_contrib;
+    S.myStack += net; S.oppStack -= net;
+    S.position = S.position === "button" ? "bb" : "button";   // the button alternates
+  }
+  S.hole = [null, null]; S.log = []; R = null; ERR = null;
+  refresh();
+}
+
+/* ---------- server ---------- */
+async function post(path, body) {
+  const res = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "request failed");
+  return data;
+}
+async function refresh() {
+  save();
+  const mine = ++seq;
+  let job = null;
+  if (hu()) {
+    if (holeDone(S.hole)) {
+      job = post("/api/hand", {
+        hole: S.hole.join(""), position: S.position, small_blind: S.sb, big_blind: S.bb,
+        my_stack: S.myStack, opp_stack: S.oppStack, board: board().join(""), actions: actions(),
+      });
+    } else { R = null; ERR = null; }
+  } else {
+    const m = S.mw, ok = holeDone(m.hole) && [0, 3, 4, 5].includes(m.board.length) && Number(m.pot) > 0;
+    if (ok) {
+      job = post("/api/multiway", {
+        hole: m.hole.join(""), board: m.board.join(""), players: m.players, pot: Number(m.pot),
+        to_call: Number(m.toCall) || 0, stack: Number(m.stack) || null, big_blind: S.bb,
+      });
+    } else { M = null; ERR = null; }
+  }
+  if (!job) { busy = false; render(); return; }
+  busy = true;
+  const slow = setTimeout(() => { if (mine === seq && busy) render(); }, 150);
+  try {
+    const data = await job;
+    if (mine !== seq) return;
+    if (hu()) R = data; else M = data;
+    ERR = null;
+  } catch (e) {
+    if (mine !== seq) return;
+    ERR = e.message;
+  } finally { clearTimeout(slow); }
+  busy = false;
+  render();
+}
+
+/* ---------- rendering ---------- */
+function picker() {
+  const w = wants(), taken = used();
+  if (!w) return null;
+  const grid = el("div", { class: "picker" });
+  for (const s of SUITS) for (const r of RANKS) {
+    const c = r + s;
+    grid.append(el("button", {
+      class: `s-${s}` + (pendingRank === r ? " pend" : ""), disabled: taken.has(c), title: c,
+      onclick: () => pick(c),
+    }, r, el("small", null, SYM[s])));
+  }
+  return grid;
+}
+function slots(h, b, onHole) {
+  const w = wants();
+  const hole = el("div", null, el("h2", null, "Your hand"), el("div", { class: "slots" },
+    h.map((c, i) => cardEl(c, (c ? "click" : "") + (w === "hole" && !c && (i === 0 || h[0]) ? " want" : ""),
+      c ? () => onHole(i) : null))));
+  const need = hu() && R && !ERR && R.waiting_for === "board" ? b.length + R.cards_needed : (hu() ? 0 : 5);
+  const cells = [];
+  for (let i = 0; i < 5; i++) {
+    if (i === 3 || i === 4) cells.push(el("div", { class: "gap" }));
+    cells.push(cardEl(b[i], w === "board" && !b[i] && i < need && i === b.length ? "want" : ""));
+  }
+  return el("div", { class: "table" }, hole, el("div", null, el("h2", null, "Board"), el("div", { class: "slots" }, cells)));
+}
+
+function advicePanel() {
+  const box = el("section", { id: "advice" });
+  if (ERR) {
+    box.append(el("h2", null, "Problem"), el("p", { class: "error" }, ERR),
+      el("p", { class: "muted small" }, "Undo the last entry, or fix the blinds and stacks below."));
+    return box;
+  }
+  if (!holeDone(S.hole)) {
+    box.append(el("p", { class: "prompt" }, "Pick your two cards"),
+      el("p", { class: "muted small" }, "Tap them above, or type them: rank then suit, for example A S K D."));
+    return box;
+  }
+  if (!R) { box.append(el("p", { class: "prompt muted" }, "Thinking…")); return box; }
+  if (R.waiting_for === "board") {
+    const name = { 3: "the flop", 4: "the turn", 5: "the river" }[board().length + R.cards_needed];
+    box.append(el("p", { class: "prompt" }, `Enter ${name}`),
+      el("p", { class: "muted small" }, R.cards_needed === 1 ? "One card to go." : `${R.cards_needed} cards to go.`));
+    return box;
+  }
+  if (R.waiting_for === "opponent") {
+    box.append(el("p", { class: "prompt" }, "Opponent to act"),
+      el("p", { class: "muted small" }, "Record what they do and the advice for your next decision appears."));
+    return box;
+  }
+  if (R.waiting_for === "over") {
+    box.append(el("h2", null, "Hand over"));
+    if (R.hero_net != null) {
+      box.append(el("p", { class: "prompt" }, R.result[0].toUpperCase() + R.result.slice(1) + `: you ${R.hero_net >= 0 ? "win" : "lose"} ${num(Math.abs(R.hero_net))}`),
+        el("div", { class: "row" }, el("button", { class: "b primary", onclick: () => newHand("fold") }, "Next hand")));
+    } else {
+      box.append(el("p", { class: "prompt" }, R.result === "showdown" ? "Showdown" : "All-in and called"),
+        el("p", { class: "muted small" }, `Pot ${num(R.pot)}. Who won it? The stacks and the button move on for the next hand.`),
+        el("div", { class: "row" },
+          el("button", { class: "b primary", onclick: () => newHand("won") }, "I won"),
+          el("button", { class: "b", onclick: () => newHand("lost") }, "Opponent won"),
+          el("button", { class: "b", onclick: () => newHand("split") }, "Split pot")));
+    }
+    return box;
+  }
+  // the hero's decision
+  const rec = R.recommendation;
+  const solver = rec.layer === "river solver";
+  box.append(el("div", { class: "top" },
+    el("h2", { style: "margin:0" }, busy ? "Thinking…" : "Recommended"),
+    el("span", { class: "badge" + (solver ? " solver" : "") }, rec.layer),
+    rec.equity != null && el("span", { class: "muted small", style: "margin-left:auto" },
+      `equity vs their range ${(100 * rec.equity).toFixed(0)}%`)));
+  box.append(el("div", { class: "move " + rec.kind }, rec.text));
+  const shown = rec.options.filter((o) => o.probability > 0.005 || o.ev != null);
+  const mix = el("div", { class: "mix" });
+  for (const o of shown) {
+    mix.append(el("span", null, o.text), el("div", { class: "bar" }, el("i", { style: `width:${(100 * o.probability).toFixed(1)}%` })),
+      el("span", { class: "pct" }, pct(o.probability)),
+      el("span", { class: "ev small" }, o.ev != null && o.kind !== "fold" ? `EV ${signed(o.ev)}` : ""));
+  }
+  box.append(mix);
+  const top = Math.max(...rec.options.map((o) => o.probability));
+  if (top < 0.95) box.append(el("p", { class: "muted small", style: "margin:4px 0 0" },
+    "A mixed spot: the bot would split its play in these proportions. The most frequent action is shown."));
+  box.append(el("details", null, el("summary", null, "How it got there"), el("ul", null,
+    rec.notes.map((n) => el("li", null, n)),
+    el("li", null, "EV is in chips, compared with folding now."),
+    el("li", null, `${rec.layer} layer, ${(rec.seconds * 1000).toFixed(0)} ms`))));
+  return box;
+}
+
+function entryPanel() {
+  if (ERR || !R || !R.legal) return null;
+  const hero = R.waiting_for === "hero", L = R.legal;
+  const me = hero ? R.hero : R.opponent, other = hero ? R.opponent : R.hero;
+  const box = el("section", null, el("h2", null, hero ? "What did you do?" : "What did the opponent do?"));
+  const rec = hero ? R.recommendation : null;
+  if (rec) box.append(el("div", { class: "row" },
+    el("button", { class: "b primary", onclick: () => act(rec.kind, rec.amount) }, `I did that: ${rec.text}`)));
+  const row = el("div", { class: "row" });
+  if (L.can_fold) row.append(el("button", { class: "b", onclick: () => act("fold") }, "Fold"));
+  if (L.can_check) row.append(el("button", { class: "b", onclick: () => act("check") }, "Check"));
+  if (L.call_amount > 0) row.append(el("button", { class: "b", onclick: () => act("call") }, `Call ${num(L.call_amount)}`));
+  box.append(row);
+  if (L.min_raise_to != null) {
+    const opening = L.call_amount === 0 && R.street !== "preflop";
+    const clamp = (x) => Math.min(Math.max(Math.round(x), L.min_raise_to), L.max_raise_to);
+    const start = rec && rec.kind === "raise" ? rec.amount
+      : rec ? (rec.options.find((o) => o.kind === "raise") || {}).amount || L.min_raise_to : L.min_raise_to;
+    const input = el("input", { type: "number", min: L.min_raise_to, max: L.max_raise_to, value: start, inputmode: "numeric" });
+    const go = () => act("raise", Number(input.value));
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
+    const size = (f) => clamp(other.street_contrib + f * (R.pot + L.call_amount));
+    const chips = [["min", L.min_raise_to], ["⅓ pot", size(1 / 3)], ["½ pot", size(0.5)], ["¾ pot", size(0.75)], ["pot", size(1)], ["all-in", L.max_raise_to]];
+    box.append(el("div", { class: "row" }, input, el("button", { class: "b", onclick: go }, opening ? "Bet" : "Raise to"),
+      chips.map(([label, v]) => el("button", { class: "chip", onclick: () => { input.value = v; } }, label))));
+    box.append(el("p", { class: "muted small", style: "margin:8px 0 0" },
+      `The amount is the player's total for this street${R.street === "preflop" ? ", blind included" : ""}: ` +
+      `${num(L.min_raise_to)} to ${num(L.max_raise_to)}.`));
+  }
+  return box;
+}
+
+function statsPanel() {
+  if (ERR || !R) return null;
+  const toCall = R.legal ? R.legal.call_amount : 0;
+  const cell = (v, label) => el("div", null, el("b", null, v), el("span", null, label));
+  return el("section", null, el("div", { class: "stats" },
+    cell(num(R.pot), `pot (${(R.pot / S.bb).toFixed(1)} bb)`), cell(num(R.hero.stack), "your stack"),
+    cell(num(R.opponent.stack), "opponent's stack"),
+    cell(R.legal ? num(toCall) : "–", R.waiting_for === "opponent" ? "for them to call" : "to call")));
+}
+
+function historyPanel() {
+  const box = el("section", { class: "hist" }, el("h2", null, "This hand"));
+  const lines = {};
+  for (const h of (R && !ERR ? R.history : [])) (lines[h.street] = lines[h.street] || []).push(`${h.who === "hero" ? "you" : "opp"} ${h.text}`);
+  const streets = Object.keys(lines);
+  if (!streets.length) box.append(el("p", { class: "muted small" }, "No actions yet."));
+  for (const s of streets) box.append(el("p", null, el("b", null, s), lines[s].join(" · ")));
+  box.append(el("div", { class: "row", style: "margin-top:10px" },
+    el("button", { class: "b ghost", onclick: undo, disabled: !S.log.length && !S.hole[0] }, "Undo"),
+    el("button", { class: "b ghost", onclick: () => newHand() }, "Clear hand")));
+  return box;
+}
+
+function numberInput(value, onchange, attrs) {
+  return el("input", { type: "number", value, inputmode: "numeric", ...attrs,
+    onchange: (e) => { onchange(e.target.value); refresh(); } });
+}
+function setupPanel() {
+  const seg = el("div", { class: "seg" }, [["button", "Button"], ["bb", "Big blind"]].map(([v, label]) =>
+    el("button", { class: S.position === v ? "on" : "", onclick: () => { S.position = v; refresh(); } }, label)));
+  return el("section", null, el("h2", null, "Table"),
+    el("div", { class: "setup" },
+      el("label", null, "Small blind", numberInput(S.sb, (v) => { S.sb = Number(v); }, { min: 1 })),
+      el("label", null, "Big blind", numberInput(S.bb, (v) => { S.bb = Number(v); }, { min: 1 })),
+      el("label", null, "Your stack", numberInput(S.myStack, (v) => { S.myStack = Number(v); }, { min: 1 })),
+      el("label", null, "Opponent's stack", numberInput(S.oppStack, (v) => { S.oppStack = Number(v); }, { min: 1 }))),
+    el("div", { style: "margin-top:10px" }, el("label", { class: "small muted" }, "You are the "), seg),
+    el("p", { class: "muted small", style: "margin:8px 0 0" },
+      "Stacks are at the start of the hand, before the blinds. Heads-up, the button posts the small blind and acts first before the flop, last after it."));
+}
+
+function renderHeadsUp(app) {
+  const cards = el("section", null, slots(S.hole, board(), (i) => { S.hole[i] = null; refresh(); }), picker());
+  app.append(...[cards, advicePanel(), entryPanel(), statsPanel(), historyPanel(), setupPanel()].filter(Boolean));
+}
+
+function renderMultiway(app) {
+  const m = S.mw;
+  const cards = el("section", null, slots(m.hole, m.board, (i) => { m.hole[i] = null; refresh(); }), picker(),
+    el("div", { class: "row", style: "margin-top:10px" },
+      el("button", { class: "b ghost", onclick: undo }, "Undo card"),
+      el("button", { class: "b ghost", onclick: () => { m.hole = [null, null]; m.board = []; m.pot = ""; m.toCall = ""; refresh(); } }, "Clear")));
+  const form = el("section", null, el("h2", null, "Situation"), el("div", { class: "setup" },
+    el("label", null, "Players in the hand", numberInput(m.players, (v) => { m.players = Math.min(9, Math.max(3, Number(v) || 3)); }, { min: 3, max: 9 })),
+    el("label", null, "Pot, with bets", numberInput(m.pot, (v) => { m.pot = v; }, { min: 0 })),
+    el("label", null, "To call", numberInput(m.toCall, (v) => { m.toCall = v; }, { min: 0 })),
+    el("label", null, "Your stack (optional)", numberInput(m.stack, (v) => { m.stack = v; }, { min: 0 }))));
+  const out = el("section", { id: "advice" });
+  if (ERR) out.append(el("h2", null, "Problem"), el("p", { class: "error" }, ERR));
+  else if (!M) {
+    const todo = !holeDone(m.hole) ? "Pick your two cards"
+      : ![0, 3, 4, 5].includes(m.board.length) ? "Finish the flop: the board needs 0, 3, 4 or 5 cards"
+      : busy ? "Thinking…" : "Enter the pot size";
+    out.append(el("p", { class: "prompt" }, todo));
+  } else {
+    out.append(el("div", { class: "top" }, el("h2", { style: "margin:0" }, "Suggested"), el("span", { class: "badge" }, "equity rule, not a strategy")),
+      el("div", { class: "move " + M.action }, M.text),
+      el("p", null, `Your equity ${(100 * M.equity).toFixed(1)}% (±${(196 * M.equity_stderr).toFixed(1)}%). An equal share among ${m.players} players would be ${(100 * M.fair_share).toFixed(1)}%.`));
+    const evs = Object.entries(M.ev).filter(([k, v]) => v != null && k !== "fold").map(([k, v]) => `${k} ${signed(v)}`);
+    if (evs.length) out.append(el("p", { class: "muted small" }, "EV in chips, compared with folding: " + evs.join(", ")));
+    out.append(el("details", { open: true }, el("summary", null, "What this assumes"),
+      el("ul", null, [...M.assumptions, ...M.notes].map((n) => el("li", null, n)))));
+  }
+  app.append(cards, form, out);
+}
+
+function render() {
+  const keep = document.activeElement && document.activeElement.tagName === "INPUT";
+  if (keep && busy) return;   // do not rebuild the page under a field being typed in
+  document.getElementById("tab-hu").className = hu() ? "on" : "";
+  document.getElementById("tab-mw").className = hu() ? "" : "on";
+  const app = document.getElementById("app");
+  app.replaceChildren();
+  if (hu()) renderHeadsUp(app); else renderMultiway(app);
+  document.getElementById("foot").textContent = hu()
+    ? "Heads-up only: two players dealt in. The river is solved; earlier streets are heuristic. The bot assumes a sensible opponent and does not adapt to this one."
+    : "With three or more players this is an equity estimate against assumed opponent hands plus a cautious rule. It does not follow the betting and is not a strategy.";
+}
+
+document.getElementById("tab-hu").onclick = () => { S.mode = "hu"; ERR = null; refresh(); };
+document.getElementById("tab-mw").onclick = () => { S.mode = "mw"; ERR = null; refresh(); };
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT" || e.ctrlKey || e.metaKey || e.altKey) return;
+  const k = e.key.toUpperCase();
+  if (e.key === "Backspace") { e.preventDefault(); pendingRank ? (pendingRank = null, render()) : undo(); return; }
+  if (!wants()) return;
+  if (pendingRank && SUITS.includes(e.key.toLowerCase())) { pick(pendingRank + e.key.toLowerCase()); return; }
+  if (RANKS.includes(k)) { pendingRank = k; render(); }
+});
+refresh();
+</script>
+</body>
+</html>

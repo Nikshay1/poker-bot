@@ -19,7 +19,7 @@ Terms used below:
 
 ## 1. Correctness
 
-`uv run pytest` runs 126 checks in about 20 seconds; `uv run pytest -m slow` adds the exhaustive one.
+`uv run pytest` runs 143 checks in about 25 seconds; `uv run pytest -m slow` adds the exhaustive one.
 
 | What | Check | Result |
 |---|---|---|
