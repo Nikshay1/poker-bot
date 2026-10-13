@@ -262,8 +262,8 @@ class HandState:
                 self._put_in(opp, -excess)
         else:
             increment = action.amount - self.street_contrib[opp]
-            if increment >= self.last_raise:
-                self.last_raise = increment
+            # Only a full raise sets a new minimum; a short all-in does not.
+            self.last_raise = max(self.last_raise, increment)
             self._put_in(seat, action.amount - self.street_contrib[seat])
             self.history.append((self.street, seat, RAISE, action.amount))
 

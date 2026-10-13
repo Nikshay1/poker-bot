@@ -191,8 +191,7 @@ def test_seven_card_value_is_best_five_card_subset():
     for _ in range(3000):
         cards = rng.sample(range(N_CARDS), 7)
         best = max(
-            int(evaluate(np.array(sub, dtype=np.int64)))
-            for sub in itertools.combinations(cards, 5)
+            int(evaluate(np.array(sub, dtype=np.int64))) for sub in itertools.combinations(cards, 5)
         )
         assert int(evaluate(np.array(cards, dtype=np.int64))) == best
 

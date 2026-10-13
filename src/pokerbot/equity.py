@@ -269,7 +269,9 @@ def _monte_carlo(hole, board, cum_weights, combo_cards, n_samples, seed):
         dead = base_dead.copy()
         ok = True
         for p in range(n_opp):
-            k = np.searchsorted(cum_weights[p], np.random.random() * cum_weights[p, -1], side="right")
+            k = np.searchsorted(
+                cum_weights[p], np.random.random() * cum_weights[p, -1], side="right"
+            )
             if k >= combo_cards.shape[0]:
                 k = combo_cards.shape[0] - 1
             c1 = combo_cards[k, 0]

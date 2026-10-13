@@ -163,7 +163,9 @@ def test_view_hides_the_opponent_and_the_future_board():
 def test_random_playouts_conserve_chips_and_stay_legal():
     rng = random.Random(42)
     for _ in range(3000):
-        config = GameConfig(stacks=(rng.choice([300, 2000, 10_000]), rng.choice([300, 2000, 10_000])))
+        config = GameConfig(
+            stacks=(rng.choice([300, 2000, 10_000]), rng.choice([300, 2000, 10_000]))
+        )
         s = HandState(config, tuple(rng.sample(range(52), 9)))
         steps = 0
         while not s.finished:
@@ -201,7 +203,9 @@ def test_spot_validation_reports_structured_errors():
         "bad_board": dataclasses.replace(good, board=(1, 2)),
         "bad_seat": dataclasses.replace(good, seat=2),
         "negative_chips": dataclasses.replace(good, stacks=(-1, 100)),
-        "not_to_act": dataclasses.replace(good, street_contrib=(300, 100), total_contrib=(300, 100)),
+        "not_to_act": dataclasses.replace(
+            good, street_contrib=(300, 100), total_contrib=(300, 100)
+        ),
         "no_decision": dataclasses.replace(good, stacks=(0, 100)),
     }
     for code, spot in cases.items():
